@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bybush3bov5mf"]
+
+[ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
+
+[sub_resource type="Environment" id="Environment_80nbo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_80nbo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80nbo"]
+albedo_color = Color(0.26666668, 1, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_80nbo"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_80nbo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e2o6t"]
+size = Vector3(2.0089111, 1, 1.9919434)
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_80nbo")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_80nbo")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9637423, 0.26683468, 0, -0.26683468, 0.9637423, 0, 7.0381637, 9.739521)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7526793, 0.370952, -0.54393804, 0, 0.8261671, 0.5634252, 0.6583874, -0.42407843, 0.62183887, -6.6442285, 10.68128, 8.558982)
+light_energy = 2.0
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.234474, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("CapsuleMesh_80nbo")
+surface_material_override/0 = SubResource("StandardMaterial3D_80nbo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("CapsuleShape3D_80nbo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.5307755, 0, 0, 0, 7.5307755, 0, 0, 0, 7.5307755, 0, 0, 0)
+mesh = SubResource("PlaneMesh_80nbo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0010375977, -0.49387878, -0.0015869141)
+shape = SubResource("BoxShape3D_e2o6t")
