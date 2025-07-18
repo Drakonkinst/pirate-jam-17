@@ -3,7 +3,7 @@ extends Node3D
 class_name InputState
 
 signal mouse_looked(look_dir: Vector2)
-    
+
 var is_pressing_primary: bool
 var is_pressing_secondary: bool
 var movement_input: Vector3
@@ -12,9 +12,15 @@ var mouse_captured: bool
 
 func _ready() -> void:
     capture_mouse()
-    
+
 # Don't know if we need this part yet
 func _input(_event: InputEvent) -> void:
+    if Input.is_action_just_pressed("pause"): 
+        if mouse_captured:
+            release_mouse() 
+        else:
+            capture_mouse()
+
     if Input.is_action_just_pressed("primary_action"):
         print("Primary action pressed")
     elif Input.is_action_just_released("primary_action"):
@@ -24,8 +30,9 @@ func _input(_event: InputEvent) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
-        var look_dir: Vector2 = event.relative * 0.001
-        mouse_looked.emit(look_dir)
+        if mouse_captured:
+            var look_dir: Vector2 = event.relative * 0.001
+            mouse_looked.emit(look_dir)
 
 func _process(_delta: float) -> void:
     var horizontal_movement := Input.get_axis("move_left", "move_right")
@@ -35,7 +42,7 @@ func _process(_delta: float) -> void:
     movement_input = movement_input.normalized()
 
     is_pressing_primary = Input.is_action_pressed("primary_action")
-    is_pressing_secondary = Input.is_action_pressed("secondary_action") 
+    is_pressing_secondary = Input.is_action_pressed("secondary_action")
     roll_input = Input.get_axis("roll_left", "roll_right")
 
 func capture_mouse() -> void:

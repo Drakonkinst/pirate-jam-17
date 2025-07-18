@@ -1,23 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=7 format=3 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
-[ext_resource type="Script" uid="uid://c25siti2cle0n" path="res://player/player.gd" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
-[ext_resource type="Script" uid="uid://b2uoxmebnay0i" path="res://player/input_state.gd" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://do2ht3l1tvwuj" path="res://player.tscn" id="3_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://cpv0kejasrfjx" path="res://world/placeholder_dark.png" id="5_7jktm"]
 
 [sub_resource type="Environment" id="Environment_80nbo"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_80nbo"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_e2o6t"]
-size = Vector3(2.0089111, 1, 1.9919434)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_80nbo"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80nbo"]
-albedo_color = Color(0.26666668, 1, 1, 1)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_80nbo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryrav"]
+albedo_texture = ExtResource("5_7jktm")
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_80nbo")
@@ -34,28 +25,26 @@ environment = SubResource("Environment_80nbo")
 transform = Transform3D(0.7526793, 0.370952, -0.54393804, 0, 0.8261671, 0.5634252, 0.6583874, -0.42407843, 0.62183887, -6.6442285, 10.68128, 8.558982)
 light_energy = 2.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(7.5307755, 0, 0, 0, 7.5307755, 0, 0, 0, 7.5307755, 0, 0, 0)
-mesh = SubResource("PlaneMesh_80nbo")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0010375977, -0.49387878, -0.0015869141)
-shape = SubResource("BoxShape3D_e2o6t")
-
-[node name="Player" type="RigidBody3D" parent="."]
+[node name="Player" parent="." instance=ExtResource("3_fc0e3")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-script = ExtResource("2_e2o6t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("CapsuleMesh_80nbo")
-surface_material_override/0 = SubResource("StandardMaterial3D_80nbo")
+[node name="World" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_80nbo")
+[node name="CSGBox3D" type="CSGBox3D" parent="World" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097, -0.5, 0.153)
+material_override = SubResource("StandardMaterial3D_ryrav")
+use_collision = true
+size = Vector3(15.120483, 1, 15.332764)
 
-[node name="InputState" type="Node3D" parent="Player"]
-unique_name_in_owner = true
-script = ExtResource("3_feb5d")
+[node name="CSGBox3D2" type="CSGBox3D" parent="World" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, -1, 0, 1, 2.9802322e-08, -0.097, -0.5, -7.992712)
+material_override = SubResource("StandardMaterial3D_ryrav")
+use_collision = true
+size = Vector3(15.120483, 1, 15.332764)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="World" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, -1, 0, 1, 2.9802322e-08, -0.097, -0.5, 8.311718)
+material_override = SubResource("StandardMaterial3D_ryrav")
+use_collision = true
+size = Vector3(15.120483, 1, 15.332764)

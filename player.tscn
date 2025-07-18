@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://do2ht3l1tvwuj"]
+
+[ext_resource type="Script" uid="uid://c25siti2cle0n" path="res://player/player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://b2uoxmebnay0i" path="res://player/input_state.gd" id="2_hqtel"]
+[ext_resource type="Script" uid="uid://csxkwror8xrss" path="res://player/nearby_surface_detection.gd" id="3_sweqy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_80nbo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80nbo"]
+albedo_color = Color(0.26666668, 1, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_80nbo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7jktm"]
+
+[node name="Player" type="RigidBody3D"]
+script = ExtResource("1_i3pqv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_80nbo")
+surface_material_override/0 = SubResource("StandardMaterial3D_80nbo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_80nbo")
+
+[node name="InputState" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_hqtel")
+
+[node name="NearbySurfaceDetection" type="Area3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_sweqy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NearbySurfaceDetection"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("SphereShape3D_7jktm")
+
+[node name="SurfaceDetectionTimer" type="Timer" parent="NearbySurfaceDetection"]
+unique_name_in_owner = true
+wait_time = 0.5
+autostart = true
