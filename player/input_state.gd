@@ -21,11 +21,11 @@ func _input(_event: InputEvent) -> void:
         else:
             capture_mouse()
 
-    if Input.is_action_just_pressed("primary_action"):
+    if Input.is_action_just_pressed("action_primary"):
         print("Primary action pressed")
-    elif Input.is_action_just_released("primary_action"):
+    elif Input.is_action_just_released("action_primary"):
         pass
-    if Input.is_action_just_pressed("secondary_action"):
+    if Input.is_action_just_pressed("action_secondary"):
         print("Secondary action pressed")
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -41,8 +41,8 @@ func _process(_delta: float) -> void:
     movement_input = Vector3(horizontal_movement, vertical_movement, forwards_movement)
     movement_input = movement_input.normalized()
 
-    is_pressing_primary = Input.is_action_pressed("primary_action")
-    is_pressing_secondary = Input.is_action_pressed("secondary_action")
+    is_pressing_primary = Input.is_action_pressed("action_primary")
+    is_pressing_secondary = Input.is_action_pressed("action_secondary")
     roll_input = Input.get_axis("roll_left", "roll_right")
 
 func capture_mouse() -> void:

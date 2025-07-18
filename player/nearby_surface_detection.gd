@@ -1,28 +1,28 @@
-extends Area3D
+extends Node3D
 
 class_name NearbySurfaceDetection
 
 @onready var _timer: Timer = %SurfaceDetectionTimer
+@onready var _surface_detector: ShapeCast3D = %SurfaceDetector
 
 var nearby_surface_vector: Vector3
 
-func _process(_delta: float) -> void:
+func _ready() -> void:
     _timer.timeout.connect(_on_surface_detection_timer_timeout)
 
 func _on_surface_detection_timer_timeout() -> void:
     nearby_surface_vector = Vector3.ZERO
     var nearest_surface: Node3D = null
-    var min_distance_sq := 9999
-    for body in get_overlapping_bodies():
-        if body.is_in_group("Surface"):
-            var dist_sq := body.global_position.distance_squared_to(global_position)
-            if dist_sq < min_distance_sq:
-                min_distance_sq = dist_sq
-                nearest_surface = body
-                
-    if nearest_surface != null:
-        # Might need a better way of getting the normal, but ah well
-        var normal := nearest_surface.global_transform.basis.y
-        print(normal)
-        nearby_surface_vector = normal
-        
+    var highest_dot: float = -9999 # Comparing dot products
+    for i in range(_surface_detector.get_collision_count()):
+        var colliding_object: Node3D = _surface_detector.get_collider(i)
+        if !colliding_object.is_in_group("Surface"):
+            continue
+        var collision_normal := _surface_detector.get_collision_normal(i)
+        var dot: float = collision_normal.dot(global_transform.basis.y)
+        if dot > highest_dot:
+            highest_dot = dot
+            nearest_surface = colliding_object
+            nearby_surface_vector = collision_normal
+#    if nearest_surface != null:
+#        print(highest_dot, " ", nearby_surface_vector, " ", nearest_surface)
