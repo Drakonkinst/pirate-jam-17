@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr2ayqxiwwccw"]
+
+[ext_resource type="Script" uid="uid://bfcy28cksdk6e" path="res://hook/grappling_hook_controller.gd" id="1_rxex7"]
+[ext_resource type="PackedScene" uid="uid://dlqm10204rcaq" path="res://hook/hook_rope_model.tscn" id="2_uetjq"]
+[ext_resource type="PackedScene" uid="uid://cl673ntbexcpn" path="res://hook/hook_anchor_point.tscn" id="3_j363q"]
+
+[node name="GrapplingHookController" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_rxex7")
+player = NodePath("")
+hook_rope_scene = ExtResource("2_uetjq")
+hook_anchor_scene = ExtResource("3_j363q")
+
+[node name="HookLaunchCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="HookFailedCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="HookRopeModel" parent="." instance=ExtResource("2_uetjq")]
+unique_name_in_owner = true
+
+[node name="HookJoint" type="PinJoint3D" parent="."]
+unique_name_in_owner = true
+params/bias = 0.5

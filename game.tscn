@@ -1,17 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=11 format=3 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://do2ht3l1tvwuj" path="res://player.tscn" id="3_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://cpv0kejasrfjx" path="res://world/placeholder_dark.png" id="5_7jktm"]
-[ext_resource type="Script" uid="uid://bfcy28cksdk6e" path="res://hook/grappling_hook_controller.gd" id="5_eow3j"]
-[ext_resource type="PackedScene" uid="uid://dlqm10204rcaq" path="res://hook/hook_rope_model.tscn" id="6_j5wjh"]
-[ext_resource type="PackedScene" uid="uid://cl673ntbexcpn" path="res://hook/hook_anchor_point.tscn" id="7_eow3j"]
+[ext_resource type="Texture2D" uid="uid://s68ydljo1fu0" path="res://world/placeholder_orange.png" id="5_eow3j"]
+[ext_resource type="PackedScene" uid="uid://dr2ayqxiwwccw" path="res://hook/grappling_hook_controller.tscn" id="5_ryrav"]
 
 [sub_resource type="Environment" id="Environment_80nbo"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eow3j"]
+albedo_texture = ExtResource("5_7jktm")
+uv1_triplanar = true
+uv2_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryrav"]
 albedo_texture = ExtResource("5_7jktm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5wjh"]
+albedo_texture = ExtResource("5_eow3j")
+uv1_triplanar = true
+uv2_triplanar = true
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_80nbo")
@@ -30,50 +39,122 @@ light_energy = 2.0
 
 [node name="Player" parent="." instance=ExtResource("3_fc0e3")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.179571, 6.5452642)
 
 [node name="World" type="Node3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="World" groups=["Surface"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097, -0.5, 0.153)
+[node name="Section1" type="CSGCombiner3D" parent="World" groups=["Surface"]]
+layers = 3
+material_override = SubResource("StandardMaterial3D_eow3j")
+use_collision = true
+collision_layer = 3
+collision_mask = 2
+
+[node name="BigBox" type="CSGBox3D" parent="World/Section1" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.333351, 8.003808, -10.243292)
 material_override = SubResource("StandardMaterial3D_ryrav")
 use_collision = true
 collision_layer = 3
-size = Vector3(15.120483, 1, 15.332764)
+size = Vector3(76.610504, 21.05719, 36.64491)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="World" groups=["Surface"]]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, -1, 0, 1, 2.9802322e-08, -0.097, -0.5, -7.992712)
+[node name="StartingRoom" type="CSGBox3D" parent="World/Section1" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.749932, 0)
 material_override = SubResource("StandardMaterial3D_ryrav")
+operation = 2
 use_collision = true
 collision_layer = 3
-size = Vector3(15.120483, 1, 15.332764)
+size = Vector3(9, 7, 12)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="World" groups=["Surface"]]
-transform = Transform3D(1, 0, 0, 0, 2.9802322e-08, -1, 0, 1, 2.9802322e-08, -0.097, -0.5, 8.311718)
+[node name="LockedRoom" type="CSGBox3D" parent="World/Section1" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.371012, 9.749932, 0)
 material_override = SubResource("StandardMaterial3D_ryrav")
+operation = 2
 use_collision = true
 collision_layer = 3
-size = Vector3(15.120483, 1, 15.332764)
+size = Vector3(9, 7, 12)
 
-[node name="GrapplingHookController" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+[node name="BonusRoom" type="CSGBox3D" parent="World/Section1" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2393866, 9.749932, -18.161537)
+material_override = SubResource("StandardMaterial3D_ryrav")
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(9, 7, 12)
+
+[node name="StartingDoorway" type="CSGBox3D" parent="World/Section1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5520175, 8.182664, -6.0059123)
+operation = 2
+size = Vector3(2.1351318, 3.8735352, 1.0733871)
+
+[node name="LockedDoorway" type="CSGBox3D" parent="World/Section1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.301253, 8.182664, -6.0059123)
+operation = 2
+size = Vector3(2.1351318, 3.8735352, 1.0733871)
+
+[node name="BonusDoorway" type="CSGBox3D" parent="World/Section1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8291006, 8.182664, -11.853004)
+operation = 2
+size = Vector3(2.1351318, 3.8735352, 1.0733871)
+
+[node name="StartingChamber" type="CSGCylinder3D" parent="World/Section1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0019557178, 7.647831, 6.374961)
+operation = 2
+radius = 1.4008789
+height = 2.7955613
+sides = 16
+
+[node name="Hallway" type="CSGBox3D" parent="World/Section1" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.723189, 8.9587, -9.049553)
+material_override = SubResource("StandardMaterial3D_ryrav")
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(38.7936, 5.6, 5.5)
+
+[node name="CafeteriaUpper" type="CSGBox3D" parent="World/Section1" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25534, 11.769106, -16.716927)
+material_override = SubResource("StandardMaterial3D_ryrav")
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(22.800001, 11.2, 21.69646)
+
+[node name="CafeteriaWindow" type="CSGBox3D" parent="World/Section1" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.18084, 9.68096, -27.807423)
+material_override = SubResource("StandardMaterial3D_ryrav")
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(18.627386, 12.033212, 6.067511)
+
+[node name="CafeteriaLower" type="CSGBox3D" parent="World/Section1" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25534, 4.570066, -21.264553)
+material_override = SubResource("StandardMaterial3D_ryrav")
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(22.800001, 3.4468873, 12.601209)
+
+[node name="HallwayPorthole" type="CSGCylinder3D" parent="World/Section1"]
+transform = Transform3D(0, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, 0, 8.881784e-16, 9.44278, 9.021694, -9.018097)
+operation = 2
+radius = 2.2973633
+sides = 16
+
+[node name="OmniLight3D" type="OmniLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.46531, 0)
+light_energy = 12.117
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.878305, 6.745204, -2.1346078)
+material_override = SubResource("StandardMaterial3D_j5wjh")
+size = Vector3(3.251709, 1, 6.6554565)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.878305, 9.682461, -2.1346078)
+material_override = SubResource("StandardMaterial3D_j5wjh")
+size = Vector3(3.251709, 1, 6.6554565)
+
+[node name="GrapplingHookController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true
-script = ExtResource("5_eow3j")
 player = NodePath("../Player")
-hook_rope_scene = ExtResource("6_j5wjh")
-hook_anchor_scene = ExtResource("7_eow3j")
-
-[node name="HookLaunchCooldown" type="Timer" parent="GrapplingHookController"]
-unique_name_in_owner = true
-wait_time = 0.5
-one_shot = true
-
-[node name="HookFailedCooldown" type="Timer" parent="GrapplingHookController"]
-unique_name_in_owner = true
-one_shot = true
-
-[node name="HookRopeModel" parent="GrapplingHookController" instance=ExtResource("6_j5wjh")]
-unique_name_in_owner = true
-
-[node name="HookJoint" type="PinJoint3D" parent="GrapplingHookController"]
-unique_name_in_owner = true
-params/bias = 0.5

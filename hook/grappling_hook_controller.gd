@@ -21,7 +21,6 @@ var _hook_state: HookState = HookState.READY
 var _hook_target: Node3D = null # The actual object that the hook is attached to
 var _hook_target_node: HookAnchorPoint = null # The attachment point of the end of the hook
 var _hook_target_normal: Vector3 = Vector3.ZERO
-var _rope_length: float = 0
 var _attachment_type: AttachmentType = AttachmentType.NONE
 
 
@@ -51,27 +50,18 @@ func _physics_process(delta: float) -> void:
             var pull_vector := to_target.normalized()
             var dist_sq := to_target.length_squared()
             var dist := sqrt(dist_sq)
-            print("DIST ", dist)
             
-            
-            if not player.input_state.is_pressing_secondary:
-                print("PULL_TOWARDS_TARGET")
+            if player.input_state.is_pressing_secondary:
+                # Lock hook and player together
+                _hook_joint.node_a = player.get_path()
+                _hook_joint.node_b = _hook_target_node.get_path()
+            else:
                 # Pull towards target
                 var pull_speed := max_pull_speed
                 if dist <= grappling_hook_slowing_distance:
                     pull_speed = dist / grappling_hook_slowing_distance * max_pull_speed
-                print("FORCE ", pull_vector, " ", delta, " ", pull_speed)
                 player.apply_central_force(pull_vector * delta * pull_speed)
-                _rope_length = dist
-            else:
-                print("KEEP_DISTANCE")
-                _hook_joint.node_a = player.get_path()
-                _hook_joint.node_b = _hook_target_node.get_path()
                 
-                # Try to make the distance constant
-                # If distance is further than the length of the rope, correct it
-#                if dist > _rope_length:
-#                    player.apply_central_force(pull_vector * delta * max_pull_speed)
                 
         if _attachment_type == AttachmentType.PULL_OBJECT:
             var pull_vector := (_hook_target_node.global_position - source_pos).normalized()
@@ -101,7 +91,6 @@ func _launch_hook() -> void:
         _hook_target_node.global_position = player.hook_raycast.get_collision_point()
         _hook_target_normal = player.hook_raycast.get_collision_normal()
         _set_attachment_type(AttachmentType.GO_TO_ANCHOR) # TODO: Change this up probably
-        _rope_length = _hook_target_node.global_position.distance_to(player.hook_origin.global_position)
     else:
         # No target found: still throw out the hook, but it immediately retracts
         _hook_target_node = hook_anchor_scene.instantiate() as HookAnchorPoint
@@ -122,7 +111,6 @@ func _retract_hook() -> void:
     if _hook_target != null:
         _hook_target = null
     _hook_rope_model.hide()
-    _rope_length = 0
     _set_attachment_type(AttachmentType.NONE)
     _hook_launch_cooldown.start(1)
 
