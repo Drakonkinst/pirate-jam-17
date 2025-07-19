@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=13 format=3 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cpv0kejasrfjx" path="res://world/placeholder_dark.png" id="5_7jktm"]
 [ext_resource type="Texture2D" uid="uid://s68ydljo1fu0" path="res://world/placeholder_orange.png" id="5_eow3j"]
 [ext_resource type="PackedScene" uid="uid://dr2ayqxiwwccw" path="res://hook/grappling_hook_controller.tscn" id="5_ryrav"]
+[ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="7_j5wjh"]
+[ext_resource type="Script" uid="uid://k0joa5bluso1" path="res://addons/starlight/StarGenerator.gd" id="8_vef74"]
 
 [sub_resource type="Environment" id="Environment_80nbo"]
 
@@ -24,6 +26,13 @@ uv2_triplanar = true
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_80nbo")
+
+[node name="Stars" parent="." instance=ExtResource("7_j5wjh")]
+script = ExtResource("8_vef74")
+size = 5000.0
+star_count = 7000
+rng_seed = 1161
+generate_at_origin = false
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.9637423, 0.26683468, 0, -0.26683468, 0.9637423, 0, 7.0381637, 9.739521)
@@ -97,10 +106,10 @@ operation = 2
 size = Vector3(2.1351318, 3.8735352, 1.0733871)
 
 [node name="StartingChamber" type="CSGCylinder3D" parent="World/Section1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0019557178, 7.647831, 6.374961)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0019557178, 7.925015, 6.374961)
 operation = 2
-radius = 1.4008789
-height = 2.7955613
+radius = 1.6948242
+height = 3.349929
 sides = 16
 
 [node name="Hallway" type="CSGBox3D" parent="World/Section1" groups=["Surface"]]
