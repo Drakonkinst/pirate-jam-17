@@ -21,13 +21,6 @@ func _input(_event: InputEvent) -> void:
         else:
             capture_mouse()
 
-    if Input.is_action_just_pressed("action_primary"):
-        print("Primary action pressed")
-    elif Input.is_action_just_released("action_primary"):
-        pass
-    if Input.is_action_just_pressed("action_secondary"):
-        print("Secondary action pressed")
-
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
         if mouse_captured:

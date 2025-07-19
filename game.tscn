@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cpv0kejasrfjx" path="res://world/placeholder_dark.png" id="5_7jktm"]
 [ext_resource type="Script" uid="uid://bfcy28cksdk6e" path="res://hook/grappling_hook_controller.gd" id="5_eow3j"]
 [ext_resource type="PackedScene" uid="uid://dlqm10204rcaq" path="res://hook/hook_rope_model.tscn" id="6_j5wjh"]
-[ext_resource type="PackedScene" path="res://hook/hook_target_model.tscn" id="7_vef74"]
+[ext_resource type="PackedScene" uid="uid://cl673ntbexcpn" path="res://hook/hook_anchor_point.tscn" id="7_eow3j"]
 
 [sub_resource type="Environment" id="Environment_80nbo"]
 
@@ -31,9 +31,6 @@ light_energy = 2.0
 [node name="Player" parent="." instance=ExtResource("3_fc0e3")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-movement_speed = 100
-look_sensitivity = 50.0
-roll_speed = 80
 
 [node name="World" type="Node3D" parent="."]
 
@@ -63,10 +60,11 @@ unique_name_in_owner = true
 script = ExtResource("5_eow3j")
 player = NodePath("../Player")
 hook_rope_scene = ExtResource("6_j5wjh")
-hook_target_scene = ExtResource("7_vef74")
+hook_anchor_scene = ExtResource("7_eow3j")
 
 [node name="HookLaunchCooldown" type="Timer" parent="GrapplingHookController"]
 unique_name_in_owner = true
+wait_time = 0.5
 one_shot = true
 
 [node name="HookFailedCooldown" type="Timer" parent="GrapplingHookController"]
@@ -75,3 +73,7 @@ one_shot = true
 
 [node name="HookRopeModel" parent="GrapplingHookController" instance=ExtResource("6_j5wjh")]
 unique_name_in_owner = true
+
+[node name="HookJoint" type="PinJoint3D" parent="GrapplingHookController"]
+unique_name_in_owner = true
+params/bias = 0.5

@@ -10,7 +10,6 @@ class_name HookRopeModel
 func extend_from_to(source_position: Vector3, target_position: Vector3, target_normal: Vector3) -> void:
     global_position = source_position
     hook_end.global_position = target_position
-    print("END ", target_position)
     _align_hook_end_with_surface(target_normal)
     
     var visual_target_position := _get_visual_target(target_position)
@@ -23,7 +22,7 @@ func extend_from_to(source_position: Vector3, target_position: Vector3, target_n
 # This function compensates for the possible error of "look_at()" function
 # when model has to look straight up/down.
 func _align_hook_end_with_surface(target_normal: Vector3) -> void:
-    if target_normal.dot(Vector3.UP) > 0.001 or target_normal.y < 0:
+    if target_normal.dot(Vector3.UP) > 0.001 or target_normal.y < -1e-5:
         if target_normal.y > 0:
             hook_end.rotation_degrees.x = -90
         elif target_normal.y < 0:

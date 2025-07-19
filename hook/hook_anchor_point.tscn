@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl673ntbexcpn"]
+
+[ext_resource type="Script" uid="uid://btcfmi1nxcw22" path="res://hook/hook_anchor_point.gd" id="1_f4c7e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1hsv"]
+size = Vector3(0, 0, 0)
+
+[node name="HookAnchorPoint" type="StaticBody3D"]
+script = ExtResource("1_f4c7e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_g1hsv")
+disabled = true

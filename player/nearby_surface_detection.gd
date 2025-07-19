@@ -37,7 +37,8 @@ func update(player: Player, delta: float) -> void:
 
 func _on_input_state_mouse_looked(look_dir: Vector2) -> void:
     if look_dir.length_squared() > 0.0001:
-        _pause_surface_alignment(1.5)
+        pass
+#        _pause_surface_alignment(1.5)
 
 func _on_surface_detection_timer_timeout() -> void:
     _nearby_surface_vector = Vector3.ZERO
