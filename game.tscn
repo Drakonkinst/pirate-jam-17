@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=10 format=3 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://do2ht3l1tvwuj" path="res://player.tscn" id="3_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://cpv0kejasrfjx" path="res://world/placeholder_dark.png" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://bfcy28cksdk6e" path="res://hook/grappling_hook_controller.gd" id="5_eow3j"]
+[ext_resource type="PackedScene" uid="uid://dlqm10204rcaq" path="res://hook/hook_rope_model.tscn" id="6_j5wjh"]
+[ext_resource type="PackedScene" path="res://hook/hook_target_model.tscn" id="7_vef74"]
 
 [sub_resource type="Environment" id="Environment_80nbo"]
 
@@ -28,6 +31,9 @@ light_energy = 2.0
 [node name="Player" parent="." instance=ExtResource("3_fc0e3")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+movement_speed = 100
+look_sensitivity = 50.0
+roll_speed = 80
 
 [node name="World" type="Node3D" parent="."]
 
@@ -51,3 +57,21 @@ material_override = SubResource("StandardMaterial3D_ryrav")
 use_collision = true
 collision_layer = 3
 size = Vector3(15.120483, 1, 15.332764)
+
+[node name="GrapplingHookController" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+script = ExtResource("5_eow3j")
+player = NodePath("../Player")
+hook_rope_scene = ExtResource("6_j5wjh")
+hook_target_scene = ExtResource("7_vef74")
+
+[node name="HookLaunchCooldown" type="Timer" parent="GrapplingHookController"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="HookFailedCooldown" type="Timer" parent="GrapplingHookController"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="HookRopeModel" parent="GrapplingHookController" instance=ExtResource("6_j5wjh")]
+unique_name_in_owner = true

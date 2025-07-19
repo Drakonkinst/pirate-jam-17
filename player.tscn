@@ -27,14 +27,20 @@ shape = SubResource("CapsuleShape3D_80nbo")
 unique_name_in_owner = true
 script = ExtResource("2_hqtel")
 
-[node name="NearbySurfaceDetection" type="Node3D" parent="."]
+[node name="NearbySurfaceDetection" type="Node3D" parent="." node_paths=PackedStringArray("_input_state")]
 unique_name_in_owner = true
 script = ExtResource("3_sweqy")
+_input_state = NodePath("../InputState")
 
 [node name="SurfaceDetectionTimer" type="Timer" parent="NearbySurfaceDetection"]
 unique_name_in_owner = true
 wait_time = 0.5
 autostart = true
+
+[node name="SurfaceAlignmentTimer" type="Timer" parent="NearbySurfaceDetection"]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
 
 [node name="SurfaceDetector" type="ShapeCast3D" parent="NearbySurfaceDetection"]
 unique_name_in_owner = true
@@ -43,6 +49,12 @@ shape = SubResource("SphereShape3D_i3pqv")
 target_position = Vector3(0, 0, 0)
 collision_mask = 2
 
-[node name="SurfaceAlignmentTimer" type="Timer" parent="."]
+[node name="HookRaycast" type="RayCast3D" parent="."]
 unique_name_in_owner = true
-wait_time = 0.5
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(1, 1, 1, 1)
+debug_shape_thickness = 5
+
+[node name="HookOrigin" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.468512, -0.30067468, -0.010910541)
