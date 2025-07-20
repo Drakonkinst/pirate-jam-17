@@ -28,11 +28,11 @@ func update(player: Player, delta: float) -> void:
         var cosa := up.dot(_nearby_surface_vector)
         var alpha := acos(cosa)
         var axis := up.cross(_nearby_surface_vector)
-        axis = axis.normalized()
-
-        var target_basis := player.global_transform.basis.rotated(axis, alpha)
-        var surface_align_speed := surface_align_speed_when_still if _should_surface_align_quickly else surface_align_speed_when_moving
-        player.global_transform.basis = player.global_transform.basis.slerp(target_basis, surface_align_speed * delta)
+        if axis != Vector3.ZERO:
+            axis = axis.normalized()
+            var target_basis := player.global_transform.basis.rotated(axis, alpha)
+            var surface_align_speed := surface_align_speed_when_still if _should_surface_align_quickly else surface_align_speed_when_moving
+            player.global_transform.basis = player.global_transform.basis.slerp(target_basis, surface_align_speed * delta)
 
 func _on_surface_detection_timer_timeout() -> void:
     if not _need_to_recalculate:

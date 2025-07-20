@@ -3,7 +3,7 @@ class_name GrapplingHookController
 
 signal hook_state_changed(state: HookState)
 enum HookState { LAUNCHED, ON_COOLDOWN, READY }
-enum AttachmentType { NONE, GO_TO_ANCHOR, PULL_OBJECT }
+enum AttachmentType { NONE, ATTACHED }
 @export var max_pull_speed := 1000.0
 @export var grappling_hook_range: float = 35.0
 @export var player: Player
@@ -43,41 +43,25 @@ func _physics_process(delta: float) -> void:
             # Can only manually retract hook if you actually hit something
             _retract_hook() 
 
-    if _hook_state == HookState.LAUNCHED && _hook_target_node != null:
+    if _hook_state == HookState.LAUNCHED && _hook_target_node != null && _attachment_type == AttachmentType.ATTACHED:
         var source_pos := player.hook_origin.global_position
-        if _attachment_type == AttachmentType.GO_TO_ANCHOR:
-            var to_target := _hook_target_node.global_position - source_pos
-            var pull_vector := to_target.normalized()
-            var dist_sq := to_target.length_squared()
-            var dist := sqrt(dist_sq)
-            
-            if player.input_state.is_pressing_secondary:
-                # Lock hook and player together
+        if player.input_state.is_pressing_primary:
+            # Pull towards target
+            var to_vector := _hook_target_node.global_position - source_pos
+            var to_direction := to_vector.normalized()
+            player.apply_central_force(to_direction * delta * max_pull_speed)
+            player.nearby_surface_detection.pause_surface_alignment(1.0)
+            if _hook_target is Collidable:
+                var collidable := _hook_target as Collidable
+                collidable.apply_central_force(-to_direction * delta * max_pull_speed)
+        else:
+            # Lock hook and player together
+            if _hook_target is Collidable:
+                var collidable := _hook_target as Collidable
+            else:
                 _hook_joint.node_a = player.get_path()
                 _hook_joint.node_b = _hook_target_node.get_path()
-            else:
-                # Pull towards target
-                var pull_speed := max_pull_speed
-                if dist <= grappling_hook_slowing_distance:
-                    pull_speed = dist / grappling_hook_slowing_distance * max_pull_speed
-                player.apply_central_force(pull_vector * delta * pull_speed)
-                player.nearby_surface_detection.pause_surface_alignment(1.0)
                 
-                
-        if _attachment_type == AttachmentType.PULL_OBJECT:
-            assert(_hook_target is Collidable)
-            var collidable := _hook_target as Collidable
-            var pull_vector := (source_pos - _hook_target_node.global_position).normalized()
-            
-            if player.input_state.is_pressing_secondary:
-                # Lock hook and player together
-                _hook_joint.node_a = _hook_target_node.get_path()
-                _hook_joint.node_b = player.get_path()
-            else:
-                # Pull towards target
-                var pull_speed := max_pull_speed
-                collidable.apply_central_force(pull_vector * delta * pull_speed)
-
         assert(_hook_rope_model != null)
         _hook_rope_model.extend_from_to(source_pos, _hook_target_node.global_position, _hook_target_normal)
         _hook_rope_model.show()
@@ -103,7 +87,7 @@ func _launch_hook() -> void:
         _hook_target_node.global_position = player.hook_raycast.get_collision_point()
         _hook_target_normal = player.hook_raycast.get_collision_normal()
         
-        _set_attachment_type(_get_attachment_type(_hook_target)) # TODO: Change this up probably
+        _set_attachment_type(AttachmentType.ATTACHED) # TODO: Change this up probably
     else:
         # No target found: still throw out the hook, but it immediately retracts
         _hook_target_node = hook_anchor_scene.instantiate() as HookAnchorPoint
@@ -113,14 +97,6 @@ func _launch_hook() -> void:
         _hook_failed_cooldown.start(1)
         _set_attachment_type(AttachmentType.NONE)
     _set_hook_state(HookState.LAUNCHED)
-
-func _get_attachment_type(target: Node3D) -> AttachmentType:
-    if target is Collidable:
-        var collidable := target as Collidable
-        if collidable.type == Collidable.Type.LIGHT:
-            return AttachmentType.PULL_OBJECT
-        return AttachmentType.GO_TO_ANCHOR 
-    return AttachmentType.GO_TO_ANCHOR
 
 func _retract_hook() -> void:
     print("Retract hook")
@@ -132,7 +108,7 @@ func _retract_hook() -> void:
         _hook_target = null
     _hook_rope_model.hide()
     # TODO: Add a quick retract condition so you can use it again quickly
-    if _attachment_type == AttachmentType.GO_TO_ANCHOR:
+    if _attachment_type == AttachmentType.ATTACHED:
         _hook_launch_cooldown.start(0.25)
     else:
         _hook_launch_cooldown.start(1)
