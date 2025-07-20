@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5h3d1ke4io52"]
+
+[ext_resource type="Script" uid="uid://ds5vshsx4lnv4" path="res://object/glass/breakable_glass.gd" id="1_vh6nu"]
+[ext_resource type="Shader" uid="uid://dqqaqvegnvgca" path="res://object/glass/broken_glass.gdshader" id="2_y23w7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7sc4i"]
+size = Vector3(20, 13, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e8heu"]
+size = Vector3(20, 13, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8heu"]
+render_priority = 0
+shader = ExtResource("2_y23w7")
+shader_parameter/shatter = true
+shader_parameter/fracture_scale = 0.75
+shader_parameter/roughness = 0.675
+shader_parameter/transparency = 0.33600001596
+shader_parameter/specular = 0.675
+shader_parameter/metallic = 0.9310000442225
+shader_parameter/normal_offset_multiplier = 0.375
+shader_parameter/glass_tint = Vector3(0.95, 1.225, 1.405)
+shader_parameter/edge_thickness = 0.33250001526971
+shader_parameter/impact_range = 8.000000380000001
+shader_parameter/compression_strength = 0.0
+shader_parameter/impact_points = PackedVector3Array(0, 0, 0)
+
+[node name="BreakableGlass" type="Node3D"]
+script = ExtResource("1_vh6nu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Surface"]]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("ShaderMaterial_e8heu")

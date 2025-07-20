@@ -19,6 +19,8 @@ func _input(_event: InputEvent) -> void:
             release_mouse() 
         else:
             capture_mouse()
+    if Input.is_action_just_pressed("action_primary") or Input.is_action_just_pressed("action_secondary"):
+        capture_mouse()
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:

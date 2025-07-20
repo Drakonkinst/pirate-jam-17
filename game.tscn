@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=31 format=3 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://d153vfgmc4r6i" path="res://object/crew_door.tscn" id="10_215e1"]
 [ext_resource type="PackedScene" uid="uid://7qu2ni5oun14" path="res://object/button/small_button.tscn" id="11_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://dcbw7u3qosfgt" path="res://object/table.tscn" id="11_iotsf"]
+[ext_resource type="PackedScene" uid="uid://c5h3d1ke4io52" path="res://object/glass/breakable_glass.tscn" id="12_80cx4"]
+[ext_resource type="Script" uid="uid://bo0pncu0ffev7" path="res://object/glass/broken_glass_stage.gd" id="13_e8heu"]
 [ext_resource type="Material" uid="uid://kk08pth2ah1v" path="res://object/light.tres" id="15_80cx4"]
 
 [sub_resource type="Environment" id="Environment_80nbo"]
@@ -30,6 +32,43 @@ albedo_texture = ExtResource("5_eow3j")
 albedo_texture = ExtResource("5_eow3j")
 uv1_triplanar = true
 uv2_triplanar = true
+
+[sub_resource type="Resource" id="Resource_rvswv"]
+script = ExtResource("13_e8heu")
+show_cracks = false
+show_broken = false
+metadata/_custom_type_script = "uid://bo0pncu0ffev7"
+
+[sub_resource type="Resource" id="Resource_boyg6"]
+script = ExtResource("13_e8heu")
+show_broken = false
+fracture_scale = 0.5
+edge_thickness = 0.15000000000873115
+metadata/_custom_type_script = "uid://bo0pncu0ffev7"
+
+[sub_resource type="Resource" id="Resource_e36ub"]
+script = ExtResource("13_e8heu")
+show_broken = false
+metadata/_custom_type_script = "uid://bo0pncu0ffev7"
+
+[sub_resource type="Resource" id="Resource_hb5m1"]
+script = ExtResource("13_e8heu")
+metadata/_custom_type_script = "uid://bo0pncu0ffev7"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e8heu"]
+size = Vector3(2.4439697, 13, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7sc4i"]
+size = Vector3(20, 13, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e8heu"]
+size = Vector3(20, 13, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80cx4"]
+transparency = 1
+albedo_color = Color(0.70980394, 0.98039216, 1, 0.21960784)
+metallic = 0.63
+roughness = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_215e1"]
 
@@ -87,7 +126,7 @@ light_energy = 2.0
 
 [node name="Player" parent="." instance=ExtResource("3_fc0e3")]
 unique_name_in_owner = true
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 4.154346, 7.5875006, 5.310762)
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -38.294575, 7.5875006, -8.911972)
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 4.154346, 7.5875006, 5.310762)
@@ -242,6 +281,39 @@ stay_pressed = true
 transform = Transform3D(1, 8.741882e-08, -3.674151e-10, -5.551115e-17, 0.009529283, 0.99995464, -1.9841906e-09, -0.99995464, 0.009529283, -14.402953, 9.293613, -6.186837)
 stay_pressed = true
 initial_state = 2
+
+[node name="BreakableGlass" parent="World/Section1/Decor" instance=ExtResource("12_80cx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.535, 9.517, -28.12)
+stages = Array[ExtResource("13_e8heu")]([SubResource("Resource_rvswv"), SubResource("Resource_boyg6"), SubResource("Resource_e36ub"), SubResource("Resource_hb5m1")])
+stage = 2
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="World/Section1/Decor/BreakableGlass" groups=["Surface"]]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section1/Decor/BreakableGlass/StaticBody3D2"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.589783, 0, 0)
+shape = SubResource("BoxShape3D_e8heu")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="World/Section1/Decor/BreakableGlass" groups=["Surface"]]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section1/Decor/BreakableGlass/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.502323, 0, 0)
+shape = SubResource("BoxShape3D_e8heu")
+
+[node name="GlassWindow" type="Node3D" parent="World/Section1/Decor"]
+transform = Transform3D(-1.2115313e-08, 0, -0.3470935, 0, 0.4147086, 0, 0.27716607, 0, -1.5171938e-08, 9.44926, 8.941465, -8.935837)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section1/Decor/GlassWindow"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section1/Decor/GlassWindow/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.989502, 0, 0)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section1/Decor/GlassWindow"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
 
 [node name="Objects" type="Node3D" parent="World/Section1"]
 
