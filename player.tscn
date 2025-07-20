@@ -14,6 +14,7 @@ albedo_color = Color(0.26666668, 1, 1, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_i3pqv"]
 
 [node name="Player" type="RigidBody3D"]
+angular_damp = 5.0
 script = ExtResource("1_i3pqv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -27,10 +28,9 @@ shape = SubResource("CapsuleShape3D_80nbo")
 unique_name_in_owner = true
 script = ExtResource("2_hqtel")
 
-[node name="NearbySurfaceDetection" type="Node3D" parent="." node_paths=PackedStringArray("_input_state")]
+[node name="NearbySurfaceDetection" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_sweqy")
-_input_state = NodePath("../InputState")
 
 [node name="SurfaceDetectionTimer" type="Timer" parent="NearbySurfaceDetection"]
 unique_name_in_owner = true
