@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d153vfgmc4r6i"]
+
+[ext_resource type="Script" uid="uid://dqsbitndajtw5" path="res://object/door.gd" id="1_gv76t"]
+[ext_resource type="PackedScene" uid="uid://dtgvxmwovpw8x" path="res://libs/GLB format/door-single-closed.glb" id="2_dcqet"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_215e1"]
+size = Vector3(2.227417, 4.5317383, 0.7019043)
+
+[node name="CrewDoor" type="Node3D" node_paths=PackedStringArray("door_model", "collider")]
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0, 0, 0)
+script = ExtResource("1_gv76t")
+door_model = NodePath("door-single-closed2")
+collider = NodePath("StaticBody3D/CollisionShape3D")
+open_offset = Vector3(2.5, 0, 0)
+initial_open = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1362915, 1.7658691, 0.03894043)
+shape = SubResource("BoxShape3D_215e1")
+
+[node name="door-single-closed2" parent="." instance=ExtResource("2_dcqet")]
+transform = Transform3D(-6.0013905, 0, -3.2549647e-07, 0, 6.0013905, 0, 5.2465816e-07, 0, -3.7232459, 0, 0, 0)

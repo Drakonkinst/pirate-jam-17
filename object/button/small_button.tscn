@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://7qu2ni5oun14"]
+
+[ext_resource type="Script" uid="uid://864dwlqybrcr" path="res://object/button/small_button.gd" id="1_vtlk2"]
+[ext_resource type="Material" uid="uid://dt1fcvayclq1u" path="res://object/button/button_enabled.tres" id="2_0lx2b"]
+[ext_resource type="Material" uid="uid://cd1hruxxubw4j" path="res://object/button/button_disabled.tres" id="3_axlri"]
+[ext_resource type="Material" uid="uid://bew4d0d3matbr" path="res://object/button/button_pressed.tres" id="4_ln7om"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lc2xo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7sc4i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7sc4i"]
+size = Vector3(0.954834, 0.8828125, 0.9230957)
+
+[node name="SmallButton" type="StaticBody3D" node_paths=PackedStringArray("presser", "enable_timer")]
+transform = Transform3D(1, 0, 0, 0, -0.009529371, -0.9999546, 0, 0.9999546, -0.009529371, 0, 0, 0)
+script = ExtResource("1_vtlk2")
+presser = NodePath("MeshInstance3D2")
+enable_timer = NodePath("EnableTimer")
+enabled_material = ExtResource("2_0lx2b")
+disabled_material = ExtResource("3_axlri")
+pressed_material = ExtResource("4_ln7om")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0240705, 0, 0, 0, 0.42196903, 0, 0, 0, 0.9134628, 0, 0.052470207, 0)
+mesh = SubResource("BoxMesh_lc2xo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5895954, 0, 0, 0, 0.20741451, 0, 0, 0, 0.5826824, 0, 0.341084, -0.0008907318)
+mesh = SubResource("BoxMesh_7sc4i")
+surface_material_override/0 = ExtResource("2_0lx2b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028930664, -0.058591366, -0.015506744)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="EnableTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
