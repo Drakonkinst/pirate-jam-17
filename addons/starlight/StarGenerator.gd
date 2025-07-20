@@ -188,6 +188,4 @@ func _process(delta):
 
     set_star_list(stars)
     
-    print("Generated stars")
-
     super._process(delta)

@@ -56,7 +56,7 @@ func _handle_hook_physics(source_pos: Vector3, delta: float):
     if player.input_state.is_pressing_primary:
         # Pull towards target
         player.apply_central_force(to_direction * delta * max_pull_speed)
-        player.nearby_surface_detection.pause_surface_alignment(1.0)
+        player.nearby_surface_detection.reset_surface_alignment()
         if _hook_target is Collidable:
             var collidable := _hook_target as Collidable
             collidable.apply_central_force(-to_direction * delta * max_pull_speed)
@@ -80,7 +80,6 @@ func _on_hook_failed_cooldown_timeout() -> void:
 
 
 func _launch_hook() -> void:
-    print("Launch hook")
     if player.hook_raycast.is_colliding():
         # Hook to object
         _hook_target = player.hook_raycast.get_collider()
@@ -105,7 +104,6 @@ func _launch_hook() -> void:
     _set_hook_state(HookState.LAUNCHED)
 
 func _retract_hook() -> void:
-    print("Retract hook")
     _set_hook_state(HookState.ON_COOLDOWN)
     if _hook_target_node != null:
         _hook_target_node.queue_free()

@@ -4,25 +4,27 @@
 [ext_resource type="Script" uid="uid://b2uoxmebnay0i" path="res://player/input_state.gd" id="2_hqtel"]
 [ext_resource type="Script" uid="uid://csxkwror8xrss" path="res://player/nearby_surface_detection.gd" id="3_sweqy"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_80nbo"]
+[sub_resource type="SphereMesh" id="SphereMesh_i3pqv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80nbo"]
 albedo_color = Color(0.26666668, 1, 1, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_80nbo"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_hqtel"]
+radius = 0.75
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i3pqv"]
 
 [node name="Player" type="RigidBody3D"]
-angular_damp = 5.0
+angular_damp = 10.0
 script = ExtResource("1_i3pqv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_80nbo")
+transform = Transform3D(1.3726054, 0, 0, 0, 1.3726054, 0, 0, 0, 1.3726054, 0, 0, 0)
+mesh = SubResource("SphereMesh_i3pqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_80nbo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_80nbo")
+shape = SubResource("SphereShape3D_hqtel")
 
 [node name="InputState" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -37,25 +39,25 @@ unique_name_in_owner = true
 wait_time = 0.5
 autostart = true
 
-[node name="SurfaceAlignmentTimer" type="Timer" parent="NearbySurfaceDetection"]
-unique_name_in_owner = true
-wait_time = 0.5
-one_shot = true
-
 [node name="SurfaceDetector" type="ShapeCast3D" parent="NearbySurfaceDetection"]
 unique_name_in_owner = true
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -1, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.45254987, 0)
 shape = SubResource("SphereShape3D_i3pqv")
 target_position = Vector3(0, 0, 0)
 collision_mask = 2
 
+[node name="BelowSurfaceDetector" type="RayCast3D" parent="NearbySurfaceDetection"]
+unique_name_in_owner = true
+target_position = Vector3(0, -2.5, 0)
+collision_mask = 2
+
 [node name="HookOrigin" type="Marker3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.469, 0.179, -0.011)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.469, -0.37572348, -0.011)
 
 [node name="Head" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4801159, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.055363417, 0)
 
 [node name="HookRaycast" type="RayCast3D" parent="Head"]
 unique_name_in_owner = true
