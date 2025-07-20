@@ -61,6 +61,7 @@ func _physics_process(delta: float) -> void:
                 if dist <= grappling_hook_slowing_distance:
                     pull_speed = dist / grappling_hook_slowing_distance * max_pull_speed
                 player.apply_central_force(pull_vector * delta * pull_speed)
+                player.nearby_surface_detection.pause_surface_alignment(1.0)
                 
                 
         if _attachment_type == AttachmentType.PULL_OBJECT:
@@ -95,7 +96,7 @@ func _launch_hook() -> void:
         # No target found: still throw out the hook, but it immediately retracts
         _hook_target_node = hook_anchor_scene.instantiate() as HookAnchorPoint
         Global.game.add_child(_hook_target_node)
-        _hook_target_node.global_position = player.global_position - (player.global_transform.basis.z * grappling_hook_range)
+        _hook_target_node.global_position = player.head.global_position + (-player.head.global_transform.basis.z * grappling_hook_range)
         _hook_target_normal = player.hook_raycast.get_target_position().normalized() # Maybe we need to invert this?
         _hook_failed_cooldown.start(1)
         _set_attachment_type(AttachmentType.NONE)
@@ -111,8 +112,12 @@ func _retract_hook() -> void:
     if _hook_target != null:
         _hook_target = null
     _hook_rope_model.hide()
+    # TODO: Add a quick retract condition so you can use it again quickly
+    if _attachment_type == AttachmentType.GO_TO_ANCHOR:
+        _hook_launch_cooldown.start(0.25)
+    else:
+        _hook_launch_cooldown.start(1)
     _set_attachment_type(AttachmentType.NONE)
-    _hook_launch_cooldown.start(1)
 
 
 func _set_attachment_type(type: AttachmentType) -> void:

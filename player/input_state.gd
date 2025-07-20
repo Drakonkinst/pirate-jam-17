@@ -30,7 +30,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
     var horizontal_movement := Input.get_axis("move_left", "move_right")
     var forwards_movement := Input.get_axis("move_backward", "move_forward")
-    var vertical_movement := Input.get_axis("move_down", "move_up")
+#    var vertical_movement := Input.get_axis("move_down", "move_up")
+    var vertical_movement := 0 # Disabling this since it's not used anymore
     movement_input = Vector3(horizontal_movement, vertical_movement, forwards_movement)
     movement_input = movement_input.normalized()
 
