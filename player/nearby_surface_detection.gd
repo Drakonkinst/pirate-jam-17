@@ -6,6 +6,7 @@ class_name NearbySurfaceDetection
 @onready var _surface_detection_timer: Timer = %SurfaceDetectionTimer
 @onready var _surface_detector: ShapeCast3D = %SurfaceDetector
 @onready var _below_surface_detector: RayCast3D = %BelowSurfaceDetector
+@onready var _visual: MeshInstance3D = %SurfaceVisual
 
 var _nearby_surface_vector: Vector3
 
@@ -28,6 +29,20 @@ func update(player: Player, delta: float) -> void:
             var target_basis := player.global_transform.basis.rotated(axis, alpha)
             surface_align_speed = surface_align_speed
             player.global_transform.basis = player.global_transform.basis.slerp(target_basis, surface_align_speed * delta)
+        # Update visual
+        if _below_surface_detector.is_colliding():
+            _visual.global_position = _below_surface_detector.get_collision_point()
+            _visual.global_transform.basis.y = _nearby_surface_vector
+            _visual.global_transform.basis.x = -_visual.global_transform.basis.z.cross(_nearby_surface_vector)
+            _visual.global_transform.basis = _visual.global_transform.basis.orthonormalized()
+            _visual.scale.y = 0.01 # Retain scaling
+            if not _visual.is_visible():
+                _visual.show()
+                _visual.reset_physics_interpolation()
+        else:
+            _visual.hide()
+    else:
+        _visual.hide()
 
 func _on_surface_detection_timer_timeout() -> void:
     _nearby_surface_vector = Vector3.ZERO

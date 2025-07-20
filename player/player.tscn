@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://do2ht3l1tvwuj"]
+[gd_scene load_steps=10 format=3 uid="uid://do2ht3l1tvwuj"]
 
 [ext_resource type="Script" uid="uid://c25siti2cle0n" path="res://player/player.gd" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://b2uoxmebnay0i" path="res://player/input_state.gd" id="2_hqtel"]
@@ -13,6 +13,15 @@ albedo_color = Color(0.26666668, 1, 1, 1)
 radius = 0.75
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i3pqv"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_g1dw6"]
+inner_radius = 0.3
+outer_radius = 0.4
+rings = 32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yw30f"]
+transparency = 1
+albedo_color = Color(0, 0.49793702, 0.71948117, 0.23529412)
 
 [node name="Player" type="RigidBody3D"]
 angular_damp = 10.0
@@ -50,6 +59,13 @@ collision_mask = 2
 unique_name_in_owner = true
 target_position = Vector3(0, -2.5, 0)
 collision_mask = 2
+
+[node name="SurfaceVisual" type="MeshInstance3D" parent="NearbySurfaceDetection"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.20197767, 0, 0, 0, 1, 0, -0.9095635, 0)
+mesh = SubResource("TorusMesh_g1dw6")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_yw30f")
 
 [node name="HookOrigin" type="Marker3D" parent="."]
 unique_name_in_owner = true
