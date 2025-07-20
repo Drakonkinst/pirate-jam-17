@@ -5,7 +5,7 @@ extends Node2D
 var game: Game
 
 func _ready() -> void:
-    Engine.max_fps = 120
+    Engine.max_fps = 60
     start_new_game()
     
 func start_new_game() -> void:

@@ -2,12 +2,11 @@ extends Node3D
 
 class_name InputState
 
-signal mouse_looked(look_dir: Vector2)
-
 var is_pressing_primary: bool
 var is_pressing_secondary: bool
 var movement_input: Vector3
 var roll_input: float
+var mouse_motion: Vector2
 var mouse_captured: bool
 
 func _ready() -> void:
@@ -24,8 +23,7 @@ func _input(_event: InputEvent) -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
         if mouse_captured:
-            var look_dir: Vector2 = event.relative * 0.001
-            mouse_looked.emit(look_dir)
+            mouse_motion += event.relative * 0.001
 
 func _process(_delta: float) -> void:
     var horizontal_movement := Input.get_axis("move_left", "move_right")
@@ -38,6 +36,9 @@ func _process(_delta: float) -> void:
     is_pressing_primary = Input.is_action_pressed("action_primary")
     is_pressing_secondary = Input.is_action_pressed("action_secondary")
     roll_input = Input.get_axis("roll_left", "roll_right")
+    
+func reset() -> void:
+    mouse_motion = Vector2.ZERO
 
 func capture_mouse() -> void:
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

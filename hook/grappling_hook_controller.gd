@@ -4,7 +4,7 @@ class_name GrapplingHookController
 signal hook_state_changed(state: HookState)
 enum HookState { LAUNCHED, ON_COOLDOWN, READY }
 enum AttachmentType { NONE, ATTACHED }
-@export var max_pull_speed := 1000.0
+@export var max_pull_speed := 250.0
 @export var grappling_hook_range: float = 35.0
 @export var player: Player
 @export var hook_rope_scene: PackedScene
