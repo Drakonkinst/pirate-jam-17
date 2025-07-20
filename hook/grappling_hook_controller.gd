@@ -10,26 +10,23 @@ enum AttachmentType { NONE, ATTACHED }
 @export var hook_rope_scene: PackedScene
 @export var hook_anchor_scene: PackedScene
 
-var grappling_hook_slowing_distance := 0.0 # Disabling this for now since it doesn't seem to do anything
-
 @onready var _hook_launch_cooldown: Timer = %HookLaunchCooldown
 @onready var _hook_failed_cooldown: Timer = %HookFailedCooldown
 @onready var _hook_rope_model: HookRopeModel = %HookRopeModel
-@onready var _hook_joint: PinJoint3D = %HookJoint
+@onready var _hook_joint: Generic6DOFJoint3D = %HookJoint
 
 var _hook_state: HookState = HookState.READY
 var _hook_target: Node3D = null # The actual object that the hook is attached to
 var _hook_target_node: HookAnchorPoint = null # The attachment point of the end of the hook
 var _hook_target_normal: Vector3 = Vector3.ZERO
 var _attachment_type: AttachmentType = AttachmentType.NONE
-
+var _rope_length: float = 0
 
 func _ready() -> void:
     _hook_launch_cooldown.timeout.connect(_on_hook_launch_cooldown_timeout)
     _hook_failed_cooldown.timeout.connect(_on_hook_failed_cooldown_timeout)
     player.hook_raycast.target_position = Vector3(0, 0, -grappling_hook_range)
     _hook_rope_model.hide()
-
 
 func _physics_process(delta: float) -> void:
     _hook_joint.node_a = ""
@@ -43,29 +40,34 @@ func _physics_process(delta: float) -> void:
             # Can only manually retract hook if you actually hit something
             _retract_hook() 
 
-    if _hook_state == HookState.LAUNCHED && _hook_target_node != null && _attachment_type == AttachmentType.ATTACHED:
+    if _hook_state == HookState.LAUNCHED && _hook_target_node != null:
         var source_pos := player.hook_origin.global_position
-        if player.input_state.is_pressing_primary:
-            # Pull towards target
-            var to_vector := _hook_target_node.global_position - source_pos
-            var to_direction := to_vector.normalized()
-            player.apply_central_force(to_direction * delta * max_pull_speed)
-            player.nearby_surface_detection.pause_surface_alignment(1.0)
-            if _hook_target is Collidable:
-                var collidable := _hook_target as Collidable
-                collidable.apply_central_force(-to_direction * delta * max_pull_speed)
-        else:
-            # Lock hook and player together
-            if _hook_target is Collidable:
-                var collidable := _hook_target as Collidable
-            else:
-                _hook_joint.node_a = player.get_path()
-                _hook_joint.node_b = _hook_target_node.get_path()
-                
+        if  _attachment_type == AttachmentType.ATTACHED:
+            _handle_hook_physics(source_pos, delta)
         assert(_hook_rope_model != null)
         _hook_rope_model.extend_from_to(source_pos, _hook_target_node.global_position, _hook_target_normal)
         _hook_rope_model.show()
 
+func _handle_hook_physics(source_pos: Vector3, delta: float):
+    var to_vector := _hook_target_node.global_position - source_pos
+    var to_direction := to_vector.normalized()
+    if player.input_state.is_pressing_primary:
+        # Pull towards target
+        player.apply_central_force(to_direction * delta * max_pull_speed)
+        player.nearby_surface_detection.pause_surface_alignment(1.0)
+        if _hook_target is Collidable:
+            var collidable := _hook_target as Collidable
+            collidable.apply_central_force(-to_direction * delta * max_pull_speed)
+    else:
+        # Lock hook and player together
+        _hook_joint.node_a = player.get_path()
+        _hook_joint.node_b = _hook_target_node.get_path()
+        # The rope can get shorter, but not longer
+        var dist := to_vector.length()
+        _rope_length = min(dist, _rope_length)
+        _hook_joint.global_position = player.global_position + to_direction * (_rope_length / 2)
+        if _hook_target is Collidable:
+            var collidable := _hook_target as Collidable
 
 func _on_hook_launch_cooldown_timeout() -> void:
     _set_hook_state(HookState.READY)
@@ -86,6 +88,7 @@ func _launch_hook() -> void:
         _hook_target.add_child(_hook_target_node) # TODO: Save the target object as well?
         _hook_target_node.global_position = player.hook_raycast.get_collision_point()
         _hook_target_normal = player.hook_raycast.get_collision_normal()
+        _rope_length = (_hook_target_node.global_position - player.head.global_position).length()
         
         _set_attachment_type(AttachmentType.ATTACHED) # TODO: Change this up probably
     else:
@@ -94,7 +97,8 @@ func _launch_hook() -> void:
         Global.game.add_child(_hook_target_node)
         _hook_target_node.global_position = player.head.global_position + (-player.head.global_transform.basis.z * grappling_hook_range)
         _hook_target_normal = player.hook_raycast.get_target_position().normalized() # Maybe we need to invert this?
-        _hook_failed_cooldown.start(1)
+        _hook_failed_cooldown.start(0.25)
+        _rope_length = grappling_hook_range
         _set_attachment_type(AttachmentType.NONE)
     _set_hook_state(HookState.LAUNCHED)
 
@@ -107,11 +111,8 @@ func _retract_hook() -> void:
     if _hook_target != null:
         _hook_target = null
     _hook_rope_model.hide()
-    # TODO: Add a quick retract condition so you can use it again quickly
-    if _attachment_type == AttachmentType.ATTACHED:
-        _hook_launch_cooldown.start(0.25)
-    else:
-        _hook_launch_cooldown.start(1)
+    _rope_length = 0
+    _hook_launch_cooldown.start(0.25)
     _set_attachment_type(AttachmentType.NONE)
 
 
