@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://du1cn8wac3awi"]
+
+[ext_resource type="PackedScene" uid="uid://057ju1svk72l" path="res://object/chair_obj.tscn" id="1_s3xaq"]
+[ext_resource type="Script" uid="uid://cx4y6ch6s866t" path="res://object/collidable.gd" id="1_t8dmq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mfdv2"]
+size = Vector3(1, 2.1463013, 1)
+
+[node name="Chair" type="RigidBody3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+mass = 0.75
+script = ExtResource("1_t8dmq")
+
+[node name="chair2" parent="." instance=ExtResource("1_s3xaq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57315063, 0)
+shape = SubResource("BoxShape3D_mfdv2")

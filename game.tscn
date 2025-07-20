@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=16 format=3 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://s68ydljo1fu0" path="res://world/placeholder_orange.png" id="5_eow3j"]
 [ext_resource type="PackedScene" uid="uid://dr2ayqxiwwccw" path="res://hook/grappling_hook_controller.tscn" id="5_ryrav"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="7_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://baud6vp4pj76q" path="res://libs/GLTF format/stairs.glb" id="8_mfdv2"]
 [ext_resource type="Script" uid="uid://k0joa5bluso1" path="res://addons/starlight/StarGenerator.gd" id="8_vef74"]
+[ext_resource type="PackedScene" uid="uid://du1cn8wac3awi" path="res://object/chair.tscn" id="9_iotsf"]
+[ext_resource type="PackedScene" uid="uid://dcbw7u3qosfgt" path="res://object/table.tscn" id="11_iotsf"]
 
 [sub_resource type="Environment" id="Environment_80nbo"]
 
@@ -47,9 +50,12 @@ environment = SubResource("Environment_80nbo")
 transform = Transform3D(0.7526793, 0.370952, -0.54393804, 0, 0.8261671, 0.5634252, 0.6583874, -0.42407843, 0.62183887, -6.6442285, 10.68128, 8.558982)
 light_energy = 2.0
 
+[node name="SpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5875006, 6.5452642)
+
 [node name="Player" parent="." instance=ExtResource("3_fc0e3")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5875006, 6.5452642)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.27776, 7.5875006, -10.182884)
 
 [node name="World" type="Node3D" parent="."]
 
@@ -164,6 +170,70 @@ size = Vector3(3.251709, 1, 6.6554565)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.878305, 9.682461, -2.1346078)
 material_override = SubResource("StandardMaterial3D_j5wjh")
 size = Vector3(3.251709, 1, 6.6554565)
+
+[node name="Decor" type="Node3D" parent="World"]
+
+[node name="Stairs" type="Node3D" parent="World/Decor"]
+transform = Transform3D(12.95885, 0, 0, 0, 6.650981, 0, 0, 0, 6.303702, -31.1404, 2.8466187, -16.62439)
+
+[node name="stairs2" parent="World/Decor/Stairs" instance=ExtResource("8_mfdv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.049241, 0, -1.730856)
+
+[node name="Stairs2" type="Node3D" parent="World/Decor"]
+transform = Transform3D(12.95885, 0, 0, 0, 6.650981, 0, 0, 0, 6.303702, -50.07724, 2.8466187, -16.62439)
+
+[node name="stairs2" parent="World/Decor/Stairs2" instance=ExtResource("8_mfdv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.049241, 0, -1.730856)
+
+[node name="Objects" type="Node3D" parent="World"]
+
+[node name="Chair" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -20.27723)
+
+[node name="Chair2" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -22.208595)
+
+[node name="Chair3" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -24.20399)
+
+[node name="Chair4" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -24.182652)
+
+[node name="Chair5" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -22.251286)
+
+[node name="Chair6" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -20.25589)
+
+[node name="Chair7" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -20.27723)
+
+[node name="Chair8" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -22.208595)
+
+[node name="Chair9" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -24.20399)
+
+[node name="Chair10" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -24.182652)
+
+[node name="Chair11" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -22.251286)
+
+[node name="Chair12" parent="World/Objects" instance=ExtResource("9_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -20.25589)
+
+[node name="Table" parent="World/Objects" instance=ExtResource("11_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -37.07767, 2.8466184, -22.151909)
+
+[node name="Table2" parent="World/Objects" instance=ExtResource("11_iotsf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44.49088, 2.8466184, -22.151909)
+type = 0
+
+[node name="CafeteriaLight" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -39.745792, 18.789837, -16.387854)
+light_energy = 0.7
+sky_mode = 1
 
 [node name="GrapplingHookController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true

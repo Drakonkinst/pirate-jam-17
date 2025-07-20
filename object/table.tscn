@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcbw7u3qosfgt"]
+
+[ext_resource type="PackedScene" uid="uid://b2c5cmkscpp47" path="res://object/table_obj.tscn" id="1_t2poq"]
+[ext_resource type="Script" uid="uid://cx4y6ch6s866t" path="res://object/collidable.gd" id="1_v5l6m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mfdv2"]
+size = Vector3(7.727661, 1.4384766, 1.628418)
+
+[node name="Table" type="RigidBody3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mass = 7.0
+script = ExtResource("1_v5l6m")
+type = 1
+
+[node name="table3" parent="." instance=ExtResource("1_t2poq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001159668, 0.21923828, -0.07299805)
+shape = SubResource("BoxShape3D_mfdv2")

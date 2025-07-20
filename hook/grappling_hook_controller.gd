@@ -5,7 +5,7 @@ signal hook_state_changed(state: HookState)
 enum HookState { LAUNCHED, ON_COOLDOWN, READY }
 enum AttachmentType { NONE, GO_TO_ANCHOR, PULL_OBJECT }
 @export var max_pull_speed := 1000.0
-@export var grappling_hook_range: float = 20.0
+@export var grappling_hook_range: float = 35.0
 @export var player: Player
 @export var hook_rope_scene: PackedScene
 @export var hook_anchor_scene: PackedScene
@@ -65,7 +65,18 @@ func _physics_process(delta: float) -> void:
                 
                 
         if _attachment_type == AttachmentType.PULL_OBJECT:
-            var pull_vector := (_hook_target_node.global_position - source_pos).normalized()
+            assert(_hook_target is Collidable)
+            var collidable := _hook_target as Collidable
+            var pull_vector := (source_pos - _hook_target_node.global_position).normalized()
+            
+            if player.input_state.is_pressing_secondary:
+                # Lock hook and player together
+                _hook_joint.node_a = _hook_target_node.get_path()
+                _hook_joint.node_b = player.get_path()
+            else:
+                # Pull towards target
+                var pull_speed := max_pull_speed
+                collidable.apply_central_force(pull_vector * delta * pull_speed)
 
         assert(_hook_rope_model != null)
         _hook_rope_model.extend_from_to(source_pos, _hook_target_node.global_position, _hook_target_normal)
@@ -91,7 +102,8 @@ func _launch_hook() -> void:
         _hook_target.add_child(_hook_target_node) # TODO: Save the target object as well?
         _hook_target_node.global_position = player.hook_raycast.get_collision_point()
         _hook_target_normal = player.hook_raycast.get_collision_normal()
-        _set_attachment_type(AttachmentType.GO_TO_ANCHOR) # TODO: Change this up probably
+        
+        _set_attachment_type(_get_attachment_type(_hook_target)) # TODO: Change this up probably
     else:
         # No target found: still throw out the hook, but it immediately retracts
         _hook_target_node = hook_anchor_scene.instantiate() as HookAnchorPoint
@@ -102,6 +114,13 @@ func _launch_hook() -> void:
         _set_attachment_type(AttachmentType.NONE)
     _set_hook_state(HookState.LAUNCHED)
 
+func _get_attachment_type(target: Node3D) -> AttachmentType:
+    if target is Collidable:
+        var collidable := target as Collidable
+        if collidable.type == Collidable.Type.LIGHT:
+            return AttachmentType.PULL_OBJECT
+        return AttachmentType.GO_TO_ANCHOR 
+    return AttachmentType.GO_TO_ANCHOR
 
 func _retract_hook() -> void:
     print("Retract hook")
