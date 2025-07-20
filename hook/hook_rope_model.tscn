@@ -31,6 +31,7 @@ unique_name_in_owner = true
 [node name="RopeMesh" type="MeshInstance3D" parent="Rope"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.5)
+cast_shadow = 0
 mesh = SubResource("CylinderMesh_2uiuu")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8746b")
@@ -41,6 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="Model" type="MeshInstance3D" parent="HookEnd"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_usc5b")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_0nx8y")

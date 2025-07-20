@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cexj3a71mbxab"]
+
+[ext_resource type="Script" uid="uid://cx4y6ch6s866t" path="res://object/collidable.gd" id="1_26cwc"]
+[ext_resource type="PackedScene" uid="uid://cjfr02kw5b75n" path="res://libs/gtlf/Floor_Tile_Carpet_Blue.glb" id="2_jtsoy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xa8c5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5b14r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vaj68"]
+albedo_color = Color(0.75258213, 0.75258213, 0.7525821, 1)
+metallic = 1.0
+
+[node name="Cube" type="RigidBody3D"]
+mass = 0.1
+script = ExtResource("1_26cwc")
+type = 1
+
+[node name="CubeFace" parent="." instance=ExtResource("2_jtsoy")]
+transform = Transform3D(0.23, 0, 0, 0, -1.0053619e-08, -0.23, 0, 0.23, -1.0053619e-08, 0, 0, 0.53)
+
+[node name="CubeFace5" parent="." instance=ExtResource("2_jtsoy")]
+transform = Transform3D(-0.23, -2.0107239e-08, 8.7891527e-16, 0, -1.0053618e-08, -0.23, 2.0107239e-08, -0.23, 1.0053618e-08, 0, 0, -0.53)
+
+[node name="CubeFace2" parent="." instance=ExtResource("2_jtsoy")]
+transform = Transform3D(0.23, 0, 0, 0, 0.23, 8.881784e-16, 0, -8.881784e-16, 0.23, 0, 0.53, 0)
+
+[node name="CubeFace6" parent="." instance=ExtResource("2_jtsoy")]
+transform = Transform3D(-0.23, -2.0107239e-08, -7.7647024e-23, 2.0107239e-08, -0.23, -8.881784e-16, 0, -8.881784e-16, 0.23, 0, -0.53, 0)
+
+[node name="CubeFace3" parent="." instance=ExtResource("2_jtsoy")]
+transform = Transform3D(0, -0.23, -8.8817837e-16, 0.23, 0, 0, 0, -8.881784e-16, 0.23, -0.53, 0, 0)
+
+[node name="CubeFace4" parent="." instance=ExtResource("2_jtsoy")]
+transform = Transform3D(0, 0.23, 2.0107239e-08, 0.23, 0, 0, 0, 2.010724e-08, -0.23, 0.53, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xa8c5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_5b14r")
+surface_material_override/0 = SubResource("StandardMaterial3D_vaj68")

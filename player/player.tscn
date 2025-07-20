@@ -29,6 +29,7 @@ script = ExtResource("1_i3pqv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.3726054, 0, 0, 0, 1.3726054, 0, 0, 0, 1.3726054, 0, 0, 0)
+cast_shadow = 0
 mesh = SubResource("SphereMesh_i3pqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_80nbo")
 
