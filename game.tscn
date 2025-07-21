@@ -30,6 +30,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eow3j"]
 albedo_texture = ExtResource("5_7jktm")
+uv1_scale = Vector3(0.75, 0.75, 0.75)
 uv1_triplanar = true
 uv1_world_triplanar = true
 uv2_triplanar = true
@@ -129,7 +130,11 @@ player = NodePath("../Player")
 environment = SubResource("Environment_80nbo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.7526793, 0.37095207, -0.54393804, 0.61035573, -0.083371975, 0.7877277, 0.24686007, -0.924902, -0.28916505, -6.6442285, 34.45208, -79.30257)
+transform = Transform3D(0.1542082, 0.98792565, -0.014924586, 0.61035573, -0.08337198, 0.7877277, 0.7769723, -0.13058344, -0.6158427, -6.6442285, 34.45208, -79.30257)
+light_energy = 2.0
+
+[node name="DirectionalLight3D2Temp" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.62892675, 0.5535734, 0.54590094, 0.6103556, -0.08337195, 0.78772783, 0.4815779, 0.8286166, -0.2854419, -6.6442285, 34.45208, -79.30257)
 light_energy = 2.0
 
 [node name="Player" parent="." instance=ExtResource("3_fc0e3")]
@@ -151,11 +156,11 @@ collision_layer = 3
 collision_mask = 2
 
 [node name="BigBox" type="CSGBox3D" parent="World/Section1/Layout" groups=["Surface"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.333351, 8.003808, -10.243292)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.999329, 9.691598, -10.243292)
 material_override = SubResource("StandardMaterial3D_ryrav")
 use_collision = true
 collision_layer = 3
-size = Vector3(76.610504, 21.05719, 36.64491)
+size = Vector3(71.94246, 24.43277, 36.64491)
 
 [node name="StartingRoom" type="CSGBox3D" parent="World/Section1/Layout" groups=["Surface"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.749932, 0.18579102)
@@ -518,6 +523,153 @@ transform = Transform3D(-6.687069e-08, 0, -3.3426833, 0, 0.25488234, 0, 1.529823
 cast_shadow = 0
 mesh = SubResource("BoxMesh_215e1")
 surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="Section2" type="Node3D" parent="World"]
+
+[node name="Layout" type="CSGCombiner3D" parent="World/Section2" groups=["Surface"]]
+transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, -90.46221, 0, 2.8501205)
+layers = 3
+material_override = SubResource("StandardMaterial3D_eow3j")
+use_collision = true
+collision_layer = 3
+collision_mask = 2
+
+[node name="BigBox" type="CSGBox3D" parent="World/Section2/Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.289364, 11.066981, -3.6643753)
+material_override = SubResource("StandardMaterial3D_ryrav")
+use_collision = true
+collision_layer = 3
+size = Vector3(74.1322, 32.95582, 50.087986)
+
+[node name="BigBox2" type="CSGBox3D" parent="World/Section2/Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.93729, 15.220349, -13.957695)
+material_override = SubResource("StandardMaterial3D_ryrav")
+use_collision = true
+collision_layer = 3
+size = Vector3(43.534195, 40.252563, 54.81765)
+
+[node name="EntryChute" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(1.0765566, 0, 0, 0, 1.0765566, 0, 0, 0, 1.0765566, -59.51096, 3.8058681, -29.139366)
+size = Vector3(9, 9, 2.293)
+
+[node name="EntryHall" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(1.0765566, 0, 0, 0, 1.0765566, 0, 0, 0, 1.0765566, -59.58728, 3.854632, -24.342522)
+operation = 2
+size = Vector3(6, 6, 17.68942)
+
+[node name="MainRoom" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, -21.74105, 3.8960028, -18.161835)
+operation = 2
+size = Vector3(15.610725, 11.916771, 32.00134)
+
+[node name="GravRoom" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, -19.499361, 3.8960028, 8.639694)
+operation = 2
+size = Vector3(22.182528, 11.916771, 23.730743)
+
+[node name="ElevatorEntry" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 22.243238, 6.066782, -19.433502)
+operation = 2
+size = Vector3(31.220707, 15.652599, 23.254087)
+
+[node name="EntryChute2" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, -39.317623, 3.876525, -18.07914)
+size = Vector3(9, 9, 2.216)
+
+[node name="EntryHall2" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, -46.708107, 3.876525, -18.080223)
+operation = 2
+size = Vector3(6, 6, 19.587828)
+
+[node name="FoyerChute" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, -4.6505504, 3.876525, -18.07914)
+size = Vector3(9, 9, 2.216)
+
+[node name="FoyerChute2" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 9.770803, 3.876525, -18.07914)
+size = Vector3(9, 9, 2.216)
+
+[node name="ElevatorChute" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 33.962776, 3.876525, -18.07914)
+size = Vector3(9, 9, 2.216)
+
+[node name="FoyerHall" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 1.9681337, 3.8486137, -18.08995)
+operation = 2
+size = Vector3(6, 6, 17.143112)
+
+[node name="FoyerHall2" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 36.539906, 3.8486137, -18.08995)
+operation = 2
+size = Vector3(6, 6, 11.81629)
+
+[node name="SideChute" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(1.0765566, 0, -1.0658141e-14, 0, 1.0765566, 0, 1.0658141e-14, 0, 1.0765566, -19.34133, 3.876525, -10.078896)
+size = Vector3(9, 9, 2.216)
+
+[node name="SideChute3" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(1.0765566, 0, -1.0658141e-14, 0, 1.0765566, 0, 1.0658141e-14, 0, 1.0765566, -19.34133, 3.876525, -2.9187775)
+size = Vector3(9, 9, 2.216)
+
+[node name="SideHall" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(1.0765566, 0, -1.0658141e-14, 0, 1.0765566, 0, 1.0658141e-14, 0, 1.0765566, -19.309038, 3.876525, -4.2122726)
+operation = 2
+size = Vector3(6, 6, 19.587828)
+
+[node name="SideChute2" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(1.0765566, 0, -1.0658141e-14, 0, 1.0765566, 0, 1.0658141e-14, 0, 1.0765566, -26.329172, 3.876525, -27.021297)
+size = Vector3(9, 9, 2.6289961)
+
+[node name="SideHall2" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(1.0765566, 0, -1.0658141e-14, 0, 1.0765566, 0, 1.0658141e-14, 0, 1.0765566, -26.29688, 3.876525, -26.299232)
+operation = 2
+size = Vector3(6, 6, 5.10717)
+
+[node name="Lights" type="Node3D" parent="World/Section2"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="World/Section2/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.06822, 9.5828705, -22.504286)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 3.0
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Lights/OmniLight3D"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488234, 0, 0, 0, 3.3426833, 0, 0.64505386, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="World/Section2/Lights"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -72.06822, 13.792796, 24.950344)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 5.0
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Lights/OmniLight3D3"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488234, 0, 0, 0, 3.3426833, 0, 0.64505386, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="World/Section2/Lights"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -99.4405, 9.5828705, -16.553015)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 3.0
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Lights/OmniLight3D2"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488234, 0, 0, 0, 3.3426833, 0, 0.64505386, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="Section3" type="Node3D" parent="World"]
 
 [node name="GrapplingHookController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true
