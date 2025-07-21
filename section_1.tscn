@@ -1,0 +1,431 @@
+[gd_scene load_steps=28 format=3 uid="uid://bn3jwwt07rxf5"]
+
+[ext_resource type="PackedScene" uid="uid://db0uepma3ku82" path="res://object/stairs.tscn" id="3_h116b"]
+[ext_resource type="PackedScene" uid="uid://d153vfgmc4r6i" path="res://object/door/crew_door.tscn" id="4_ijgde"]
+[ext_resource type="PackedScene" uid="uid://7qu2ni5oun14" path="res://object/button/small_button.tscn" id="5_u78ma"]
+[ext_resource type="PackedScene" uid="uid://c5h3d1ke4io52" path="res://object/glass/breakable_glass.tscn" id="6_biynk"]
+[ext_resource type="Script" uid="uid://bo0pncu0ffev7" path="res://object/glass/broken_glass_stage.gd" id="7_5liro"]
+[ext_resource type="PackedScene" uid="uid://bp51os4x8x4m1" path="res://libs/gtlf/Command_Wall.glb" id="8_xieik"]
+[ext_resource type="PackedScene" uid="uid://bco442hwrb4m8" path="res://object/fan/fan.tscn" id="9_x3uw4"]
+[ext_resource type="PackedScene" uid="uid://dlfquurpbj731" path="res://libs/gtlf/Large_Monitor_Off.glb" id="10_sjopi"]
+[ext_resource type="PackedScene" uid="uid://bmyt35txkeslp" path="res://libs/gtlf/Railing_Flat.glb" id="11_e77d0"]
+[ext_resource type="PackedScene" uid="uid://cllg5s0l8w215" path="res://libs/gtlf/Railing_Ramp.glb" id="12_fvc6s"]
+[ext_resource type="PackedScene" uid="uid://dmyr3mwaf4cj" path="res://libs/gtlf/Bunk_Double_Orange.glb" id="13_sbb56"]
+[ext_resource type="PackedScene" uid="uid://84vt8uitdhy4" path="res://libs/GLB format/wall-doorway-wide-round.glb" id="14_ewceq"]
+[ext_resource type="PackedScene" uid="uid://du1cn8wac3awi" path="res://object/chair/chair.tscn" id="15_7xsma"]
+[ext_resource type="PackedScene" uid="uid://dcbw7u3qosfgt" path="res://object/table/table.tscn" id="16_qinah"]
+[ext_resource type="PackedScene" uid="uid://cexj3a71mbxab" path="res://object/cube.tscn" id="17_84i8l"]
+[ext_resource type="Material" uid="uid://kk08pth2ah1v" path="res://object/light.tres" id="18_f3h03"]
+
+[sub_resource type="Resource" id="Resource_rvswv"]
+script = ExtResource("7_5liro")
+show_cracks = false
+show_broken = false
+metadata/_custom_type_script = "uid://bo0pncu0ffev7"
+
+[sub_resource type="Resource" id="Resource_boyg6"]
+script = ExtResource("7_5liro")
+show_broken = false
+fracture_scale = 0.5
+edge_thickness = 0.15000000000873115
+metadata/_custom_type_script = "uid://bo0pncu0ffev7"
+
+[sub_resource type="Resource" id="Resource_e36ub"]
+script = ExtResource("7_5liro")
+show_broken = false
+metadata/_custom_type_script = "uid://bo0pncu0ffev7"
+
+[sub_resource type="Resource" id="Resource_hb5m1"]
+script = ExtResource("7_5liro")
+metadata/_custom_type_script = "uid://bo0pncu0ffev7"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e8heu"]
+size = Vector3(2.4439697, 13, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7sc4i"]
+size = Vector3(20, 13, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e8heu"]
+size = Vector3(20, 13, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80cx4"]
+transparency = 1
+albedo_color = Color(0.70980394, 0.98039216, 1, 0.21960784)
+metallic = 0.63
+roughness = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1jbl"]
+size = Vector3(1.2247314, 0.302948, 2.7287445)
+
+[sub_resource type="BoxMesh" id="BoxMesh_215e1"]
+
+[node name="Section1" type="Node3D"]
+
+[node name="Layout" type="CSGCombiner3D" parent="." groups=["Surface"]]
+layers = 3
+material_override = ExtResource("1_mqtn6")
+use_collision = true
+collision_layer = 3
+collision_mask = 2
+
+[node name="BigBox" type="CSGBox3D" parent="Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.333351, 8.003808, -10.243292)
+use_collision = true
+collision_layer = 3
+size = Vector3(76.610504, 21.05719, 36.64491)
+
+[node name="StartingRoom" type="CSGBox3D" parent="Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.749932, 0.18579102)
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(9, 7, 11.6)
+
+[node name="BonusRoom" type="CSGBox3D" parent="Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2393866, 9.749932, -18.320717)
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(9, 7, 11.681641)
+
+[node name="StartingDoorway" type="CSGBox3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5520175, 8.182664, -6.0059123)
+operation = 2
+size = Vector3(2.1351318, 3.8735352, 1.0733871)
+
+[node name="LockedDoorway" type="CSGBox3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.301253, 8.182664, -6.0059123)
+operation = 2
+size = Vector3(2.1351318, 3.8735352, 1.0733871)
+
+[node name="BonusDoorway" type="CSGBox3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8291006, 8.182664, -12.234159)
+operation = 2
+size = Vector3(2.1351318, 3.8735352, 1.0733871)
+
+[node name="StartingChamber" type="CSGCylinder3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.339243, 7.925015, 5.8785768)
+operation = 2
+radius = 1.6948242
+height = 3.349929
+sides = 16
+
+[node name="Hallway" type="CSGBox3D" parent="Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.723189, 8.9587, -9.049553)
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(38.7936, 5.6, 5.5)
+
+[node name="CafeteriaUpper" type="CSGBox3D" parent="Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25534, 11.769106, -16.716927)
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(22.800001, 11.2, 21.69646)
+
+[node name="CafeteriaWindow" type="CSGBox3D" parent="Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.18084, 9.68096, -27.807423)
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(18.627386, 12.033212, 6.067511)
+
+[node name="CafeteriaLower" type="CSGBox3D" parent="Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25534, 4.570066, -21.264553)
+operation = 2
+use_collision = true
+collision_layer = 3
+size = Vector3(22.800001, 3.4468873, 12.601209)
+
+[node name="HallwayPorthole" type="CSGCylinder3D" parent="Layout"]
+transform = Transform3D(0, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, 0, 8.881784e-16, 9.44278, 9.021694, -9.018097)
+operation = 2
+radius = 2.2973633
+sides = 16
+
+[node name="Decor" type="Node3D" parent="."]
+
+[node name="Stairs" parent="Decor" instance=ExtResource("3_h116b")]
+transform = Transform3D(12.95885, 0, 0, 0, 6.650981, 0, 0, 0, 6.303702, -31.1404, 2.8466187, -16.62439)
+
+[node name="Stairs3" parent="Decor" instance=ExtResource("3_h116b")]
+transform = Transform3D(12.95885, 0, 0, 0, 6.650981, 0, 0, 0, 6.303702, -50.08966, 2.8466187, -16.62439)
+
+[node name="CrewDoor" parent="Decor" instance=ExtResource("4_ijgde")]
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, -12.157036, 6.0788913, -6.033324)
+initial_open = false
+
+[node name="CrewDoor2" parent="Decor" node_paths=PackedStringArray("opening_button") instance=ExtResource("4_ijgde")]
+transform = Transform3D(-1, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1, 2.5766325, 6.0788913, -5.976071)
+open_offset = Vector3(-2.5, 0, 0)
+initial_open = false
+opening_button = NodePath("../SmallButton")
+
+[node name="CrewDoor3" parent="Decor" node_paths=PackedStringArray("opening_button") instance=ExtResource("4_ijgde")]
+transform = Transform3D(-1, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1, -4.852109, 6.0788913, -12.015073)
+open_offset = Vector3(-2.5, 0, 0)
+initial_open = false
+opening_button = NodePath("../SmallButton4")
+
+[node name="SmallButton" parent="Decor" instance=ExtResource("5_u78ma")]
+transform = Transform3D(1, 0, 0, 0, -0.009529371, -0.9999546, 0, 0.9999546, -0.009529371, 0.39249098, 9.32205, -5.7155857)
+stay_pressed = true
+
+[node name="SmallButton6" parent="Decor" instance=ExtResource("5_u78ma")]
+transform = Transform3D(-4.371139e-08, 0.9999546, -0.009529371, 0, -0.009529371, -0.9999546, -1, -4.3709402e-08, 4.1654202e-10, -52.513718, 5.3426685, -19.68821)
+stay_pressed = true
+initial_state = 2
+
+[node name="SmallButton7" parent="Decor" instance=ExtResource("5_u78ma")]
+transform = Transform3D(-6.184687e-08, 1.4148272, -0.013483025, 0, -0.013483025, -1.4148272, -1.4148915, -6.184406e-08, 5.893618e-10, -52.4951, 7.3910975, -11.278857)
+unpress_time = 1.0
+
+[node name="SmallButton2" parent="Decor" instance=ExtResource("5_u78ma")]
+transform = Transform3D(1, 0, 0, 0, 0.009529283, 0.9999546, 0, -0.9999546, 0.009529283, 0.39249098, 9.32205, -6.198839)
+stay_pressed = true
+initial_state = 1
+
+[node name="SmallButton3" parent="Decor" instance=ExtResource("5_u78ma")]
+transform = Transform3D(1, 0, 0, 0, 0.009529283, 0.9999546, 0, -0.9999546, 0.009529283, -2.450296, 9.32205, -12.425535)
+stay_pressed = true
+initial_state = 1
+
+[node name="SmallButton4" parent="Decor" instance=ExtResource("5_u78ma")]
+transform = Transform3D(-1, 0, -4.656613e-10, 0, 0.009529284, 0.9999547, 8.940697e-08, 0.9999547, -0.009529284, -6.8682294, 9.293613, -11.822015)
+stay_pressed = true
+
+[node name="SmallButton5" parent="Decor" instance=ExtResource("5_u78ma")]
+transform = Transform3D(1, 8.741882e-08, -3.674151e-10, -5.551115e-17, 0.009529283, 0.99995464, -1.9841906e-09, -0.99995464, 0.009529283, -14.402953, 9.293613, -6.186837)
+stay_pressed = true
+initial_state = 2
+
+[node name="BreakableGlass" parent="Decor" instance=ExtResource("6_biynk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.535, 9.517, -28.12)
+stages = Array[ExtResource("7_5liro")]([SubResource("Resource_rvswv"), SubResource("Resource_boyg6"), SubResource("Resource_e36ub"), SubResource("Resource_hb5m1")])
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Decor/BreakableGlass" groups=["Surface"]]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Decor/BreakableGlass/StaticBody3D2"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.589783, 0, 0)
+shape = SubResource("BoxShape3D_e8heu")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Decor/BreakableGlass" groups=["Surface"]]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Decor/BreakableGlass/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.502323, 0, 0)
+shape = SubResource("BoxShape3D_e8heu")
+
+[node name="GlassWindow" type="Node3D" parent="Decor"]
+transform = Transform3D(-1.2115313e-08, 0, -0.3470935, 0, 0.4147086, 0, 0.27716607, 0, -1.5171938e-08, 9.44926, 8.941465, -8.935837)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Decor/GlassWindow"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Decor/GlassWindow/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.989502, 0, 0)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Decor/GlassWindow"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="Monitor" parent="Decor" instance=ExtResource("8_xieik")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -52.6458, 8.6607485, -11.229013)
+
+[node name="Fan" parent="Decor" node_paths=PackedStringArray("toggle_button") instance=ExtResource("9_x3uw4")]
+transform = Transform3D(2.268819e-15, -5.190453e-08, 1.1874372, -1.1874372, -5.190453e-08, 0, 5.190453e-08, -1.1874372, -5.190453e-08, -41.119366, 13.449124, -5.9755645)
+max_distance = 17.0
+stays_enabled = true
+toggle_button = NodePath("../SmallButton7")
+
+[node name="Monitor2" parent="Decor" instance=ExtResource("10_sjopi")]
+transform = Transform3D(-1.7409725, 0, 1.5220066e-07, 0, 1.7409725, 0, -1.5220066e-07, 0, -1.7409725, -41.30199, 2.8753185, -16.300682)
+
+[node name="Railing" parent="Decor" instance=ExtResource("11_e77d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.337143, 6.205403, -14.59042)
+
+[node name="Railing2" parent="Decor" instance=ExtResource("11_e77d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.45034, 6.205403, -14.59042)
+
+[node name="Railing3" parent="Decor" instance=ExtResource("11_e77d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.626904, 6.205403, -14.59042)
+
+[node name="Railing4" parent="Decor" instance=ExtResource("11_e77d0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.20664, 6.205403, -14.59042)
+
+[node name="RailingRamp" parent="Decor" instance=ExtResource("12_fvc6s")]
+transform = Transform3D(-1, 0, -9.0646594e-08, 0, 1, 0, 8.742278e-08, 0, -1.0368762, -33.53804, 2.1944766, -17.224043)
+
+[node name="RailingRamp2" parent="Decor" instance=ExtResource("12_fvc6s")]
+transform = Transform3D(-1, 0, -9.0646594e-08, 0, 1, 0, 8.742278e-08, 0, -1.0368762, -49.164032, 2.1944766, -17.224043)
+
+[node name="Bed" parent="Decor" instance=ExtResource("13_sbb56")]
+transform = Transform3D(2.4668577, 0, 0, 0, 2.4668577, 0, 0, 0, 2.4668577, -2.9766865, 6.3124723, -2.4430525)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Decor/Bed"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Decor/Bed/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11236572, 1.3213656, -0.05100262)
+shape = SubResource("BoxShape3D_f1jbl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Decor/Bed/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11236572, 0.4520538, -0.05100262)
+shape = SubResource("BoxShape3D_f1jbl")
+
+[node name="FakeDoorway" parent="Decor" instance=ExtResource("14_ewceq")]
+transform = Transform3D(1.9711303, 0, 0, 0, 1.9711303, 0, 0, 0, 1.9711303, -52.7813, 2.8071637, -23.667793)
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Chair" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -20.27723)
+collision_layer = 5
+
+[node name="Chair2" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -22.208595)
+collision_layer = 5
+
+[node name="Chair3" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -24.20399)
+collision_layer = 5
+
+[node name="Chair4" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -24.182652)
+collision_layer = 5
+
+[node name="Chair5" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -22.251286)
+collision_layer = 5
+
+[node name="Chair6" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -20.25589)
+collision_layer = 5
+
+[node name="Chair7" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -20.27723)
+collision_layer = 5
+
+[node name="Chair8" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -22.208595)
+collision_layer = 5
+
+[node name="Chair9" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -24.20399)
+collision_layer = 5
+
+[node name="Chair10" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -24.182652)
+collision_layer = 5
+
+[node name="Chair11" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -22.251286)
+collision_layer = 5
+
+[node name="Chair12" parent="Objects" instance=ExtResource("15_7xsma")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -20.25589)
+collision_layer = 5
+
+[node name="Table" parent="Objects" instance=ExtResource("16_qinah")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -37.07767, 2.8466184, -22.151909)
+collision_layer = 5
+
+[node name="Table2" parent="Objects" instance=ExtResource("16_qinah")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44.49088, 2.8466184, -22.151909)
+collision_layer = 5
+type = 0
+
+[node name="Cube" parent="Objects" instance=ExtResource("17_84i8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14141881, 10.115524, -15.348499)
+collision_layer = 5
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.54784, 0)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 15.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lights/OmniLight3D"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488234, 0, 0, 0, 3.3426833, 0, 0.64505386, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("18_f3h03")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.113115, 11.140224, -9.084562)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 30.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lights/OmniLight3D2"]
+transform = Transform3D(-6.687069e-08, 0, -3.3426833, 0, 0.25488234, 0, 1.529823, 0, -1.4611332e-07, 0, 0.64505386, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("18_f3h03")
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 16.653, -11.344132)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+shadow_enabled = true
+omni_range = 30.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lights/OmniLight3D4"]
+transform = Transform3D(-6.318932e-08, 0, -3.3426833, 0, 0.25488234, 0, 1.445603, 0, -1.4611332e-07, 0, 0.645, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("18_f3h03")
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 16.653, -20.018131)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+shadow_enabled = true
+omni_range = 30.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lights/OmniLight3D5"]
+transform = Transform3D(-6.318932e-08, 0, -3.3426833, 0, 0.25488234, 0, 1.445603, 0, -1.4611332e-07, 0, 0.64505386, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("18_f3h03")
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.961464, 16.653, -11.344132)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+shadow_enabled = true
+omni_range = 30.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lights/OmniLight3D6"]
+transform = Transform3D(-6.318932e-08, 0, -3.3426833, 0, 0.25488234, 0, 1.445603, 0, -1.4611332e-07, 0, 0.645, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("18_f3h03")
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.961464, 16.653, -20.018131)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+shadow_enabled = true
+omni_range = 30.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lights/OmniLight3D7"]
+transform = Transform3D(-6.318932e-08, 0, -3.3426833, 0, 0.25488234, 0, 1.445603, 0, -1.4611332e-07, 0, 0.64505386, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("18_f3h03")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.534, 11.14, -9.085)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 15.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lights/OmniLight3D3"]
+transform = Transform3D(-6.687069e-08, 0, -3.3426833, 0, 0.25488234, 0, 1.529823, 0, -1.4611332e-07, 0, 0.64505386, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("18_f3h03")
