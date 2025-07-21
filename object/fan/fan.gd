@@ -4,10 +4,13 @@ extends Node3D
 @export var push_force := 500.0
 @export var enabled := true
 @export var stays_enabled := false
+@export var auto_restarts := false
 @export var affected_by_distance := false
 @export var toggle_button: SmallButton
 @export var shut_off_timer: Timer
 @export var shut_off_after: float = 5.0
+@export var turn_on_timer: Timer
+@export var turn_on_after: float = 5.0
 
 @export_group("Internal")
 @export var wind_visual: Node3D
@@ -20,6 +23,8 @@ func _ready() -> void:
     if toggle_button != null:
         toggle_button.pressed.connect(_on_button_pressed)
     shut_off_timer.timeout.connect(_on_shut_off_timer_timeout)
+    if turn_on_timer != null:
+        turn_on_timer.timeout.connect(_on_turn_on_timer_timeout)
     if enabled:
         enable()
     else:
@@ -46,6 +51,8 @@ func enable() -> void:
         
 func disable() -> void:
     enabled = false
+    if auto_restarts:
+        turn_on_timer.start(turn_on_after)
     wind_visual.hide()
     
 func _on_button_pressed() -> void:
@@ -56,3 +63,6 @@ func _on_button_pressed() -> void:
     
 func _on_shut_off_timer_timeout() -> void:
     disable()
+
+func _on_turn_on_timer_timeout() -> void:
+    enable()
