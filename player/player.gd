@@ -5,7 +5,7 @@ class_name Player
 enum MovementMode { THRUST, ROLL }
 @export var movement_speed := 100
 @export var look_sensitivity := 50.0
-@export var roll_speed := 200
+@export var roll_speed := 250
 @onready var hook_origin: Marker3D = %HookOrigin
 @onready var hook_raycast: RayCast3D = %HookRaycast
 @onready var input_state: InputState = %InputState

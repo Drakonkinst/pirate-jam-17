@@ -140,7 +140,7 @@ light_energy = 2.0
 
 [node name="Player" parent="." instance=ExtResource("3_fc0e3")]
 unique_name_in_owner = true
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -72.40297, 7.5875006, 30.297348)
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 4.154346, 7.5875006, 5.310762)
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 4.154346, 7.5875006, 5.310762)
@@ -842,8 +842,9 @@ surface_material_override/0 = ExtResource("15_80cx4")
 [node name="Decor" type="Node3D" parent="World/Section3"]
 
 [node name="BigFan" parent="World/Section3/Decor" instance=ExtResource("25_i2p71")]
-transform = Transform3D(-6.798, 0, 5.9430005e-07, 0, 6.798, 0, -5.9430005e-07, 0, -6.798, -71.779305, -27.792892, 66.8122)
-max_distance = 15.0
+transform = Transform3D(-6.798, 0, 5.9430005e-07, 0, 6.798, 0, -5.9430005e-07, 0, -6.798, -72.47508, -27.792892, 66.8122)
+shut_off_after = 5.0
+turn_on_after = 5.0
 
 [node name="Objects" type="Node3D" parent="World/Section3"]
 

@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://dmb6ik5ws8wrq" path="res://object/fan/wind.gdshader" id="3_o2y68"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i2p71"]
-size = Vector3(5.885586, 16.305355, 5.775038)
+size = Vector3(5.9, 14.782871, 5.9)
 
 [sub_resource type="Curve" id="Curve_xa8c5"]
 _data = [Vector2(0.0152091235, 0.05941534), 0.0, 0.0, 0, 0, Vector2(0.50190115, 0.96262574), 0.0, 0.0, 0, 0, Vector2(0.99239546, 0.07187343), 1.4, 0.0, 0, 0]
@@ -31,7 +31,7 @@ shader_parameter/loop_radius = 0.2900000000081491
 shader_parameter/loop_count = 0.5
 
 [node name="Fan" type="Node3D" node_paths=PackedStringArray("shut_off_timer", "turn_on_timer", "wind_visual", "affects_area", "collider")]
-transform = Transform3D(1.29885896e-14, -2.9714423e-07, 6.797868, -0.5924731, 6.772, 2.9601352e-07, -6.772, -0.5924731, -2.5897808e-08, 0, 0, 0)
+transform = Transform3D(-2.9714423e-07, 0, 6.797868, 0, 6.797868, 0, -6.797868, 0, -2.9714423e-07, 0, 0, 0)
 script = ExtResource("1_wugn1")
 push_force = 200.0
 auto_restarts = true
@@ -52,7 +52,7 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.9999998, 1.7136335e-07, 7.993606e-15, -1.7136335e-07, 0.9999998, -6.009082e-14, -4.8849813e-15, -3.4833247e-14, 0.99999976, -0.43200684, 6.5440397, -0.01137352)
+transform = Transform3D(0.99999976, 1.7136334e-07, 7.1054274e-15, -1.7136334e-07, 0.99999976, -6.009082e-14, -3.5527137e-15, -3.4833247e-14, 0.99999976, 1.3041857e-07, 7.3050647, -2.6510349e-14)
 shape = SubResource("BoxShape3D_i2p71")
 
 [node name="TurnOffTimer" type="Timer" parent="."]

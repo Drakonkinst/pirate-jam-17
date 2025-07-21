@@ -53,14 +53,7 @@ func _physics_process(delta: float) -> void:
 func _handle_hook_physics(source_pos: Vector3, delta: float):
     var to_vector := _hook_target_node.global_position - source_pos
     var to_direction := to_vector.normalized()
-    if player.input_state.is_pressing_primary:
-        # Pull towards target
-        player.apply_central_force(to_direction * delta * max_pull_speed)
-        player.nearby_surface_detection.reset_surface_alignment()
-        if hook_target is Collidable:
-            var collidable := hook_target as Collidable
-            collidable.apply_central_force(-to_direction * delta * max_pull_speed)
-    else:
+    if player.input_state.is_pressing_secondary:
         # Lock hook and player together
         _hook_joint.node_a = player.get_path()
         _hook_joint.node_b = _hook_target_node.get_path()
@@ -68,8 +61,18 @@ func _handle_hook_physics(source_pos: Vector3, delta: float):
         var dist := to_vector.length()
         _rope_length = min(dist, _rope_length)
         _hook_joint.global_position = player.global_position + to_direction * (_rope_length / 2)
+        _hook_joint.set_param_x(Generic6DOFJoint3D.PARAM_LINEAR_UPPER_LIMIT, _rope_length)
+        _hook_joint.set_param_y(Generic6DOFJoint3D.PARAM_LINEAR_UPPER_LIMIT, _rope_length)
+        _hook_joint.set_param_z(Generic6DOFJoint3D.PARAM_LINEAR_UPPER_LIMIT, _rope_length)
         if hook_target is Collidable:
             var collidable := hook_target as Collidable
+    else:
+         # Pull towards target
+        player.apply_central_force(to_direction * delta * max_pull_speed)
+        player.nearby_surface_detection.reset_surface_alignment()
+        if hook_target is Collidable:
+            var collidable := hook_target as Collidable
+            collidable.apply_central_force(-to_direction * delta * max_pull_speed)
 
 func _on_hook_launch_cooldown_timeout() -> void:
     _set_hook_state(HookState.READY)
