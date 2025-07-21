@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=46 format=3 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
@@ -25,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://dmyr3mwaf4cj" path="res://libs/gtlf/Bunk_Double_Orange.glb" id="20_f1jbl"]
 [ext_resource type="PackedScene" uid="uid://84vt8uitdhy4" path="res://libs/GLB format/wall-doorway-wide-round.glb" id="21_i2p71"]
 [ext_resource type="PackedScene" uid="uid://cexj3a71mbxab" path="res://object/cube.tscn" id="22_f1jbl"]
+[ext_resource type="Script" uid="uid://c0nel52sveyc8" path="res://object/fan/fan.gd" id="25_5b14r"]
+[ext_resource type="PackedScene" uid="uid://sv06y7ic012k" path="res://libs/gtlf/Floor_Metal_Square_Grate.glb" id="26_bnpwn"]
+[ext_resource type="Shader" uid="uid://dmb6ik5ws8wrq" path="res://object/fan/wind.gdshader" id="27_36jdj"]
 
 [sub_resource type="Environment" id="Environment_80nbo"]
 
@@ -80,6 +83,32 @@ roughness = 0.0
 size = Vector3(1.2247314, 0.302948, 2.7287445)
 
 [sub_resource type="BoxMesh" id="BoxMesh_215e1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i2p71"]
+size = Vector3(6.249626, 16.305355, 5.8878307)
+
+[sub_resource type="Curve" id="Curve_xa8c5"]
+_data = [Vector2(0.0152091235, 0.05941534), 0.0, 0.0, 0, 0, Vector2(0.50190115, 0.96262574), 0.0, 0.0, 0, 0, Vector2(0.99239546, 0.07187343), 1.4, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_5b14r"]
+radius = 0.1
+curve = SubResource("Curve_xa8c5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnpwn"]
+render_priority = 0
+shader = ExtResource("27_36jdj")
+shader_parameter/color = Color(0.8460439, 0.84604394, 0.8460439, 0.90588236)
+shader_parameter/fade_time = 5.0
+shader_parameter/time_scale = 20.0
+shader_parameter/wave_amplitude = 0.1
+shader_parameter/wave_frequency = 1.0
+shader_parameter/wave_length = 8.0
+shader_parameter/wave_count = 1.0
+shader_parameter/twist_amplitude = 0.10000000000582077
+shader_parameter/twist_frequency = 15.0
+shader_parameter/loop_radius = 0.2900000000081491
+shader_parameter/loop_count = 0.5
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_80nbo")
@@ -139,7 +168,7 @@ light_energy = 2.0
 
 [node name="Player" parent="." instance=ExtResource("3_fc0e3")]
 unique_name_in_owner = true
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 4.154346, 7.5875006, 5.310762)
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -72.40297, 7.5875006, 30.297348)
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 4.154346, 7.5875006, 5.310762)
@@ -376,64 +405,49 @@ transform = Transform3D(1.9711303, 0, 0, 0, 1.9711303, 0, 0, 0, 1.9711303, -52.7
 
 [node name="Chair" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -20.27723)
-collision_layer = 5
 
 [node name="Chair2" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -22.208595)
-collision_layer = 5
 
 [node name="Chair3" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -24.20399)
-collision_layer = 5
 
 [node name="Chair4" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -24.182652)
-collision_layer = 5
 
 [node name="Chair5" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -22.251286)
-collision_layer = 5
 
 [node name="Chair6" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -20.25589)
-collision_layer = 5
 
 [node name="Chair7" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -20.27723)
-collision_layer = 5
 
 [node name="Chair8" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -22.208595)
-collision_layer = 5
 
 [node name="Chair9" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -24.20399)
-collision_layer = 5
 
 [node name="Chair10" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -24.182652)
-collision_layer = 5
 
 [node name="Chair11" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -22.251286)
-collision_layer = 5
 
 [node name="Chair12" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -20.25589)
-collision_layer = 5
 
 [node name="Table" parent="World/Section1/Objects" instance=ExtResource("11_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -37.07767, 2.8466184, -22.151909)
-collision_layer = 5
 
 [node name="Table2" parent="World/Section1/Objects" instance=ExtResource("11_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44.49088, 2.8466184, -22.151909)
-collision_layer = 5
 type = 0
 
 [node name="Cube" parent="World/Section1/Objects" instance=ExtResource("22_f1jbl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14141881, 10.115524, -15.348499)
-collision_layer = 5
 
 [node name="Lights" type="Node3D" parent="World/Section1"]
 
@@ -542,11 +556,11 @@ collision_layer = 3
 size = Vector3(74.1322, 32.95582, 50.087986)
 
 [node name="BigBox2" type="CSGBox3D" parent="World/Section2/Layout" groups=["Surface"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.93729, 15.220349, -13.957695)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.93729, 1.3530512, -1.615715)
 material_override = SubResource("StandardMaterial3D_ryrav")
 use_collision = true
 collision_layer = 3
-size = Vector3(43.534195, 40.252563, 54.81765)
+size = Vector3(43.534195, 27.236855, 76.82048)
 
 [node name="EntryChute" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(1.0765566, 0, 0, 0, 1.0765566, 0, 0, 0, 1.0765566, -59.51096, 3.8058681, -29.139366)
@@ -671,6 +685,284 @@ surface_material_override/0 = ExtResource("15_80cx4")
 
 [node name="Section3" type="Node3D" parent="World"]
 
+[node name="Layout" type="CSGCombiner3D" parent="World/Section3" groups=["Surface"]]
+transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, -90.46221, 0, 2.8501205)
+layers = 3
+material_override = SubResource("StandardMaterial3D_eow3j")
+use_collision = true
+collision_layer = 3
+collision_mask = 2
+
+[node name="BigBox" type="CSGBox3D" parent="World/Section3/Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.78097, 20.595951, -19.170647)
+material_override = SubResource("StandardMaterial3D_ryrav")
+use_collision = true
+collision_layer = 3
+size = Vector3(47.614754, 172.42102, 51.943493)
+
+[node name="CommandBall" type="CSGSphere3D" parent="World/Section3/Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.3811, 132.04448, -18.468132)
+radius = 50.0
+smooth_faces = false
+
+[node name="ElevatorShaft" type="CSGCylinder3D" parent="World/Section3/Layout"]
+transform = Transform3D(0.9243863, 0, 0.3814576, 0, 1, 0, -0.3814576, 0, 0.9243863, 63.76782, 34.485733, -18.321442)
+operation = 2
+radius = 21.0
+height = 129.08981
+smooth_faces = false
+
+[node name="ElevatorChute" type="CSGBox3D" parent="World/Section3/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 43.41252, 3.876525, -18.07914)
+size = Vector3(9, 9, 3.58525)
+
+[node name="ElevatorHall" type="CSGBox3D" parent="World/Section3/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 41.181587, 3.8486137, -18.08995)
+operation = 2
+size = Vector3(6, 6, 11.81629)
+
+[node name="OutsideChute" type="CSGBox3D" parent="World/Section3/Layout"]
+transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 63.30447, 86.576, -50.176144)
+size = Vector3(8, 8, 26.50104)
+
+[node name="OutsideHall" type="CSGBox3D" parent="World/Section3/Layout"]
+transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 63.646587, 86.576, -48.634514)
+operation = 2
+size = Vector3(6, 6, 30.714083)
+
+[node name="OutsideChute2" type="CSGBox3D" parent="World/Section3/Layout"]
+transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 63.30447, 86.576, 13.644608)
+size = Vector3(8, 8, 27.032913)
+
+[node name="OutsideHall2" type="CSGBox3D" parent="World/Section3/Layout"]
+transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 63.646587, 86.576, 15.388718)
+operation = 2
+size = Vector3(6, 6, 31.622124)
+
+[node name="OutsideChute3" type="CSGBox3D" parent="World/Section3/Layout"]
+transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 63.30447, 21.85835, 13.644608)
+size = Vector3(8, 8, 27.032913)
+
+[node name="OutsideHall3" type="CSGBox3D" parent="World/Section3/Layout"]
+transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 63.646587, 21.888365, 15.388718)
+operation = 2
+size = Vector3(6, 6, 31.622124)
+
+[node name="Lights" type="Node3D" parent="World/Section3"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="World/Section3/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -72.06822, 55.144176, 85.0884)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="World/Section3/Lights"]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, -72.06822, 55.144176, 47.952084)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D2"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="World/Section3/Lights"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -53.446953, 55.144176, 66.019806)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D3"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="World/Section3/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -72.06822, 23.611977, 85.0884)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D5"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="World/Section3/Lights"]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, -72.06822, 23.611977, 47.952084)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D6"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="World/Section3/Lights"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -53.446953, 23.611977, 66.019806)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D7"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="World/Section3/Lights"]
+transform = Transform3D(1.3113416e-07, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, 1.3113416e-07, -5.732056e-15, -90.829, 55.144268, 66.02)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D8"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="World/Section3/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -72.06822, 86.548, 85.0884)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D9"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="World/Section3/Lights"]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, -72.06822, 86.548, 47.90938)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D10"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="Decor" type="Node3D" parent="World/Section3"]
+
+[node name="Fan" type="Node3D" parent="World/Section3/Decor" node_paths=PackedStringArray("shut_off_timer", "wind_visual", "affects_area", "collider")]
+transform = Transform3D(1.2988589e-14, -2.9714425e-07, 6.7978683, 5.942885e-07, -6.7978683, -2.9714425e-07, 6.7978683, 5.942885e-07, 1.2988589e-14, -71.779305, 95.7853, 65.83844)
+script = ExtResource("25_5b14r")
+max_distance = 17.0
+push_force = 200.0
+stays_enabled = true
+shut_off_timer = NodePath("TurnOffTimer")
+shut_off_after = 10.0
+wind_visual = NodePath("Wind")
+affects_area = NodePath("Area3D")
+collider = NodePath("Area3D/CollisionShape3D")
+
+[node name="fan" parent="World/Section3/Decor/Fan" instance=ExtResource("26_bnpwn")]
+transform = Transform3D(1.6226445, 0, 0, 0, 1.6226445, 0, 0, 0, 1.6226445, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="World/Section3/Decor/Fan"]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/Fan/Area3D"]
+transform = Transform3D(0.99999976, -7.1054274e-15, 0, 7.1054274e-15, 0.99999976, -3.5527135e-15, 2.1175824e-22, 3.5527137e-15, 0.99999976, 0.06894398, 6.544039, -0.059046745)
+shape = SubResource("BoxShape3D_i2p71")
+
+[node name="TurnOffTimer" type="Timer" parent="World/Section3/Decor/Fan"]
+wait_time = 5.0
+
+[node name="Wind" type="Node3D" parent="World/Section3/Decor/Fan"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7213986, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/Fan/Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0911875, 2.0399647, -1.1050415)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 0.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Section3/Decor/Fan/Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4556408, 2.0399647, -0.8824463)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 3.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/Section3/Decor/Fan/Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74461555, 2.0399647, 0.5641556)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 6.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/Section3/Decor/Fan/Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57066345, 2.0399642, 0.5709839)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 9.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/Section3/Decor/Fan/Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0399647, -1.0626869)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 12.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/Section3/Decor/Fan/Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6285181, 2.0399647, -0.8987961)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 15.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="Objects" type="Node3D" parent="World/Section3"]
+
 [node name="GrapplingHookController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true
+max_pull_speed = 300.0
+grappling_hook_range = 45.0
 player = NodePath("../Player")
