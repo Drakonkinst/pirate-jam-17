@@ -8,6 +8,7 @@ enum State { ENABLED, PRESSED, DISABLED }
 @export var pressed_offset := Vector3(0, -0.1, 0)
 @export var initial_state: State
 @export var press_speed := 4.0
+@export var unpress_time := 0.5
 @export var enable_timer: Timer
 @export var enabled_material: Material
 @export var disabled_material: Material
@@ -44,7 +45,7 @@ func _process(delta: float) -> void:
     presser.position = lerp(presser.position, target_pos, press_speed * delta)
 
     if _state == State.PRESSED and Global.game.get_hook_target() != self and not stay_pressed and enable_timer.time_left <= 0:
-        enable_timer.start()
+        enable_timer.start(unpress_time)
 
 func _on_enable_timer_timeout() -> void:
     _set_state(State.ENABLED)

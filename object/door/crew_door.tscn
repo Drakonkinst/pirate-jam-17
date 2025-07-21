@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d153vfgmc4r6i"]
 
-[ext_resource type="Script" uid="uid://dqsbitndajtw5" path="res://object/door.gd" id="1_gv76t"]
+[ext_resource type="Script" uid="uid://dqsbitndajtw5" path="res://object/door/door.gd" id="1_gv76t"]
 [ext_resource type="PackedScene" uid="uid://dtgvxmwovpw8x" path="res://libs/GLB format/door-single-closed.glb" id="2_dcqet"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_215e1"]

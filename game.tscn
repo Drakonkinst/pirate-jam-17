@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=39 format=3 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
@@ -9,20 +9,21 @@
 [ext_resource type="PackedScene" uid="uid://dr2ayqxiwwccw" path="res://hook/grappling_hook_controller.tscn" id="5_ryrav"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="7_j5wjh"]
 [ext_resource type="Script" uid="uid://k0joa5bluso1" path="res://addons/starlight/StarGenerator.gd" id="8_vef74"]
-[ext_resource type="PackedScene" uid="uid://du1cn8wac3awi" path="res://object/chair.tscn" id="9_iotsf"]
+[ext_resource type="PackedScene" uid="uid://du1cn8wac3awi" path="res://object/chair/chair.tscn" id="9_iotsf"]
 [ext_resource type="PackedScene" uid="uid://db0uepma3ku82" path="res://object/stairs.tscn" id="9_lc2xo"]
-[ext_resource type="PackedScene" uid="uid://d153vfgmc4r6i" path="res://object/crew_door.tscn" id="10_215e1"]
+[ext_resource type="PackedScene" uid="uid://d153vfgmc4r6i" path="res://object/door/crew_door.tscn" id="10_215e1"]
 [ext_resource type="PackedScene" uid="uid://7qu2ni5oun14" path="res://object/button/small_button.tscn" id="11_7sc4i"]
-[ext_resource type="PackedScene" uid="uid://dcbw7u3qosfgt" path="res://object/table.tscn" id="11_iotsf"]
+[ext_resource type="PackedScene" uid="uid://dcbw7u3qosfgt" path="res://object/table/table.tscn" id="11_iotsf"]
 [ext_resource type="PackedScene" uid="uid://c5h3d1ke4io52" path="res://object/glass/breakable_glass.tscn" id="12_80cx4"]
 [ext_resource type="Script" uid="uid://bo0pncu0ffev7" path="res://object/glass/broken_glass_stage.gd" id="13_e8heu"]
 [ext_resource type="PackedScene" uid="uid://bp51os4x8x4m1" path="res://libs/gtlf/Command_Wall.glb" id="14_qhcbd"]
 [ext_resource type="Material" uid="uid://kk08pth2ah1v" path="res://object/light.tres" id="15_80cx4"]
-[ext_resource type="PackedScene" uid="uid://sv06y7ic012k" path="res://libs/gtlf/Floor_Metal_Square_Grate.glb" id="15_f1jbl"]
+[ext_resource type="PackedScene" uid="uid://bco442hwrb4m8" path="res://object/fan/fan.tscn" id="15_vaj68"]
 [ext_resource type="PackedScene" uid="uid://dlfquurpbj731" path="res://libs/gtlf/Large_Monitor_Off.glb" id="17_i2p71"]
 [ext_resource type="PackedScene" uid="uid://bmyt35txkeslp" path="res://libs/gtlf/Railing_Flat.glb" id="18_xa8c5"]
 [ext_resource type="PackedScene" uid="uid://cllg5s0l8w215" path="res://libs/gtlf/Railing_Ramp.glb" id="19_5b14r"]
 [ext_resource type="PackedScene" uid="uid://dmyr3mwaf4cj" path="res://libs/gtlf/Bunk_Double_Orange.glb" id="20_f1jbl"]
+[ext_resource type="PackedScene" uid="uid://84vt8uitdhy4" path="res://libs/GLB format/wall-doorway-wide-round.glb" id="21_i2p71"]
 [ext_resource type="PackedScene" uid="uid://cexj3a71mbxab" path="res://object/cube.tscn" id="22_f1jbl"]
 
 [sub_resource type="Environment" id="Environment_80nbo"]
@@ -120,7 +121,7 @@ shader_params/max_luminosity = 200000.0
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.9637423, 0.26683468, 0, -0.26683468, 0.9637423, 0, 7.0381637, 9.739521)
 script = ExtResource("2_fc0e3")
-player = NodePath("../SpawnPoint/Player")
+player = NodePath("../Player")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_80nbo")
@@ -129,11 +130,12 @@ environment = SubResource("Environment_80nbo")
 transform = Transform3D(0.7526793, 0.37095207, -0.54393804, 0.61035573, -0.083371975, 0.7877277, 0.24686007, -0.924902, -0.28916505, -6.6442285, 34.45208, -79.30257)
 light_energy = 2.0
 
+[node name="Player" parent="." instance=ExtResource("3_fc0e3")]
+unique_name_in_owner = true
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -33.47136, 7.5875006, -8.715401)
+
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 4.154346, 7.5875006, 5.310762)
-
-[node name="Player" parent="SpawnPoint" instance=ExtResource("3_fc0e3")]
-unique_name_in_owner = true
 
 [node name="World" type="Node3D" parent="."]
 
@@ -257,6 +259,15 @@ opening_button = NodePath("../SmallButton4")
 transform = Transform3D(1, 0, 0, 0, -0.009529371, -0.9999546, 0, 0.9999546, -0.009529371, 0.39249098, 9.32205, -5.7155857)
 stay_pressed = true
 
+[node name="SmallButton6" parent="World/Section1/Decor" instance=ExtResource("11_7sc4i")]
+transform = Transform3D(-4.371139e-08, 0.9999546, -0.009529371, 0, -0.009529371, -0.9999546, -1, -4.3709402e-08, 4.1654202e-10, -52.513718, 5.3426685, -19.68821)
+stay_pressed = true
+initial_state = 2
+
+[node name="SmallButton7" parent="World/Section1/Decor" instance=ExtResource("11_7sc4i")]
+transform = Transform3D(-6.184687e-08, 1.4148272, -0.013483025, 0, -0.013483025, -1.4148272, -1.4148915, -6.184406e-08, 5.893618e-10, -52.4951, 7.3910975, -11.278857)
+unpress_time = 1.0
+
 [node name="SmallButton2" parent="World/Section1/Decor" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(1, 0, 0, 0, 0.009529283, 0.9999546, 0, -0.9999546, 0.009529283, 0.39249098, 9.32205, -6.198839)
 stay_pressed = true
@@ -279,7 +290,6 @@ initial_state = 2
 [node name="BreakableGlass" parent="World/Section1/Decor" instance=ExtResource("12_80cx4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.535, 9.517, -28.12)
 stages = Array[ExtResource("13_e8heu")]([SubResource("Resource_rvswv"), SubResource("Resource_boyg6"), SubResource("Resource_e36ub"), SubResource("Resource_hb5m1")])
-stage = 2
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="World/Section1/Decor/BreakableGlass" groups=["Surface"]]
 collision_layer = 3
@@ -312,8 +322,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
 [node name="Monitor" parent="World/Section1/Decor" instance=ExtResource("14_qhcbd")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -52.6458, 8.6607485, -11.229013)
 
-[node name="Fan" parent="World/Section1/Decor" instance=ExtResource("15_f1jbl")]
-transform = Transform3D(-7.0928046e-08, -7.0928046e-08, 1.6226445, -1.6226445, 3.1003634e-15, -7.0928046e-08, 0, -1.6226445, -7.0928046e-08, -41.119366, 12.218914, -5.9755645)
+[node name="Fan" parent="World/Section1/Decor" node_paths=PackedStringArray("toggle_button") instance=ExtResource("15_vaj68")]
+transform = Transform3D(2.268819e-15, -5.190453e-08, 1.1874372, -1.1874372, -5.190453e-08, 0, 5.190453e-08, -1.1874372, -5.190453e-08, -41.119366, 13.449124, -5.9755645)
+max_distance = 17.0
+stays_enabled = true
+toggle_button = NodePath("../SmallButton7")
 
 [node name="Monitor2" parent="World/Section1/Decor" instance=ExtResource("17_i2p71")]
 transform = Transform3D(-1.7409725, 0, 1.5220066e-07, 0, 1.7409725, 0, -1.5220066e-07, 0, -1.7409725, -41.30199, 2.8753185, -16.300682)
@@ -349,53 +362,71 @@ shape = SubResource("BoxShape3D_f1jbl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11236572, 0.4520538, -0.05100262)
 shape = SubResource("BoxShape3D_f1jbl")
 
+[node name="FakeDoorway" parent="World/Section1/Decor" instance=ExtResource("21_i2p71")]
+transform = Transform3D(1.9711303, 0, 0, 0, 1.9711303, 0, 0, 0, 1.9711303, -52.7813, 2.8071637, -23.667793)
+
 [node name="Objects" type="Node3D" parent="World/Section1"]
 
 [node name="Chair" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -20.27723)
+collision_layer = 5
 
 [node name="Chair2" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -22.208595)
+collision_layer = 5
 
 [node name="Chair3" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -24.20399)
+collision_layer = 5
 
 [node name="Chair4" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -24.182652)
+collision_layer = 5
 
 [node name="Chair5" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -22.251286)
+collision_layer = 5
 
 [node name="Chair6" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -20.25589)
+collision_layer = 5
 
 [node name="Chair7" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -20.27723)
+collision_layer = 5
 
 [node name="Chair8" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -22.208595)
+collision_layer = 5
 
 [node name="Chair9" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -24.20399)
+collision_layer = 5
 
 [node name="Chair10" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -24.182652)
+collision_layer = 5
 
 [node name="Chair11" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -22.251286)
+collision_layer = 5
 
 [node name="Chair12" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -20.25589)
+collision_layer = 5
 
 [node name="Table" parent="World/Section1/Objects" instance=ExtResource("11_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -37.07767, 2.8466184, -22.151909)
+collision_layer = 5
 
 [node name="Table2" parent="World/Section1/Objects" instance=ExtResource("11_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44.49088, 2.8466184, -22.151909)
+collision_layer = 5
 type = 0
 
 [node name="Cube" parent="World/Section1/Objects" instance=ExtResource("22_f1jbl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14141881, 10.115524, -15.348499)
+collision_layer = 5
 
 [node name="Lights" type="Node3D" parent="World/Section1"]
 
@@ -488,4 +519,4 @@ surface_material_override/0 = ExtResource("15_80cx4")
 
 [node name="GrapplingHookController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true
-player = NodePath("../SpawnPoint/Player")
+player = NodePath("../Player")

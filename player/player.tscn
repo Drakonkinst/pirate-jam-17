@@ -24,6 +24,7 @@ transparency = 1
 albedo_color = Color(0, 0.49793702, 0.71948117, 0.23529412)
 
 [node name="Player" type="RigidBody3D"]
+collision_layer = 5
 angular_damp = 10.0
 script = ExtResource("1_i3pqv")
 

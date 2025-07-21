@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://ds5vshsx4lnv4" path="res://object/glass/breakable_glass.gd" id="1_vh6nu"]
 [ext_resource type="Shader" uid="uid://dqqaqvegnvgca" path="res://object/glass/broken_glass.gdshader" id="2_y23w7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7sc4i"]
-size = Vector3(20, 13, 0.5)
-
 [sub_resource type="BoxMesh" id="BoxMesh_e8heu"]
 size = Vector3(20, 13, 0.5)
 
@@ -25,17 +22,22 @@ shader_parameter/impact_range = 8.000000380000001
 shader_parameter/compression_strength = 0.0
 shader_parameter/impact_points = PackedVector3Array(0, 0, 0)
 
-[node name="BreakableGlass" type="Node3D"]
-script = ExtResource("1_vh6nu")
+[sub_resource type="BoxShape3D" id="BoxShape3D_7sc4i"]
+size = Vector3(20, 13, 0.5)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Surface"]]
+[node name="BreakableGlass" type="StaticBody3D" groups=["Surface"]]
 collision_layer = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-unique_name_in_owner = true
-shape = SubResource("BoxShape3D_7sc4i")
+script = ExtResource("1_vh6nu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 mesh = SubResource("BoxMesh_e8heu")
 surface_material_override/0 = SubResource("ShaderMaterial_e8heu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="BreakTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

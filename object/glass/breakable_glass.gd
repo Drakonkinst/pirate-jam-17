@@ -6,13 +6,19 @@ class_name BreakableGlass
 @export var stage := 0
 @onready var mesh: MeshInstance3D = %MeshInstance3D
 @onready var collider: CollisionShape3D = %CollisionShape3D
+@onready var break_timer: Timer = %BreakTimer
+
+var _can_take_damage := true
 
 func _ready() -> void:
     _set_stage(stage)
+    break_timer.timeout.connect(_on_break_timer_timeout)
     
 func progress_stage() -> void:
-    if stage < stages.size() - 1:
+    if stage < stages.size() - 1 and _can_take_damage:
         _set_stage(stage + 1)
+        _can_take_damage = false
+        break_timer.start()
 
 func _set_stage(value: int) -> void:
     stage = value
@@ -27,4 +33,7 @@ func _set_stage(value: int) -> void:
     else:
         material.set("shader_parameter/impact_points", PackedVector3Array())
     collider.disabled = info.show_broken
+
+func _on_break_timer_timeout() -> void:
+    _can_take_damage = true
     
