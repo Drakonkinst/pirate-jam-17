@@ -85,7 +85,7 @@ size = Vector3(1.2247314, 0.302948, 2.7287445)
 [sub_resource type="BoxMesh" id="BoxMesh_215e1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i2p71"]
-size = Vector3(6.249626, 16.305355, 5.8878307)
+size = Vector3(5.885586, 16.305355, 5.775038)
 
 [sub_resource type="Curve" id="Curve_xa8c5"]
 _data = [Vector2(0.0152091235, 0.05941534), 0.0, 0.0, 0, 0, Vector2(0.50190115, 0.96262574), 0.0, 0.0, 0, 0, Vector2(0.99239546, 0.07187343), 1.4, 0.0, 0, 0]
@@ -870,7 +870,7 @@ surface_material_override/0 = ExtResource("15_80cx4")
 [node name="Decor" type="Node3D" parent="World/Section3"]
 
 [node name="Fan" type="Node3D" parent="World/Section3/Decor" node_paths=PackedStringArray("shut_off_timer", "wind_visual", "affects_area", "collider")]
-transform = Transform3D(1.2988589e-14, -2.9714425e-07, 6.7978683, 5.942885e-07, -6.7978683, -2.9714425e-07, 6.7978683, 5.942885e-07, 1.2988589e-14, -71.779305, 95.7853, 65.83844)
+transform = Transform3D(1.29885896e-14, -2.9714423e-07, 6.797868, -0.5924731, 6.772, 2.9601352e-07, -6.772, -0.5924731, -2.5897808e-08, -71.779305, -26.625217, 67.28938)
 script = ExtResource("25_5b14r")
 max_distance = 17.0
 push_force = 200.0
@@ -890,7 +890,7 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/Fan/Area3D"]
-transform = Transform3D(0.99999976, -7.1054274e-15, 0, 7.1054274e-15, 0.99999976, -3.5527135e-15, 2.1175824e-22, 3.5527137e-15, 0.99999976, 0.06894398, 6.544039, -0.059046745)
+transform = Transform3D(0.9999998, 1.7136335e-07, 7.993606e-15, -1.7136335e-07, 0.9999998, -6.009082e-14, -4.8849813e-15, -3.4833247e-14, 0.99999976, -0.43200684, 6.5440397, -0.01137352)
 shape = SubResource("BoxShape3D_i2p71")
 
 [node name="TurnOffTimer" type="Timer" parent="World/Section3/Decor/Fan"]
@@ -964,5 +964,5 @@ surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
 [node name="GrapplingHookController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true
 max_pull_speed = 300.0
-grappling_hook_range = 45.0
+grappling_hook_range = 60.0
 player = NodePath("../Player")
