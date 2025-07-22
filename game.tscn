@@ -217,13 +217,20 @@ use_collision = true
 collision_layer = 3
 size = Vector3(22.800001, 11.2, 21.69646)
 
+[node name="CafeteriaWindowFrame" type="CSGBox3D" parent="World/Section1/Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.19606, 9.652505, -28.907833)
+material_override = SubResource("StandardMaterial3D_ryrav")
+use_collision = true
+collision_layer = 3
+size = Vector3(21, 14, 1.614)
+
 [node name="CafeteriaWindow" type="CSGBox3D" parent="World/Section1/Layout" groups=["Surface"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.18084, 9.68096, -27.807423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.18084, 9.68096, -29.389421)
 material_override = SubResource("StandardMaterial3D_ryrav")
 operation = 2
 use_collision = true
 collision_layer = 3
-size = Vector3(18.627386, 12.033212, 6.067511)
+size = Vector3(18.627386, 12.033212, 9.231509)
 
 [node name="CafeteriaLower" type="CSGBox3D" parent="World/Section1/Layout" groups=["Surface"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25534, 4.570066, -21.264553)
@@ -233,10 +240,17 @@ use_collision = true
 collision_layer = 3
 size = Vector3(22.800001, 3.4468873, 12.601209)
 
+[node name="HallwayPortholeChute" type="CSGCylinder3D" parent="World/Section1/Layout"]
+transform = Transform3D(0, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, 0, 8.881784e-16, 9.503326, 9.021694, -9.018097)
+radius = 3.0
+height = 2.1210938
+sides = 16
+
 [node name="HallwayPorthole" type="CSGCylinder3D" parent="World/Section1/Layout"]
-transform = Transform3D(0, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, 0, 8.881784e-16, 9.44278, 9.021694, -9.018097)
+transform = Transform3D(0, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, 0, 8.881784e-16, 10.158844, 9.021694, -9.018097)
 operation = 2
 radius = 2.2973633
+height = 3.432129
 sides = 16
 
 [node name="Decor" type="Node3D" parent="World/Section1"]
@@ -527,6 +541,13 @@ use_collision = true
 collision_layer = 3
 size = Vector3(74.1322, 32.95582, 50.087986)
 
+[node name="BigBox3" type="CSGBox3D" parent="World/Section2/Layout" groups=["Surface"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.224503, 36.833046, -1.9885178)
+material_override = SubResource("StandardMaterial3D_ryrav")
+use_collision = true
+collision_layer = 3
+size = Vector3(23.413277, 29.582523, 20.877464)
+
 [node name="BigBox2" type="CSGBox3D" parent="World/Section2/Layout" groups=["Surface"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.93729, 1.3530512, -1.615715)
 material_override = SubResource("StandardMaterial3D_ryrav")
@@ -720,6 +741,11 @@ transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e
 operation = 2
 size = Vector3(6, 6, 31.622124)
 
+[node name="CommandCenter" type="CSGBox3D" parent="World/Section3/Layout"]
+transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 54.542534, 129.69348, -18.600662)
+operation = 2
+size = Vector3(110.03641, 20.0484, 95.908485)
+
 [node name="Lights" type="Node3D" parent="World/Section3"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="World/Section3/Lights"]
@@ -845,6 +871,162 @@ surface_material_override/0 = ExtResource("15_80cx4")
 transform = Transform3D(-6.798, 0, 5.9430005e-07, 0, 6.798, 0, -5.9430005e-07, 0, -6.798, -72.47508, -27.792892, 66.8122)
 shut_off_after = 5.0
 turn_on_after = 5.0
+
+[node name="GlassWindow" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(-0.31109813, 0, -3.850383, 0, 1.8046185, 0, 1.1610335, 0, -1.031707, -30.089079, 129.33871, 77.86921)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="GlassWindow2" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(0.31109783, 0, -3.8503826, 0, 1.8046184, 0, 1.1610335, 0, 1.031707, -30.089079, 129.33871, 55.302174)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow2"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="GlassWindow3" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(0.8499354, 0, -2.8186755, 0, 1.8046184, 0, 0.84993553, 0, 2.8186758, -41.948414, 129.33871, 35.699512)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow3"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="GlassWindow4" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(1.1610334, 0, -1.0317067, 0, 1.8046181, 0, 0.31109804, 0, 3.8503826, -61.723404, 129.33871, 24.472572)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow4"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="GlassWindow5" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(1.1610334, 0, 1.0317069, 0, 1.804618, 0, -0.3110979, 0, 3.8503826, -83.538, 129.33871, 24.837448)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow5"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="GlassWindow6" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(0.8499354, 0, 2.8186758, 0, 1.804618, 0, -0.84993535, 0, 2.8186758, -101.85455, 129.33871, 35.61457)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow6/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow6"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="GlassWindow7" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(0.31109795, 0, 3.8503828, 0, 1.804618, 0, -1.1610333, 0, 1.0317069, -113.160645, 129.33871, 55.22103)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow7/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow7"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="GlassWindow8" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(-0.31109774, 0, 3.8503826, 0, 1.8046184, 0, -1.1610336, 0, -1.0317067, -113.03607, 129.33871, 77.305855)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow8/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow8"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="GlassWindow9" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(-0.84993535, 0, 2.8186755, 0, 1.804618, 0, -0.84993565, 0, -2.8186753, -101.17674, 129.33871, 96.90852)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow9/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow9"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="GlassWindow10" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(-1.1610333, 0, 1.0317068, 0, 1.8046182, 0, -0.3110982, 0, -3.8503823, -81.40175, 129.33871, 108.13546)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow10"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow10/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow10"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="GlassWindow11" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(-1.1610334, 0, -1.0317065, 0, 1.8046178, 0, 0.31109774, 0, -3.850382, -59.587154, 129.33871, 107.50717)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow11/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow11"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
+
+[node name="GlassWindow12" type="Node3D" parent="World/Section3/Decor"]
+transform = Transform3D(-0.8499354, 0, -2.8186753, 0, 1.8046178, 0, 0.8499353, 0, -2.8186758, -41.270603, 129.33871, 96.4116)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/GlassWindow12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/GlassWindow12/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013839722, 0, -2.3841858e-07)
+shape = SubResource("BoxShape3D_7sc4i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Decor/GlassWindow12"]
+mesh = SubResource("BoxMesh_e8heu")
+surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
 
 [node name="Objects" type="Node3D" parent="World/Section3"]
 
