@@ -96,6 +96,8 @@ func _launch_hook() -> void:
         
         if hook_target is SmallButton:
             (hook_target as SmallButton).press()
+        if hook_target is Collidable:
+            (hook_target as Collidable).on_attach()
         
         _set_attachment_type(AttachmentType.ATTACHED)
     else:
@@ -115,6 +117,8 @@ func _retract_hook() -> void:
         _hook_target_node.queue_free()
         _hook_target_node = null
     if hook_target != null:
+        if hook_target is Collidable:
+            (hook_target as Collidable).on_detach()
         hook_target = null
     _hook_rope_model.hide()
     _rope_length = 0

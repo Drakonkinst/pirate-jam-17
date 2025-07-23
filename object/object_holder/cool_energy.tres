@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cyug0kdg7ptbq"]
+
+[ext_resource type="Shader" uid="uid://bh654anwrurwh" path="res://object/object_holder/cool_energy.gdshader" id="1_loiy3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_loiy3")
+shader_parameter/albedo = Color(0.29411766, 0.15294118, 0.5647059, 1)
+shader_parameter/emission_color = Color(0.2926616, 0.15318543, 0.56472754, 1)
+shader_parameter/emission_amount = 1.890000089775
+shader_parameter/rim_steepness = 1.178000055955
+shader_parameter/uv_scale = Vector3(0, 0, 0)
+shader_parameter/uv_offset = Vector3(0, 0, 0)

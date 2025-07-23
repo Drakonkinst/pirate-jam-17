@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8xjginy5scfm"]
+
+[ext_resource type="PackedScene" uid="uid://d153vfgmc4r6i" path="res://object/door/crew_door.tscn" id="1_70p2h"]
+[ext_resource type="PackedScene" uid="uid://b62b52d3x4b2c" path="res://libs/GLB format/door-double-closed.glb" id="2_7wmv2"]
+[ext_resource type="PackedScene" uid="uid://dpkhylajbptb7" path="res://libs/GLB format/wall.glb" id="3_u5f4h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wmv2"]
+size = Vector3(5.7507935, 5.955963, 0.77111816)
+
+[node name="HatchDoor" node_paths=PackedStringArray("door_model", "closing_timer") instance=ExtResource("1_70p2h")]
+door_model = NodePath("door_visual")
+open_offset = Vector3(0, 10, 0)
+closing_timer = NodePath("Timer")
+
+[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040985107, 3.0590668, 0.015319824)
+shape = SubResource("BoxShape3D_7wmv2")
+
+[node name="door-single-closed2" parent="." index="1"]
+visible = false
+
+[node name="door_visual" type="Node3D" parent="." index="2"]
+transform = Transform3D(-1.15, 1.7364516e-07, -1.6342483e-14, -1.7364516e-07, -1.15, -7.143526e-22, -1.6342483e-14, 1.7532937e-21, 1.15, 0, 6.070916, 0)
+
+[node name="door-double-closed3" parent="door_visual" index="0" instance=ExtResource("2_7wmv2")]
+transform = Transform3D(3.1501824e-07, 6.0948095, -6.243556e-16, 7.2067785, -2.6641257e-07, -2.0316905e-07, -6.3003654e-07, 4.3306233e-14, -2.3239834, -2.1314373, 2.9389768, -0.3634367)
+
+[node name="door-double-closed4" parent="door_visual" index="1" instance=ExtResource("2_7wmv2")]
+transform = Transform3D(-3.1501813e-07, -6.0948095, 2.0316905e-07, 7.2067785, -2.6641254e-07, -2.0316904e-07, 6.3003654e-07, 5.3282514e-07, 2.3239834, 2.1899817, 3.02544, 0.28826523)
+
+[node name="wall2" parent="door_visual" index="2" instance=ExtResource("3_u5f4h")]
+transform = Transform3D(-1.4749068e-07, 0, 2.918136, 0, 2.4899452, 0, -3.3741946, 0, -1.2755578e-07, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="." index="3"]
+one_shot = true
