@@ -31,6 +31,7 @@ script = ExtResource("1_vh6nu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+cast_shadow = 0
 mesh = SubResource("BoxMesh_e8heu")
 surface_material_override/0 = SubResource("ShaderMaterial_e8heu")
 

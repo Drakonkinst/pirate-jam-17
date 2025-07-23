@@ -42,6 +42,7 @@ uv1_triplanar = true
 uv1_world_triplanar = true
 uv2_triplanar = true
 uv2_world_triplanar = true
+proximity_fade_distance = 100.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryrav"]
 albedo_texture = ExtResource("5_eow3j")
@@ -158,18 +159,18 @@ player = NodePath("../Player")
 environment = SubResource("Environment_80nbo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.15562394, 0.96244437, 0.22244577, 0.6103557, -0.08337186, 0.7877279, 0.77668995, 0.25836033, -0.57445866, 35.426445, 53.04591, -154.83527)
+transform = Transform3D(-0.5299363, 0.6961539, 0.48429063, 0.6103557, -0.08337184, 0.7877279, 0.5887561, 0.71303505, -0.3807197, 35.426445, 53.04591, -154.83527)
 light_energy = 2.0
 shadow_enabled = true
-shadow_opacity = 0.8
+directional_shadow_mode = 0
 sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("3_fc0e3")]
 unique_name_in_owner = true
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -95.647804, 4.432503, -13.491356)
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 3.8636532, 7.410634, 5.18005)
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 4.154346, 7.5875006, 5.310762)
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 3.8636532, 7.410634, 5.18005)
 
 [node name="World" type="Node3D" parent="."]
 
@@ -178,6 +179,7 @@ transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 4.154346
 [node name="Layout" type="CSGCombiner3D" parent="World/Section1" groups=["Surface"]]
 layers = 3
 material_override = SubResource("StandardMaterial3D_eow3j")
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 collision_mask = 2
@@ -185,6 +187,7 @@ collision_mask = 2
 [node name="BigBox" type="CSGBox3D" parent="World/Section1/Layout" groups=["Surface"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.999329, 9.691598, -10.243292)
 material_override = SubResource("StandardMaterial3D_ryrav")
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(71.94246, 24.43277, 36.64491)
@@ -193,6 +196,7 @@ size = Vector3(71.94246, 24.43277, 36.64491)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.749932, 0.18579102)
 material_override = SubResource("StandardMaterial3D_ryrav")
 operation = 2
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(9, 7, 11.6)
@@ -201,6 +205,7 @@ size = Vector3(9, 7, 11.6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2393866, 9.749932, -18.320717)
 material_override = SubResource("StandardMaterial3D_ryrav")
 operation = 2
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(9, 7, 11.681641)
@@ -208,21 +213,25 @@ size = Vector3(9, 7, 11.681641)
 [node name="StartingDoorway" type="CSGBox3D" parent="World/Section1/Layout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5520175, 8.182664, -6.0059123)
 operation = 2
+calculate_tangents = false
 size = Vector3(2.1351318, 3.8735352, 1.0733871)
 
 [node name="LockedDoorway" type="CSGBox3D" parent="World/Section1/Layout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.301253, 8.182664, -6.0059123)
 operation = 2
+calculate_tangents = false
 size = Vector3(2.1351318, 3.8735352, 1.0733871)
 
 [node name="BonusDoorway" type="CSGBox3D" parent="World/Section1/Layout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8291006, 8.182664, -12.234159)
 operation = 2
+calculate_tangents = false
 size = Vector3(2.1351318, 3.8735352, 1.0733871)
 
 [node name="StartingChamber" type="CSGCylinder3D" parent="World/Section1/Layout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.339243, 7.925015, 5.8785768)
 operation = 2
+calculate_tangents = false
 radius = 1.6948242
 height = 3.349929
 sides = 16
@@ -231,6 +240,7 @@ sides = 16
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.723189, 8.9587, -9.049553)
 material_override = SubResource("StandardMaterial3D_ryrav")
 operation = 2
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(38.7936, 5.6, 5.5)
@@ -239,6 +249,7 @@ size = Vector3(38.7936, 5.6, 5.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25534, 11.769106, -16.716927)
 material_override = SubResource("StandardMaterial3D_ryrav")
 operation = 2
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(22.800001, 11.2, 21.69646)
@@ -246,6 +257,7 @@ size = Vector3(22.800001, 11.2, 21.69646)
 [node name="CafeteriaWindowFrame" type="CSGBox3D" parent="World/Section1/Layout" groups=["Surface"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.19606, 9.652505, -28.907833)
 material_override = SubResource("StandardMaterial3D_ryrav")
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(21, 14, 1.614)
@@ -254,6 +266,7 @@ size = Vector3(21, 14, 1.614)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.18084, 9.68096, -29.389421)
 material_override = SubResource("StandardMaterial3D_ryrav")
 operation = 2
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(18.627386, 12.033212, 9.231509)
@@ -262,12 +275,14 @@ size = Vector3(18.627386, 12.033212, 9.231509)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25534, 4.570066, -21.264553)
 material_override = SubResource("StandardMaterial3D_ryrav")
 operation = 2
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(22.800001, 3.4468873, 12.601209)
 
 [node name="HallwayPortholeChute" type="CSGCylinder3D" parent="World/Section1/Layout"]
 transform = Transform3D(0, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, 0, 8.881784e-16, 9.503326, 9.021694, -9.018097)
+calculate_tangents = false
 radius = 3.0
 height = 2.1210938
 sides = 16
@@ -275,6 +290,7 @@ sides = 16
 [node name="HallwayPorthole" type="CSGCylinder3D" parent="World/Section1/Layout"]
 transform = Transform3D(0, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, 0, 8.881784e-16, 10.158844, 9.021694, -9.018097)
 operation = 2
+calculate_tangents = false
 radius = 2.2973633
 height = 3.432129
 sides = 16
@@ -492,6 +508,20 @@ cast_shadow = 0
 mesh = SubResource("BoxMesh_215e1")
 surface_material_override/0 = ExtResource("15_80cx4")
 
+[node name="OmniLight3D4" type="OmniLight3D" parent="World/Section1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6241181, 12.54784, -18.420477)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 5.0
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 15.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section1/Lights/OmniLight3D4"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488234, 0, 0, 0, 3.3426833, 0, 0.64505386, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
 [node name="OmniLight3D2" type="OmniLight3D" parent="World/Section1/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.113115, 11.140224, -9.084562)
 light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
@@ -506,14 +536,17 @@ cast_shadow = 0
 mesh = SubResource("BoxMesh_215e1")
 surface_material_override/0 = ExtResource("15_80cx4")
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="World/Section1/Lights"]
+[node name="OmniLight3D8" type="OmniLight3D" parent="World/Section1/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 16.653, -11.344132)
 light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
 light_energy = 3.0
 shadow_enabled = true
-omni_range = 30.0
+distance_fade_enabled = true
+distance_fade_begin = 100.0
+omni_range = 17.0
+omni_attenuation = 0.5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section1/Lights/OmniLight3D4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section1/Lights/OmniLight3D8"]
 transform = Transform3D(-6.318932e-08, 0, -3.3426833, 0, 0.25488234, 0, 1.445603, 0, -1.4611332e-07, 0, 0.645, 0)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_215e1")
@@ -524,7 +557,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 16.653, -20.018131)
 light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
 light_energy = 3.0
 shadow_enabled = true
-omni_range = 30.0
+distance_fade_enabled = true
+distance_fade_begin = 100.0
+omni_range = 17.0
+omni_attenuation = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section1/Lights/OmniLight3D5"]
 transform = Transform3D(-6.318932e-08, 0, -3.3426833, 0, 0.25488234, 0, 1.445603, 0, -1.4611332e-07, 0, 0.64505386, 0)
@@ -536,7 +572,10 @@ surface_material_override/0 = ExtResource("15_80cx4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.961464, 16.653, -11.344132)
 light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
 shadow_enabled = true
-omni_range = 30.0
+distance_fade_enabled = true
+distance_fade_begin = 100.0
+omni_range = 17.0
+omni_attenuation = 0.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section1/Lights/OmniLight3D6"]
 transform = Transform3D(-6.318932e-08, 0, -3.3426833, 0, 0.25488234, 0, 1.445603, 0, -1.4611332e-07, 0, 0.645, 0)
@@ -548,7 +587,10 @@ surface_material_override/0 = ExtResource("15_80cx4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.961464, 16.653, -20.018131)
 light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
 shadow_enabled = true
-omni_range = 30.0
+distance_fade_enabled = true
+distance_fade_begin = 100.0
+omni_range = 17.0
+omni_attenuation = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section1/Lights/OmniLight3D7"]
 transform = Transform3D(-6.318932e-08, 0, -3.3426833, 0, 0.25488234, 0, 1.445603, 0, -1.4611332e-07, 0, 0.64505386, 0)
@@ -575,6 +617,7 @@ surface_material_override/0 = ExtResource("15_80cx4")
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, -90.46221, 0, 2.8501205)
 layers = 3
 material_override = SubResource("StandardMaterial3D_eow3j")
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 collision_mask = 2
@@ -582,6 +625,7 @@ collision_mask = 2
 [node name="BigBox" type="CSGBox3D" parent="World/Section2/Layout" groups=["Surface"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.289364, 11.066981, -3.6643753)
 material_override = SubResource("StandardMaterial3D_ryrav")
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(74.1322, 32.95582, 50.087986)
@@ -589,6 +633,7 @@ size = Vector3(74.1322, 32.95582, 50.087986)
 [node name="BigBox3" type="CSGBox3D" parent="World/Section2/Layout" groups=["Surface"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.224503, 36.833046, -1.9885178)
 material_override = SubResource("StandardMaterial3D_ryrav")
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(23.413277, 29.582523, 20.877464)
@@ -596,99 +641,135 @@ size = Vector3(23.413277, 29.582523, 20.877464)
 [node name="BigBox2" type="CSGBox3D" parent="World/Section2/Layout" groups=["Surface"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.93729, 1.3530512, -1.615715)
 material_override = SubResource("StandardMaterial3D_ryrav")
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(43.534195, 27.236855, 76.82048)
 
 [node name="EntryChute" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(1.0765566, 0, 0, 0, 1.0765566, 0, 0, 0, 1.0765566, -59.51096, 3.8058681, -29.139366)
+calculate_tangents = false
 size = Vector3(9, 9, 2.293)
 
 [node name="EntryHall" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(1.0765566, 0, 0, 0, 1.0765566, 0, 0, 0, 1.0765566, -59.58728, 3.854632, -24.342522)
 operation = 2
+calculate_tangents = false
 size = Vector3(6, 6, 17.68942)
 
 [node name="MainRoom" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, -21.74105, 3.8960028, -18.161835)
 operation = 2
+calculate_tangents = false
 size = Vector3(15.610725, 11.916771, 32.00134)
 
 [node name="GravRoom" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, -19.499361, 3.8960028, 8.639694)
 operation = 2
+calculate_tangents = false
 size = Vector3(22.182528, 11.916771, 23.730743)
 
 [node name="ElevatorEntry" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 22.243238, 6.066782, -21.033852)
 operation = 2
+calculate_tangents = false
 size = Vector3(28.24762, 15.652599, 23.254087)
 
 [node name="EntryChute2" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, -39.317623, 3.876525, -18.07914)
+calculate_tangents = false
 size = Vector3(9, 9, 2.216)
 
 [node name="EntryHall2" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, -46.708107, 3.876525, -18.080223)
 operation = 2
+calculate_tangents = false
 size = Vector3(6, 6, 19.587828)
 
 [node name="FoyerChute" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, -4.6505504, 3.876525, -18.07914)
+calculate_tangents = false
 size = Vector3(9, 9, 2.216)
 
 [node name="FoyerChute2" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 9.770803, 3.876525, -18.07914)
+calculate_tangents = false
 size = Vector3(9, 9, 2.216)
 
 [node name="ElevatorChute" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 33.962776, 3.876525, -18.07914)
+calculate_tangents = false
 size = Vector3(9, 9, 2.216)
 
 [node name="FoyerHall" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 1.9681337, 3.8486137, -18.08995)
 operation = 2
+calculate_tangents = false
 size = Vector3(6, 6, 17.143112)
 
 [node name="FoyerHall2" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 36.539906, 3.8486137, -18.08995)
 operation = 2
+calculate_tangents = false
 size = Vector3(6, 6, 11.81629)
 
 [node name="SideChute" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(1.0765566, 0, -1.0658141e-14, 0, 1.0765566, 0, 1.0658141e-14, 0, 1.0765566, -19.34133, 3.876525, -10.078896)
+calculate_tangents = false
 size = Vector3(9, 9, 2.216)
 
 [node name="SideChute3" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(1.0765566, 0, -1.0658141e-14, 0, 1.0765566, 0, 1.0658141e-14, 0, 1.0765566, -19.34133, 3.876525, -2.9187775)
+calculate_tangents = false
 size = Vector3(9, 9, 2.216)
 
 [node name="SideHall" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(1.0765566, 0, -1.0658141e-14, 0, 1.0765566, 0, 1.0658141e-14, 0, 1.0765566, -19.309038, 3.876525, -4.2122726)
 operation = 2
+calculate_tangents = false
 size = Vector3(6, 6, 19.587828)
 
 [node name="SideChute2" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(1.0765566, 0, -1.0658141e-14, 0, 1.0765566, 0, 1.0658141e-14, 0, 1.0765566, -26.329172, 3.876525, -27.021297)
+calculate_tangents = false
 size = Vector3(9, 9, 2.6289961)
 
 [node name="SideHall2" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(1.0765566, 0, -1.0658141e-14, 0, 1.0765566, 0, 1.0658141e-14, 0, 1.0765566, -26.29688, 3.876525, -26.299232)
 operation = 2
+calculate_tangents = false
 size = Vector3(6, 6, 5.10717)
 
 [node name="Lights" type="Node3D" parent="World/Section2"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="World/Section2/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.06822, 9.5828705, -22.504286)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.06822, 9.5828705, -18.824297)
 light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
 light_energy = 16.0
+light_bake_mode = 1
 shadow_enabled = true
 distance_fade_enabled = true
-omni_range = 40.0
+omni_range = 25.0
+omni_attenuation = 0.7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Lights/OmniLight3D"]
 transform = Transform3D(1.5298231, 0, 0, 0, 0.25488234, 0, 0, 0, 3.3426833, 0, 0.64505386, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="World/Section2/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.06822, 5.6281805, -47.392487)
+light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
+light_energy = 5.958
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 17.187
+omni_attenuation = 0.8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Lights/OmniLight3D4"]
+transform = Transform3D(1.5298231, 0, 0, 0, 0.25488234, 0, 0, 0, 3.3426833, 0, 1.4203405, -1.3524208)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_215e1")
 surface_material_override/0 = ExtResource("15_80cx4")
@@ -699,7 +780,8 @@ light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
 light_energy = 16.0
 shadow_enabled = true
 distance_fade_enabled = true
-omni_range = 40.0
+omni_range = 30.0
+omni_attenuation = 0.7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Lights/OmniLight3D3"]
 transform = Transform3D(1.5298231, 0, 0, 0, 0.25488234, 0, 0, 0, 3.3426833, 0, 0.64505386, 0)
@@ -713,7 +795,8 @@ light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
 light_energy = 16.0
 shadow_enabled = true
 distance_fade_enabled = true
-omni_range = 40.0
+omni_range = 30.0
+omni_attenuation = 0.7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Lights/OmniLight3D2"]
 transform = Transform3D(1.5298231, 0, 0, 0, 0.25488234, 0, 0, 0, 3.3426833, 0, 0.64505386, 0)
@@ -721,27 +804,22 @@ cast_shadow = 0
 mesh = SubResource("BoxMesh_215e1")
 surface_material_override/0 = ExtResource("15_80cx4")
 
-[node name="PurpleLight1" type="OmniLight3D" parent="World/Section2/Lights"]
-transform = Transform3D(-8.742278e-08, -1, -4.3711392e-08, 4.3711392e-08, 4.371139e-08, -1, 1, -8.742278e-08, 4.371139e-08, -110.22634, 0.2924571, -16.553015)
-light_color = Color(0.29411766, 0.15294118, 0.5647059, 1)
-light_energy = 16.0
-omni_range = 40.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Lights/PurpleLight1"]
-transform = Transform3D(1.5298228, 0, -5.684342e-14, 1.4210855e-14, 0.2548823, -6.2658896e-14, -7.1054274e-15, -8.582138e-17, 16.396969, 0, 0.6450577, -4.4834414)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-surface_material_override/0 = SubResource("StandardMaterial3D_dhpj7")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Section2/Lights/PurpleLight1"]
-transform = Transform3D(1.1632864, 1.3810639e-08, 10.648978, 8.601994e-09, 0.2548823, -1.4759723e-06, -0.99354035, 1.837693e-08, 12.468353, -5.474245, 0.6460037, -8.51164)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Lights"]
+transform = Transform3D(-1.3374137e-07, -0.2548823, -7.167343e-07, 6.687069e-08, 1.11412595e-08, -16.396969, 1.5298228, -2.2282519e-08, 7.1673423e-07, -110.8714, 4.7758985, -16.553015)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_215e1")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_dhpj7")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/Section2/Lights/PurpleLight1"]
-transform = Transform3D(-1.1631304, 3.0753263e-08, 10.650939, 2.1199179e-07, 0.2548823, -3.861988e-07, -0.9937232, 1.8378259e-08, -12.466681, 5.2376757, 0.6460037, -8.396785)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Section2/Lights"]
+transform = Transform3D(-6.687069e-08, -0.2548823, 0, 0.9935404, -7.23567e-09, -12.468353, 1.1632864, -8.471879e-09, 10.648979, -110.872345, 8.804096, -22.02726)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_dhpj7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/Section2/Lights"]
+transform = Transform3D(-6.6870676e-08, -0.2548823, 1.1368684e-13, 0.99372315, -7.2369977e-09, 12.466681, -1.1631304, 8.470745e-09, 10.650938, -110.872345, 8.689241, -11.31534)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_215e1")
 skeleton = NodePath("")
@@ -874,6 +952,7 @@ surface_material_override/0 = ExtResource("30_dhpj7")
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, -90.46221, 0, 2.8501205)
 layers = 3
 material_override = SubResource("StandardMaterial3D_eow3j")
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 collision_mask = 2
@@ -881,193 +960,153 @@ collision_mask = 2
 [node name="BigBox" type="CSGBox3D" parent="World/Section3/Layout" groups=["Surface"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.78097, 20.595951, -19.170647)
 material_override = SubResource("StandardMaterial3D_ryrav")
+calculate_tangents = false
 use_collision = true
 collision_layer = 3
 size = Vector3(47.614754, 172.42102, 51.943493)
 
 [node name="CommandBall" type="CSGSphere3D" parent="World/Section3/Layout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.3811, 132.04448, -18.468132)
+calculate_tangents = false
 radius = 50.0
 smooth_faces = false
 
 [node name="ElevatorShaft" type="CSGCylinder3D" parent="World/Section3/Layout"]
 transform = Transform3D(0.9243863, 0, 0.3814576, 0, 1, 0, -0.3814576, 0, 0.9243863, 63.76782, 34.485733, -18.321442)
 operation = 2
+calculate_tangents = false
 radius = 21.0
 height = 129.08981
 smooth_faces = false
 
 [node name="ElevatorChute" type="CSGBox3D" parent="World/Section3/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 43.41252, 3.876525, -18.07914)
+calculate_tangents = false
 size = Vector3(9, 9, 3.58525)
 
 [node name="ElevatorHall" type="CSGBox3D" parent="World/Section3/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 41.181587, 3.8486137, -18.08995)
 operation = 2
+calculate_tangents = false
 size = Vector3(6, 6, 11.81629)
 
 [node name="OutsideChute" type="CSGBox3D" parent="World/Section3/Layout"]
 transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 63.30447, 86.576, -50.176144)
+calculate_tangents = false
 size = Vector3(8, 8, 26.50104)
 
 [node name="OutsideHall" type="CSGBox3D" parent="World/Section3/Layout"]
 transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 63.646587, 86.576, -48.634514)
 operation = 2
+calculate_tangents = false
 size = Vector3(6, 6, 30.714083)
 
 [node name="CommandCenter" type="CSGBox3D" parent="World/Section3/Layout"]
 transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 54.542534, 129.69348, -18.600662)
 operation = 2
+calculate_tangents = false
 size = Vector3(110.03641, 20.0484, 95.908485)
 
 [node name="OutsideChute2" type="CSGBox3D" parent="World/Section3/Layout"]
 transform = Transform3D(-1.0765566, 3.2083886e-08, 6.203169e-08, -6.203168e-08, -4.705778e-08, -1.0765566, -3.2083882e-08, -1.0765566, 4.7057785e-08, 63.30447, 106.31854, -16.713936)
+calculate_tangents = false
 size = Vector3(8, 8, 27.032913)
 
 [node name="OutsideHall2" type="CSGBox3D" parent="World/Section3/Layout"]
 transform = Transform3D(-1.0765566, 3.2083886e-08, 6.203169e-08, -6.203168e-08, -4.705778e-08, -1.0765566, -3.2083882e-08, -1.0765566, 4.7057785e-08, 63.646587, 108.06265, -16.713936)
 operation = 2
-size = Vector3(6, 6, 31.622124)
-
-[node name="OutsideChute3" type="CSGBox3D" parent="World/Section3/Layout"]
-transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 63.30447, 21.85835, 13.644608)
-size = Vector3(8, 8, 27.032913)
-
-[node name="OutsideHall3" type="CSGBox3D" parent="World/Section3/Layout"]
-transform = Transform3D(-1.0765566, 0, 9.411556e-08, 0, 1.0765566, 0, -9.411556e-08, 0, -1.0765566, 63.646587, 21.888365, 15.388718)
-operation = 2
+calculate_tangents = false
 size = Vector3(6, 6, 31.622124)
 
 [node name="Lights" type="Node3D" parent="World/Section3"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="World/Section3/Lights"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -72.06822, 55.144176, 85.0884)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -72.06822, 44.032475, 68.537254)
 light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
-light_energy = 3.0
-shadow_enabled = true
-omni_range = 40.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D"]
-transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-surface_material_override/0 = ExtResource("15_80cx4")
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="World/Section3/Lights"]
-transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, -72.06822, 55.144176, 47.952084)
-light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
-light_energy = 3.0
-shadow_enabled = true
-omni_range = 40.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D2"]
-transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-surface_material_override/0 = ExtResource("15_80cx4")
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="World/Section3/Lights"]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -53.446953, 55.144176, 66.019806)
-light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
-light_energy = 3.0
-shadow_enabled = true
-omni_range = 40.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D3"]
-transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-surface_material_override/0 = ExtResource("15_80cx4")
-
-[node name="OmniLight3D5" type="OmniLight3D" parent="World/Section3/Lights"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -72.06822, 23.611977, 85.0884)
-light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
-light_energy = 3.0
-shadow_enabled = true
-omni_range = 40.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D5"]
-transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-surface_material_override/0 = ExtResource("15_80cx4")
-
-[node name="OmniLight3D6" type="OmniLight3D" parent="World/Section3/Lights"]
-transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, -72.06822, 23.611977, 47.952084)
-light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
-light_energy = 3.0
-shadow_enabled = true
-omni_range = 40.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D6"]
-transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-surface_material_override/0 = ExtResource("15_80cx4")
-
-[node name="OmniLight3D7" type="OmniLight3D" parent="World/Section3/Lights"]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -53.446953, 23.611977, 66.019806)
-light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
-light_energy = 3.0
-shadow_enabled = true
-omni_range = 40.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D7"]
-transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-surface_material_override/0 = ExtResource("15_80cx4")
-
-[node name="OmniLight3D8" type="OmniLight3D" parent="World/Section3/Lights"]
-transform = Transform3D(1.3113416e-07, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, 1.3113416e-07, -5.732056e-15, -90.829, 55.144268, 66.02)
-light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
-light_energy = 3.0
-shadow_enabled = true
-omni_range = 40.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D8"]
-transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-surface_material_override/0 = ExtResource("15_80cx4")
-
-[node name="OmniLight3D9" type="OmniLight3D" parent="World/Section3/Lights"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -72.06822, 86.548, 85.0884)
-light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
-light_energy = 3.0
-shadow_enabled = true
-omni_range = 40.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D9"]
-transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-surface_material_override/0 = ExtResource("15_80cx4")
-
-[node name="OmniLight3D10" type="OmniLight3D" parent="World/Section3/Lights"]
-transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, -72.06822, 86.548, 47.90938)
-light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
-light_energy = 3.0
-shadow_enabled = true
-omni_range = 40.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D10"]
-transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-surface_material_override/0 = ExtResource("15_80cx4")
+light_energy = 10.0
+distance_fade_enabled = true
+distance_fade_begin = 100.0
+distance_fade_length = 20.0
+omni_range = 162.0
+omni_attenuation = 0.7
+omni_shadow_mode = 0
 
 [node name="OmniLight3D11" type="OmniLight3D" parent="World/Section3/Lights"]
 transform = Transform3D(-1, -8.742278e-08, 3.8213714e-15, -8.742278e-08, 1, 3.340749e-22, -3.8213714e-15, 0, -1, -72.06822, 134.96906, 59.82553)
 light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
 light_energy = 3.0
-shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 100.0
+distance_fade_length = 20.0
 omni_range = 40.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights/OmniLight3D11"]
 transform = Transform3D(1.5298231, 0, 0, 0, 0.25488237, 0, 0, -8.881784e-16, 11.333921, 0, 0.6450577, 0)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_215e1")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section3/Lights"]
+transform = Transform3D(1.5298231, 0, 0, 0, -1.1141261e-08, -11.333921, 0, 0.25488237, -4.9542143e-07, -72.06822, 55.144176, 85.73346)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("../OmniLight3D")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Section3/Lights"]
+transform = Transform3D(-1.5298231, -2.2282524e-08, 4.331112e-14, 0, -1.1141261e-08, -11.333921, 1.3374138e-07, -0.25488237, 4.9542143e-07, -72.06822, 55.144176, 47.307026)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/Section3/Lights"]
+transform = Transform3D(-6.687069e-08, 0.25488237, -4.9542143e-07, 0, -1.1141261e-08, -11.333921, -1.5298231, -1.1141262e-08, 2.165556e-14, -52.801895, 55.144176, 66.019806)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World/Section3/Lights"]
+transform = Transform3D(1.5298231, 0, 0, 0, -1.1141261e-08, -11.333921, 0, 0.25488237, -4.9542143e-07, -72.06822, 23.611977, 85.73346)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/Section3/Lights"]
+transform = Transform3D(-1.5298231, -2.2282524e-08, 4.331112e-14, 0, -1.1141261e-08, -11.333921, 1.3374138e-07, -0.25488237, 4.9542143e-07, -72.06822, 23.611977, 47.307026)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World/Section3/Lights"]
+transform = Transform3D(-6.687069e-08, 0.25488237, -4.9542143e-07, 0, -1.1141261e-08, -11.333921, -1.5298231, -1.1141262e-08, 2.165556e-14, -52.801895, 23.611977, 66.019806)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World/Section3/Lights"]
+transform = Transform3D(2.0061206e-07, -0.25488237, 4.9542143e-07, 0, -1.1141261e-08, -11.333921, 1.5298231, 3.3423785e-08, -6.4966675e-14, -91.47406, 55.144268, 66.02)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="World/Section3/Lights"]
+transform = Transform3D(1.5298231, 0, 0, 0, -1.1141261e-08, -11.333921, 0, 0.25488237, -4.9542143e-07, -72.06822, 86.548, 85.73346)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_80cx4")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="World/Section3/Lights"]
+transform = Transform3D(-1.5298231, -2.2282524e-08, 4.331112e-14, 0, -1.1141261e-08, -11.333921, 1.3374138e-07, -0.25488237, 4.9542143e-07, -72.06822, 86.548, 47.264324)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
 surface_material_override/0 = ExtResource("15_80cx4")
 
 [node name="Decor" type="Node3D" parent="World/Section3"]

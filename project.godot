@@ -98,8 +98,9 @@ common/max_physics_steps_per_frame=12
 jolt_physics_3d/simulation/velocity_steps=5
 3d/default_gravity=0.0
 3d/default_gravity_vector=Vector3(0, 0, 0)
-3d/default_linear_damp=0.5
+3d/default_linear_damp=0.0
 3d/default_angular_damp=0.5
+2d/default_linear_damp=0.0
 common/physics_interpolation=true
 
 [rendering]
@@ -108,4 +109,5 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
+limits/opengl/max_lights_per_object=16
 environment/defaults/default_clear_color=Color(0.047420602, 3.0585588e-06, 0.047419917, 1)
