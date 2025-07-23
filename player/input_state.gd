@@ -8,6 +8,7 @@ var movement_input: Vector3
 var roll_input: float
 var mouse_motion: Vector2
 var mouse_captured: bool
+var go_upright: bool
 
 func _ready() -> void:
     capture_mouse()
@@ -37,6 +38,7 @@ func _process(_delta: float) -> void:
 
     is_pressing_primary = Input.is_action_pressed("action_primary")
     is_pressing_secondary = Input.is_action_pressed("action_secondary")
+    go_upright = Input.is_action_pressed("go_upright")
     roll_input = Input.get_axis("roll_left", "roll_right")
     
 func reset() -> void:

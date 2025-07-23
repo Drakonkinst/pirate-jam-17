@@ -64,12 +64,9 @@ func _handle_hook_physics(source_pos: Vector3, delta: float):
         _hook_joint.set_param_x(Generic6DOFJoint3D.PARAM_LINEAR_UPPER_LIMIT, _rope_length)
         _hook_joint.set_param_y(Generic6DOFJoint3D.PARAM_LINEAR_UPPER_LIMIT, _rope_length)
         _hook_joint.set_param_z(Generic6DOFJoint3D.PARAM_LINEAR_UPPER_LIMIT, _rope_length)
-        if hook_target is Collidable:
-            var collidable := hook_target as Collidable
     else:
          # Pull towards target
         player.apply_central_force(to_direction * delta * max_pull_speed)
-        player.nearby_surface_detection.reset_surface_alignment()
         if hook_target is Collidable:
             var collidable := hook_target as Collidable
             collidable.apply_central_force(-to_direction * delta * max_pull_speed)

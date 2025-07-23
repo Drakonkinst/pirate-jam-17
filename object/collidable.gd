@@ -27,7 +27,7 @@ func _ready() -> void:
         unlock_timer.timeout.connect(_on_unlock_timer_timeout)
     
 func _rand_value() -> float:
-    return randf_range(-2.0, 2.0)
+    return randf_range(-0.25, 0.25)
     
 func _physics_process(delta: float) -> void:
     if type == Type.LIGHT:

@@ -485,7 +485,6 @@ initial_velocity = true
 
 [node name="Table2" parent="World/Section1/Objects" instance=ExtResource("11_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44.49088, 2.8466184, -22.151909)
-type = 0
 initial_velocity = true
 
 [node name="Cube" parent="World/Section1/Objects" instance=ExtResource("22_f1jbl")]
@@ -759,14 +758,13 @@ mesh = SubResource("BoxMesh_215e1")
 surface_material_override/0 = ExtResource("15_80cx4")
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="World/Section2/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.06822, 5.6281805, -47.392487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.06822, 5.6281805, -53.258213)
 light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
-light_energy = 5.958
+light_energy = 5.5
 light_bake_mode = 1
 shadow_enabled = true
 distance_fade_enabled = true
-omni_range = 17.187
-omni_attenuation = 0.8
+omni_range = 17.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Lights/OmniLight3D4"]
 transform = Transform3D(1.5298231, 0, 0, 0, 0.25488234, 0, 0, 0, 3.3426833, 0, 1.4203405, -1.3524208)
@@ -1276,6 +1274,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
 
 [node name="GrapplingHookController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true
-max_pull_speed = 300.0
+max_pull_speed = 175.0
 grappling_hook_range = 60.0
 player = NodePath("../Player")
