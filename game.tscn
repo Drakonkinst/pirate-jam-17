@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=46 format=3 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
@@ -27,11 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://cexj3a71mbxab" path="res://object/cube.tscn" id="22_f1jbl"]
 [ext_resource type="PackedScene" uid="uid://cbeowwo0akxat" path="res://object/fan/big_fan.tscn" id="25_i2p71"]
 [ext_resource type="PackedScene" uid="uid://c8xjginy5scfm" path="res://object/chair/hatch_door.tscn" id="25_xa8c5"]
-[ext_resource type="PackedScene" uid="uid://dtoyi8yc47pj2" path="res://libs/GLTF format/machine_barrelLarge.glb" id="26_bnpwn"]
-[ext_resource type="Script" uid="uid://bjjyuxneweyus" path="res://object/object_holder/object_holder.gd" id="26_xfvwf"]
+[ext_resource type="PackedScene" uid="uid://cj5q6ud8vce3x" path="res://object/object_holder/battery_holder.tscn" id="26_xfvwf"]
 [ext_resource type="PackedScene" uid="uid://dapmkwvp7pwmc" path="res://libs/GLB format/container-tall.glb" id="27_36jdj"]
 [ext_resource type="Script" uid="uid://cx4y6ch6s866t" path="res://object/collidable.gd" id="27_xfvwf"]
-[ext_resource type="Material" uid="uid://cyug0kdg7ptbq" path="res://object/object_holder/cool_energy.tres" id="30_dhpj7"]
+[ext_resource type="Material" uid="uid://d377bgduo1x8s" path="res://object/object_holder/backlight.tres" id="31_7knny"]
 
 [sub_resource type="Environment" id="Environment_80nbo"]
 
@@ -89,26 +88,9 @@ size = Vector3(1.2247314, 0.302948, 2.7287445)
 
 [sub_resource type="BoxMesh" id="BoxMesh_215e1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhpj7"]
-transparency = 1
-albedo_color = Color(0.29411766, 0.15294118, 0.5647059, 1)
-emission_enabled = true
-emission = Color(0.29411766, 0.15294118, 0.5647059, 1)
-emission_energy_multiplier = 3.49
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xfvwf"]
-size = Vector3(3.5472717, 3.314209, 3.3534546)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bnpwn"]
-radius = 0.7739258
-height = 2.9575195
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_dhpj7"]
-radius = 2.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_xfvwf"]
-radius = 1.95
-height = 4.0
+radius = 1.084
+height = 4.141
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_80nbo")
@@ -165,12 +147,15 @@ shadow_enabled = true
 directional_shadow_mode = 0
 sky_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("3_fc0e3")]
-unique_name_in_owner = true
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 3.8636532, 7.410634, 5.18005)
-
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 3.8636532, 7.410634, 5.18005)
+
+[node name="Player" parent="." instance=ExtResource("3_fc0e3")]
+unique_name_in_owner = true
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -95.81952, 1.4235408, -16.793362)
+
+[node name="DebugSpawn_Battery" type="Marker3D" parent="."]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -95.81952, 1.4235408, -16.793362)
 
 [node name="World" type="Node3D" parent="."]
 
@@ -638,12 +623,12 @@ collision_layer = 3
 size = Vector3(23.413277, 29.582523, 20.877464)
 
 [node name="BigBox2" type="CSGBox3D" parent="World/Section2/Layout" groups=["Surface"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.93729, 1.3530512, -1.615715)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.93729, 2.2086325, -1.615715)
 material_override = SubResource("StandardMaterial3D_ryrav")
 calculate_tangents = false
 use_collision = true
 collision_layer = 3
-size = Vector3(43.534195, 27.236855, 76.82048)
+size = Vector3(43.534195, 28.948017, 76.82048)
 
 [node name="EntryChute" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(1.0765566, 0, 0, 0, 1.0765566, 0, 0, 0, 1.0765566, -59.51096, 3.8058681, -29.139366)
@@ -673,6 +658,11 @@ transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566
 operation = 2
 calculate_tangents = false
 size = Vector3(28.24762, 15.652599, 23.254087)
+
+[node name="ElevatorEntry2" type="CSGBox3D" parent="World/Section2/Layout"]
+transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, 21.914112, 12.703372, -32.465393)
+calculate_tangents = false
+size = Vector3(7.0103836, 3.323306, 6.614773)
 
 [node name="EntryChute2" type="CSGBox3D" parent="World/Section2/Layout"]
 transform = Transform3D(-4.705778e-08, 0, -1.0765566, 0, 1.0765566, 0, 1.0765566, 0, -4.705778e-08, -39.317623, 3.876525, -18.07914)
@@ -802,27 +792,6 @@ cast_shadow = 0
 mesh = SubResource("BoxMesh_215e1")
 surface_material_override/0 = ExtResource("15_80cx4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Lights"]
-transform = Transform3D(-1.3374137e-07, -0.2548823, -7.167343e-07, 6.687069e-08, 1.11412595e-08, -16.396969, 1.5298228, -2.2282519e-08, 7.1673423e-07, -110.8714, 4.7758985, -16.553015)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_dhpj7")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Section2/Lights"]
-transform = Transform3D(-6.687069e-08, -0.2548823, 0, 0.9935404, -7.23567e-09, -12.468353, 1.1632864, -8.471879e-09, 10.648979, -110.872345, 8.804096, -22.02726)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_dhpj7")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/Section2/Lights"]
-transform = Transform3D(-6.6870676e-08, -0.2548823, 1.1368684e-13, 0.99372315, -7.2369977e-09, 12.466681, -1.1631304, 8.470745e-09, 10.650938, -110.872345, 8.689241, -11.31534)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_215e1")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_dhpj7")
-
 [node name="Decor" type="Node3D" parent="World/Section2"]
 
 [node name="HatchDoor" parent="World/Section2/Decor" node_paths=PackedStringArray("toggling_buttons") instance=ExtResource("25_xa8c5")]
@@ -886,63 +855,79 @@ transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371,
 initial_state = 2
 unpress_time = 1.0
 
-[node name="BatteryHolder" type="Node3D" parent="World/Section2/Decor" node_paths=PackedStringArray("attract_area", "anchor_point")]
+[node name="BatteryHolder" parent="World/Section2/Decor" node_paths=PackedStringArray("lights") instance=ExtResource("26_xfvwf")]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -106.15148, -2.8207395, -16.793362)
-script = ExtResource("26_xfvwf")
-attract_area = NodePath("Area3D")
-anchor_point = NodePath("Marker3D")
+lights = [NodePath("../ActivationLights/MeshInstance3D"), NodePath("../ActivationLights/MeshInstance3D2"), NodePath("../ActivationLights/MeshInstance3D3")]
 
-[node name="machine_barrelLarge2" parent="World/Section2/Decor/BatteryHolder" instance=ExtResource("26_bnpwn")]
-transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, -11.007805, 0, -8.277988)
+[node name="ActivationLights" type="Node3D" parent="World/Section2/Decor"]
 
-[node name="machine_barrelLarge3" parent="World/Section2/Decor/BatteryHolder" instance=ExtResource("26_bnpwn")]
-transform = Transform3D(5.5, 0, 0, 0, -5.5, 8.304769e-07, 0, -8.304769e-07, -5.5, -11.007805, 9.773501, 8.255836)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Decor/ActivationLights"]
+transform = Transform3D(-1.3374137e-07, -0.2548823, -7.167343e-07, 6.687069e-08, 1.11412595e-08, -16.396969, 1.5298228, -2.2282519e-08, 7.1673423e-07, -110.8714, 4.7758985, -16.553015)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("31_7knny")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Section2/Decor/BatteryHolder"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Section2/Decor/ActivationLights"]
+transform = Transform3D(-6.687069e-08, -0.2548823, 0, 0.9935404, -7.23567e-09, -12.468353, 1.1632864, -8.471879e-09, 10.648979, -110.872345, 8.804096, -22.02726)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("31_7knny")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section2/Decor/BatteryHolder/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.584, 0)
-shape = SubResource("BoxShape3D_xfvwf")
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/Section2/Decor/ActivationLights"]
+transform = Transform3D(-6.6870676e-08, -0.2548823, 1.1368684e-13, 0.99372315, -7.2369977e-09, 12.466681, -1.1631304, 8.470745e-09, 10.650938, -110.872345, 8.689241, -11.31534)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("31_7knny")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Section2/Decor/BatteryHolder/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.116, 0)
-shape = SubResource("BoxShape3D_xfvwf")
+[node name="BatteryHolder2" parent="World/Section2/Decor" node_paths=PackedStringArray("lights") instance=ExtResource("26_xfvwf")]
+transform = Transform3D(-1.4, 0, 1.2239188e-07, 0, 1.4, 0, -1.2239188e-07, 0, -1.4, -58.86048, -2.8207395, 24.780504)
+lights = [NodePath("../ActivationLights2/MeshInstance3D"), NodePath("../ActivationLights2/MeshInstance3D2"), NodePath("../ActivationLights2/MeshInstance3D3")]
 
-[node name="Battery" type="RigidBody3D" parent="World/Section2/Decor/BatteryHolder" node_paths=PackedStringArray("unlock_timer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.984649, 0)
+[node name="ActivationLights2" type="Node3D" parent="World/Section2/Decor"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -165.01196, 0, 7.987133)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Decor/ActivationLights2"]
+transform = Transform3D(-1.3374138e-07, -0.2548823, -8.440814e-07, 6.687069e-08, 1.11412595e-08, -19.310331, 1.5298228, -2.2282519e-08, 8.440813e-07, -110.8714, 4.7758985, -16.553013)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("31_7knny")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Section2/Decor/ActivationLights2"]
+transform = Transform3D(-6.6622796e-08, -0.2548823, 0, 0.9898573, -7.23567e-09, -12.522471, 1.158974, -8.471881e-09, 10.6952, -110.872345, 8.804096, -22.02726)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("31_7knny")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World/Section2/Decor/ActivationLights2"]
+transform = Transform3D(-6.6870676e-08, -0.2548823, 1.1368684e-13, 0.99372315, -7.2369977e-09, 12.466681, -1.1631304, 8.470745e-09, 10.650938, -110.872345, 8.689241, -11.31534)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_215e1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("31_7knny")
+
+[node name="Battery" type="RigidBody3D" parent="World/Section2/Decor" node_paths=PackedStringArray("unlock_timer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.15148, 3.6143155, -16.793362)
 collision_layer = 9
-mass = 0.694
+mass = 0.421
 script = ExtResource("27_xfvwf")
 initial_velocity = false
 can_lock_in = true
 unlock_timer = NodePath("Timer")
 
-[node name="container-tall2" parent="World/Section2/Decor/BatteryHolder/Battery" instance=ExtResource("27_36jdj")]
-transform = Transform3D(2.8655677, 0, 0, 0, 2.8655677, 0, 0, 0, 2.8655677, 0.0036621094, -1.3366141, -0.0054893494)
+[node name="container-tall2" parent="World/Section2/Decor/Battery" instance=ExtResource("27_36jdj")]
+transform = Transform3D(4.012, 0, 0, 0, 4.012, 0, 0, 0, 4.012, 0.0036621094, -1.3366141, -0.0054893494)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section2/Decor/BatteryHolder/Battery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17744446, -0.12524486, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section2/Decor/Battery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012039185, 0.5493331, 0)
 shape = SubResource("CapsuleShape3D_bnpwn")
 
-[node name="Timer" type="Timer" parent="World/Section2/Decor/BatteryHolder/Battery"]
+[node name="Timer" type="Timer" parent="World/Section2/Decor/Battery"]
 one_shot = true
-
-[node name="Area3D" type="Area3D" parent="World/Section2/Decor/BatteryHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.671257, 0)
-collision_layer = 0
-collision_mask = 8
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section2/Decor/BatteryHolder/Area3D"]
-shape = SubResource("SphereShape3D_dhpj7")
-
-[node name="Marker3D" type="Marker3D" parent="World/Section2/Decor/BatteryHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Section2/Decor/BatteryHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.869064, 0)
-mesh = SubResource("SphereMesh_xfvwf")
-surface_material_override/0 = ExtResource("30_dhpj7")
 
 [node name="Section3" type="Node3D" parent="World"]
 
@@ -1274,6 +1259,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
 
 [node name="GrapplingHookController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true
-max_pull_speed = 175.0
 grappling_hook_range = 60.0
 player = NodePath("../Player")

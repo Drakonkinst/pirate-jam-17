@@ -43,6 +43,8 @@ func _physics_process(delta: float) -> void:
     
 func set_lock_state(state: LockState) -> void:
     lock_state = state
+    freeze = state == LockState.LOCKED
+    print("FREEZE ", freeze)
 
 func on_attach() -> void:
     if can_lock_in:

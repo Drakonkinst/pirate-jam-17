@@ -131,5 +131,11 @@ func _set_attachment_type(type: AttachmentType) -> void:
 func _set_hook_state(state: HookState) -> void:
     if state != _hook_state:
         _hook_state = state
+        # Apply linear damping when using hook
+        if _hook_state == HookState.LAUNCHED:
+            player.linear_damp = 0.5
+        else:
+            player.linear_damp = 0.0
         hook_state_changed.emit(_hook_state)
+        
     

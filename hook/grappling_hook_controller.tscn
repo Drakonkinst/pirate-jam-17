@@ -23,12 +23,6 @@ unique_name_in_owner = true
 
 [node name="HookJoint" type="Generic6DOFJoint3D" parent="."]
 unique_name_in_owner = true
-linear_limit_x/softness = 16.0
-linear_limit_x/damping = 3.0
-linear_limit_y/softness = 16.0
-linear_limit_y/damping = 3.0
-linear_limit_z/softness = 16.0
-linear_limit_z/damping = 3.0
 linear_motor_x/target_velocity = 10.0
 linear_motor_x/force_limit = 10.0
 linear_motor_y/target_velocity = 10.0
