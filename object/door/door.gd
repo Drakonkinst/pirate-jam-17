@@ -32,7 +32,7 @@ func _ready():
 func open():
     _is_open = true
     collider.disabled = true
-    if closing_timer != null:
+    if closing_timer != null and closes_after > 0:
         closing_timer.start(closes_after)
     
 func close():

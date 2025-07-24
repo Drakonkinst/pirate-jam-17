@@ -22,4 +22,3 @@ func _process(_delta: float) -> void:
             lights[i].hide()
         else:
             lights[i].show()
-    print("Hiding ", furthest_index)

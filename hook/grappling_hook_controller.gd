@@ -60,7 +60,6 @@ func _handle_hook_physics(source_pos: Vector3, delta: float):
         # The rope can get shorter, but not longer
         var dist := to_vector.length()
         _rope_length = min(dist, _rope_length)
-        print(_rope_length)
         var half_length := _rope_length / 2
         _hook_joint.global_position = player.global_position + to_direction * half_length
         # Make rigid because setting it to anything else doesn't work lol
