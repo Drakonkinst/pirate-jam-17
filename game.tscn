@@ -1,7 +1,8 @@
-[gd_scene load_steps=50 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=51 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
+[ext_resource type="Script" uid="uid://btcpo8dfl1byv" path="res://level_manager.gd" id="2_082n1"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://crboolrfwew5k" path="res://ui/crosshair/0381.png" id="2_iotsf"]
 [ext_resource type="PackedScene" uid="uid://do2ht3l1tvwuj" path="res://player/player.tscn" id="3_fc0e3"]
@@ -133,7 +134,23 @@ _surfaces = [{
 [node name="Game" type="Node3D"]
 script = ExtResource("1_80nbo")
 
+[node name="LevelManager" type="Node3D" parent="." node_paths=PackedStringArray("section_points", "lights", "player")]
+script = ExtResource("2_082n1")
+section_points = [NodePath("Section1"), NodePath("Section2"), NodePath("Section3")]
+lights = [NodePath("../World/Section1/Lights"), NodePath("../World/Section2/Lights"), NodePath("../World/Section3/Lights")]
+player = NodePath("../Player")
+
+[node name="Section1" type="Marker3D" parent="LevelManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.961521, 0, -18.825111)
+
+[node name="Section2" type="Marker3D" parent="LevelManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.09706, 0, -26.343056)
+
+[node name="Section3" type="Marker3D" parent="LevelManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.097824, 0, 68.03074)
+
 [node name="LightmapGI" type="LightmapGI" parent="."]
+interior = true
 light_data = ExtResource("2_7knny")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -183,6 +200,7 @@ environment = SubResource("Environment_80nbo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.5299363, 0.6961539, 0.48429063, 0.6103557, -0.08337184, 0.7877279, 0.5887561, 0.71303505, -0.3807197, 35.426445, 53.04591, -154.83527)
+light_color = Color(1, 0.972549, 1, 1)
 light_energy = 2.0
 shadow_enabled = true
 directional_shadow_mode = 0
@@ -1049,16 +1067,17 @@ mesh = SubResource("ArrayMesh_xex6t")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -72.06822, 44.032475, 68.537254)
 light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
 light_energy = 11.835
-distance_fade_enabled = true
+light_bake_mode = 1
 distance_fade_begin = 150.0
 distance_fade_length = 20.0
 omni_range = 162.0
-omni_attenuation = 0.7
+omni_attenuation = 0.4
 
 [node name="OmniLight3D11" type="OmniLight3D" parent="World/Section3/Lights"]
 transform = Transform3D(-1, -8.742278e-08, 3.8213714e-15, -8.742278e-08, 1, 3.340749e-22, -3.8213714e-15, 0, -1, -72.06822, 139.72011, 66.27731)
 light_color = Color(0.99576837, 0.9386797, 0.6599941, 1)
 light_energy = 3.0
+light_bake_mode = 1
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 100.0
