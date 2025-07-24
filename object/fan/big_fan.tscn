@@ -45,6 +45,7 @@ collider = NodePath("Area3D/CollisionShape3D")
 
 [node name="fan" parent="." instance=ExtResource("2_wwfh7")]
 transform = Transform3D(1.6226445, 0, 0, 0, 1.6226445, 0, 0, 0, 1.6226445, 0, 0, 0)
+visible = false
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 4
