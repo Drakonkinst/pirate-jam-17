@@ -13,10 +13,9 @@ metallic = 1.0
 
 [node name="Cube" type="RigidBody3D"]
 collision_layer = 5
-mass = 0.1
+mass = 0.15
 script = ExtResource("1_26cwc")
 type = 1
-initial_velocity = null
 
 [node name="CubeFace" parent="." instance=ExtResource("2_jtsoy")]
 transform = Transform3D(0.23, 0, 0, 0, -1.0053619e-08, -0.23, 0, 0.23, -1.0053619e-08, 0, 0, 0.53)

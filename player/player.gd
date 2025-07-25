@@ -13,6 +13,8 @@ enum MovementMode { THRUST, ROLL }
 @onready var nearby_surface_detection: NearbySurfaceDetection = %NearbySurfaceDetection
 
 var movement_mode: MovementMode = MovementMode.ROLL
+var affected_fans: Dictionary[int, bool]
+
 var _head_x_rotation: float
 
 func _ready() -> void:

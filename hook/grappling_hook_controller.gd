@@ -83,6 +83,8 @@ func _on_hook_launch_cooldown_timeout() -> void:
 func _on_hook_failed_cooldown_timeout() -> void:
     _retract_hook()
 
+func is_launched() -> bool:
+    return _hook_state == HookState.LAUNCHED
 
 func _launch_hook() -> void:
     if player.hook_raycast.is_colliding():

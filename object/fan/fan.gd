@@ -34,6 +34,7 @@ func _physics_process(delta: float) -> void:
     if not enabled:
         return
     var overlapping := affects_area.get_overlapping_bodies()
+    var hitting_player := false
     for node in overlapping:
         if node is RigidBody3D:
             var rb := node as RigidBody3D
@@ -42,6 +43,13 @@ func _physics_process(delta: float) -> void:
                 var dist_sq := node.global_position.distance_squared_to(global_position)
                 force /= dist_sq
             rb.apply_central_force(global_transform.basis.y * force * delta)
+            if node is Player:
+                hitting_player = true
+    if hitting_player:
+        Global.game.player.affected_fans[get_instance_id()] = true
+    else:
+        Global.game.player.affected_fans.erase(get_instance_id())
+        
             
 func enable() -> void:
     enabled = true

@@ -45,6 +45,9 @@ func update(player: Player, delta: float) -> void:
     else:
         _visual.hide()
 
+func is_aligned() -> bool:
+    return _nearby_surface_vector != Vector3.ZERO
+
 func _on_surface_detection_timer_timeout() -> void:
     _nearby_surface_vector = Vector3.ZERO
     

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=59 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://c4875hllppr0h" path="res://ui/theme.tres" id="4_l1i01"]
 [ext_resource type="Texture2D" uid="uid://s68ydljo1fu0" path="res://world/placeholder_orange.png" id="5_eow3j"]
 [ext_resource type="Texture2D" uid="uid://uwdutmf0t6p5" path="res://ui/crosshair/0382.png" id="5_iu0sx"]
+[ext_resource type="Script" uid="uid://chuuv2u71vd1a" path="res://ui/hud.gd" id="5_r62pu"]
 [ext_resource type="PackedScene" uid="uid://dr2ayqxiwwccw" path="res://hook/grappling_hook_controller.tscn" id="5_ryrav"]
 [ext_resource type="Texture2D" uid="uid://dn57kpitlvnh2" path="res://ui/crosshair/0383.png" id="6_4v2jo"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="7_j5wjh"]
@@ -176,7 +177,7 @@ light_data = ExtResource("2_7knny")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="HUD" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -185,8 +186,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("4_l1i01")
+script = ExtResource("5_r62pu")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="TEMP_BACKGROUND" type="TextureRect" parent="CanvasLayer/HUD"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -196,7 +198,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_l1i01")
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -210,41 +212,45 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Crosshair" type="TextureRect" parent="CanvasLayer/Control/CenterContainer"]
-modulate = Color(0.92156863, 0.8862745, 0.7882353, 1)
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer/HUD/CenterContainer"]
+modulate = Color(0.8156863, 0.7529412, 0.5764706, 1)
 layout_mode = 2
 texture = SubResource("AnimatedTexture_r62pu")
 stretch_mode = 3
 script = ExtResource("8_4v2jo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HUD"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.529321
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.5694444
 offset_left = -214.0
 offset_top = 40.0
 offset_right = 215.0
 offset_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="CrosshairPromptPrimary" type="RichTextLabel" parent="CanvasLayer/HUD/VBoxContainer"]
+unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
 bbcode_enabled = true
-text = "[b]Lock Tether[/b]"
+text = "[b][img]res://ui//mouse_right_outline.png[/img]Lock Tether[/b]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 custom_effects = [null]
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="CrosshairPromptSecondary" type="RichTextLabel" parent="CanvasLayer/HUD/VBoxContainer"]
+unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
+bbcode_enabled = true
 text = "DAMAGED - CANNOT REPAIR"
 fit_content = true
 scroll_active = false
@@ -607,7 +613,6 @@ initial_velocity = true
 
 [node name="Cube" parent="World/Section1/Objects" instance=ExtResource("22_f1jbl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14141881, 10.115524, -15.348499)
-initial_velocity = true
 
 [node name="Lights" type="Node3D" parent="World/Section1"]
 

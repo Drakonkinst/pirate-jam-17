@@ -39,6 +39,8 @@ func _set_state(state: State) -> void:
     elif _state == State.DISABLED:
         presser.set_surface_override_material(0, disabled_material)
 
+func get_state() -> State:
+    return _state
 
 func _process(delta: float) -> void:
     var target_pos := _origin + pressed_offset if _state != State.ENABLED else _origin

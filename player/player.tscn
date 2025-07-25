@@ -44,7 +44,6 @@ script = ExtResource("2_hqtel")
 [node name="NearbySurfaceDetection" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_sweqy")
-always_align_upwards = true
 
 [node name="SurfaceDetectionTimer" type="Timer" parent="NearbySurfaceDetection"]
 unique_name_in_owner = true
