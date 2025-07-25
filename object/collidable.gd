@@ -28,6 +28,7 @@ func _ready() -> void:
         unlock_timer.timeout.connect(_on_unlock_timer_timeout)
     linear_damp_mode = RigidBody3D.DampMode.DAMP_MODE_REPLACE
     linear_damp = 0.0
+    set_collision_layer_value(3, true)
     
 func _rand_value() -> float:
     return randf_range(-0.25, 0.25)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=95 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
@@ -61,6 +61,7 @@
 [ext_resource type="PackedScene" uid="uid://c4mx12bl5ppx4" path="res://libs/gtlf/Wall_Display_Off.glb" id="57_vyqle"]
 [ext_resource type="PackedScene" uid="uid://renj8w6243o1" path="res://libs/GLTF format/satelliteDish.glb" id="59_bqa6y"]
 [ext_resource type="PackedScene" uid="uid://lwtqhnnfdqom" path="res://libs/GLTF format/gate_complex.glb" id="60_bqa6y"]
+[ext_resource type="PackedScene" uid="uid://b67aig5n8rwmm" path="res://libs/gtlf/Ramp_Orange.glb" id="62_du4n2"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_l1i01"]
 
@@ -167,6 +168,48 @@ _surfaces = [{
 "vertex_count": 523,
 "vertex_data": PackedByteArray("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AAAAgP9//78AAACA/3//vwAAAID/f/+///////9/AID//////38AgP//////fwCAAIAAAAAA/78AgAAAAAD/vwCAAAAAAP+///////9/AID//////38AgAAAAID/f/+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwAAAID/f/+//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID//////38AgP//////fwCA//////9/AID//////38AgP//AID/f/+///8AgP9//7///wCA/3//v///AID/f/+///8AgP9//7///wCA/3//v///AID/f/+///8AgP9//78AgAAAAAD/v///AID/f/+///8AgP9//7//f/9//38AgP9//3//fwCAzRMZNq9RDLPNExk2r1EMs80TGTavUQyzzRMZNq9RDLPxMwYmdz4uxPEzBiZ3Pi7E8TMGJnc+LsRUFlZT8mTOx1QWVlPyZM7HVBZWU/JkzsdUFlZT8mTOx1QWVlPyZM7HcDhwOCVRJdFwOHA4JVEl0XA4cDglUSXR8TMGJnc+LsRwOHA4JVEl0XA4cDglUSXRzRPlya9RGaTNE+XJr1EZpM0T5cmvURmkzRPlya9RGaTxM/jZGTbDoPEz+NkZNsOg8TP42Rk2w6BUFqis8mR4slQWqKzyZHiyVBaorPJkeLJUFqis8mR4slQWqKzyZHiy8TP42Rk2w6BvOI7HKkuqqW84jscqS6qpbziOxypLqqlvOI7HKkuqqVQWVBbyZAybVBZUFvJkDJtUFlQW8mQMm/EzBiZ3Pi7EcDgeDypLvrBwOB4PKku+sHA4Hg8qS76wcDgeDypLvrBUFlQW8mQMm1QWVBbyZAybcDgeDypLvrBUFqrpVFWFjVQWqulUVYWNVBaq6VRVhY1UFqrpVFWFjVQWqulUVYWNcDjf8NkubJdwON/w2S5sl3A43/DZLmyXcDjf8NkubJeJX2XmDBt4solfZeYMG3iyiV9l5gwbeLKJXyL55AzArYlfIvnkDMCtiV8i+eQMwK3uW/bt/RRzru5b9u39FHOu7lv27f0Uc66pLKppApOAyaksqmkCk4DJqSyqaQKTgMmpLKppApOAyaksqmkCk4DJj0ePR9RY1NiPR49H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AAD/vwCAAAAAAP+////pv6mquKoAgAAAAAD/vwCAAAAAAP+/AIAAAAAA/78AgAAAAAD/vwCAAAAAAP+/AID//wAA/78AgP//AAD/v9R//38qgBWA6j//f6mquKrqP/9/qaq4quo//3+pqriqAID//wAA/78AgP//AAD/vwAAKoDUf/+/AAAqgNR//78AACqA1H//vwAAFMBVVZuqAAAUwFVVm6oAABTAVVWbqgCAAAAAAP+/AIAAAAAA/78AgAAAAAD/vwCAAAAAAP+/AIAAAAAA/7/qP/9/qaq4qgAAKoDUf/+////T/yqAFYAAgAAAAAD/vwCAAAAAAP+/AAAUwFVVm6oAgAAAAAD/vwCAAAAAAP+/AIAAAAAA/78AgAAAAAD/vwCAAAAAAP+///////9/AID//////38AgP//////fwCA//////9/AIAAgP//AAD/vwCA//8AAP+/AID//wAA/7///wCA/3//v///AID/f/+///8AgP9//7///wCA/3//v///AID/f/+///8AgP9//78AgAAAAAD/vwCA//8AAP+//3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID//wCA/3//v///AID/f/+/AID//wAA/78AgP//AAD/vwCA//8AAP+//3//f/9/AID/f/9//38AgP9//3//fwCAAIAAAAAA/78AgAAAAAD/vwCAAAAAAP+//3//f/9/AIAAgP//AAD/v///////fwCA//////9/AID//////38AgACAAAAAAP+///////9/AIAAgAAAAAD/vwCAAAAAAP+/AIAAAAAA/78AgP//AAD/vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCAAAAAAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/78AgAAAAAD/vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AID//wAA/78AgAAAAAD/vwCAAAAAAP+/AIAAAAAA/78AgAAAAAD/vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCAAAAAAP+/AIAAAAAA/78AgP//AAD/vwCAAAAAAP+/AID//wAA/78AgP//AAD/vwCAAAAAAP+/AID//wAA/78AgAAAAAD/vwCAAAAAAP+/AIAAAAAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/78AgAAAAAD/vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCAAAAAAP+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AIAAAAAA/78AgAAAAAD/vwCAAAAAAP+/AIAAAAAA/7///////38AgP//////fwCA//////9/AIAAAACA/3//vwAAAID/f/+/AAAAgP9//78AgP//AAD/vwCA//8AAP+/AID//wAA/7///////38AgP//////fwCA//////9/AIAAgP//AAD/vwCAAAAAAP+/AAAAgP9//78AgAAAAAD/v/9//3//fwCA/3//f/9/AID/f/9//38AgAAAAID/f/+/AID//wAA/7//f/9//38AgP9//3//fwCA/3//f/9/AIAAgP//AAD/v///////fwCAAIAAAAAA/7///wCA/3//v///AID/f/+///8AgP9//78AgP//AAD/v///////fwCA//8AgP9//7///wCA/3//v///AID/f/+/AIAAAAAA/7//f/9//38AgP//AID/f/+//3//f/9/AIAAgP//AAD/v///AID/f/+//v//f/9//7/+//9//3//v/7//3//f/+//3//f/9/AID/f/9//38AgP9//3//fwCA//////9/AID//////38AgP//////fwCA/v//f/9//7//f/9//38AgAAAAID/f/+/AAAAgP9//78AAACA/3//v///////fwCAAAAAgP9//78=")
 }]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_avmo2"]
+size = Vector3(3.9587479, 1.9550781, 1.4329224)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jo4nb"]
+size = Vector3(2.689, 3.333, 0.606)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56gn1"]
+size = Vector3(2.1396484, 2.0374756, 0.91970825)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ple6s"]
+size = Vector3(4.302185, 7.939453, 2.3718262)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vyqle"]
+size = Vector3(1.4518127, 0.9375, 0.6053467)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_baljx"]
+size = Vector3(5.1604614, 1.4320068, 1.8952637)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2ssd"]
+size = Vector3(3.8777618, 1.4320068, 1.4759521)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7noa1"]
+size = Vector3(2.8742867, 0.50653076, 2.7558289)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ra4rb"]
+size = Vector3(1.6596069, 3.215454, 1.7285767)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xoeau"]
+size = Vector3(1.3337402, 2.3598633, 0.1428833)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6qn5j"]
+size = Vector3(3.977295, 5.3553467, 2.2996826)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wj41c"]
+size = Vector3(0.8993988, 1.5056152, 0.32452393)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bqa6y"]
+size = Vector3(3.009369, 12.578491, 13.22023)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_du4n2"]
+size = Vector3(5.4088135, 1, 1)
 
 [node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller")]
 script = ExtResource("1_80nbo")
@@ -620,51 +663,39 @@ transform = Transform3D(0, 0, 1.0000001, -8.267889, -4.6272268e-07, 0, 3.6140088
 
 [node name="Chair" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -20.27723)
-initial_velocity = true
 
 [node name="Chair2" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -22.208595)
-initial_velocity = true
 
 [node name="Chair3" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.469578, 2.843791, -24.20399)
-initial_velocity = true
 
 [node name="Chair4" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -24.182652)
-initial_velocity = true
 
 [node name="Chair5" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -22.251286)
-initial_velocity = true
 
 [node name="Chair6" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.983356, 2.843791, -20.25589)
-initial_velocity = true
 
 [node name="Chair7" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -20.27723)
-initial_velocity = true
 
 [node name="Chair8" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -22.208595)
-initial_velocity = true
 
 [node name="Chair9" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -34.8367, 2.843791, -24.20399)
-initial_velocity = true
 
 [node name="Chair10" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -24.182652)
-initial_velocity = true
 
 [node name="Chair11" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -22.251286)
-initial_velocity = true
 
 [node name="Chair12" parent="World/Section1/Objects" instance=ExtResource("9_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -39.35048, 2.843791, -20.25589)
-initial_velocity = true
 
 [node name="Table" parent="World/Section1/Objects" instance=ExtResource("11_iotsf")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -37.07767, 2.8466184, -22.151909)
@@ -1613,6 +1644,20 @@ unpress_time = 1.0
 [node name="SciFi Assets" parent="World/Section3/Decor" instance=ExtResource("43_t46w6")]
 transform = Transform3D(-1.431985e-07, 0, 3.276, 0, 2.332, 0, -3.276, 0, -1.431985e-07, -44.041283, 118.9151, 65.87223)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18026924, 0.4775467, 2.903535)
+shape = SubResource("BoxShape3D_avmo2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets/StaticBody3D"]
+transform = Transform3D(0.22362447, 0, -0.9746758, 0, 1, 0, 0.9746758, 0, 0.22362447, -1.9741974, 0.4775467, 0.8638325)
+shape = SubResource("BoxShape3D_avmo2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets/StaticBody3D"]
+transform = Transform3D(-0.29979026, 0, -0.95400554, 0, 1, 0, 0.95400554, 0, -0.29979026, 2.0396805, 0.4775467, 0.59726715)
+shape = SubResource("BoxShape3D_avmo2")
+
 [node name="SciFi Assets2" parent="World/Section3/Decor" instance=ExtResource("44_m28ev")]
 transform = Transform3D(-2.7150002, 0, -2.3735285e-07, 0, 2.7150002, 0, 2.3735285e-07, 0, -2.7150002, -43.138687, 119.042366, 66.21297)
 
@@ -1631,8 +1676,22 @@ transform = Transform3D(-2.7813942, 0, 2.874693, 0, 4.0000014, 0, -2.874693, 0, 
 [node name="desk_computer3" parent="World/Section3/Decor/SciFi Assets4" instance=ExtResource("47_mc3al")]
 transform = Transform3D(-3.5559447, 0, -1.8317441, 0, 4.0000014, 0, 1.8317441, 0, -3.5559447, 7.6714897, 0, 2.7528124)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets4/StaticBody3D"]
+transform = Transform3D(0.99959105, 0.0048947576, 0.028173845, -0.0137576945, 0.94604087, 0.32375517, -0.025068905, -0.3240104, 0.9457213, -0.04361391, 1.5138245, -0.08190918)
+shape = SubResource("BoxShape3D_jo4nb")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets4/StaticBody3D"]
+transform = Transform3D(0.8854504, 0, 0.4647339, 0, 1, 0, -0.4647339, 0, 0.8854504, -2.18015, 0.5187378, 1.0778008)
+shape = SubResource("BoxShape3D_56gn1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets4/StaticBody3D"]
+transform = Transform3D(0.6875947, 0, -0.72609484, 0, 1, 0, 0.72609484, 0, 0.6875947, 2.117814, 0.5187378, 1.2849464)
+shape = SubResource("BoxShape3D_56gn1")
+
 [node name="SciFi Assets17" parent="World/Section3/Decor" instance=ExtResource("46_vuohh")]
-transform = Transform3D(2.7448056, 0, -2.1971962, 0, 3.515911, 0, 2.1971962, 0, 2.7448056, -45.844902, 118.93332, 40.714733)
+transform = Transform3D(2.7448058, 0, -2.1971962, 0, 3.515911, 0, 2.1971962, 0, 2.7448058, -45.844902, 118.93332, 40.714733)
 
 [node name="desk_computer2" parent="World/Section3/Decor/SciFi Assets17" instance=ExtResource("47_mc3al")]
 transform = Transform3D(-2.7813942, 0, 2.874693, 0, 4.0000014, 0, -2.874693, 0, -2.7813942, 3.29743, 0, 11.229223)
@@ -1640,41 +1699,183 @@ transform = Transform3D(-2.7813942, 0, 2.874693, 0, 4.0000014, 0, -2.874693, 0, 
 [node name="desk_computer3" parent="World/Section3/Decor/SciFi Assets17" instance=ExtResource("47_mc3al")]
 transform = Transform3D(-3.5559447, 0, -1.8317441, 0, 4.0000014, 0, 1.8317441, 0, -3.5559447, 7.6714897, 0, 2.7528124)
 
-[node name="SciFi Assets5" parent="World/Section3/Decor" instance=ExtResource("47_3gvs5")]
-transform = Transform3D(-4.139079, 0, -3.6184977e-07, 0, 4.139079, 0, 3.6184977e-07, 0, -4.139079, -65.2165, 118.9722, 96.90896)
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets17"]
 
-[node name="SciFi Assets6" parent="World/Section3/Decor" instance=ExtResource("47_3gvs5")]
-transform = Transform3D(-4.139079, 0, -3.6184977e-07, 0, 4.139079, 0, 3.6184977e-07, 0, -4.139079, -73.75756, 118.9722, 96.90896)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets17/StaticBody3D"]
+transform = Transform3D(0.99959105, 0.0048947576, 0.028173845, -0.0137576945, 0.94604087, 0.32375517, -0.025068905, -0.3240104, 0.9457213, -0.04361391, 1.5138245, -0.08190918)
+shape = SubResource("BoxShape3D_jo4nb")
 
-[node name="SciFi Assets7" parent="World/Section3/Decor" instance=ExtResource("47_3gvs5")]
-transform = Transform3D(-4.139079, 0, -3.6184977e-07, 0, 4.139079, 0, 3.6184977e-07, 0, -4.139079, -82.740456, 118.9722, 96.90896)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets17/StaticBody3D"]
+transform = Transform3D(0.8854504, 0, 0.4647339, 0, 1, 0, -0.4647339, 0, 0.8854504, -2.18015, 0.5187378, 1.0778008)
+shape = SubResource("BoxShape3D_56gn1")
 
-[node name="SciFi Assets8" parent="World/Section3/Decor" instance=ExtResource("47_3gvs5")]
-transform = Transform3D(4.139079, 0, -2.842171e-14, 0, 4.139079, 0, 2.842171e-14, 0, 4.139079, -84.113365, 118.9722, 34.52804)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets17/StaticBody3D"]
+transform = Transform3D(0.6875947, 0, -0.72609484, 0, 1, 0, 0.72609484, 0, 0.6875947, 2.117814, 0.5187378, 1.2849464)
+shape = SubResource("BoxShape3D_56gn1")
 
-[node name="SciFi Assets9" parent="World/Section3/Decor" instance=ExtResource("47_3gvs5")]
-transform = Transform3D(4.139079, 0, -2.842171e-14, 0, 4.139079, 0, 2.842171e-14, 0, 4.139079, -75.27489, 118.9722, 34.52804)
+[node name="Collidable2" type="RigidBody3D" parent="World/Section3/Decor"]
+transform = Transform3D(1, 0, -6.8666746e-15, 0, 1, 0, 6.8666746e-15, 0, 1, -84.113365, 118.9722, 34.52804)
+mass = 0.3
+script = ExtResource("27_xfvwf")
+type = 1
+initial_velocity = false
+metadata/_custom_type_script = "uid://cx4y6ch6s866t"
 
-[node name="SciFi Assets10" parent="World/Section3/Decor" instance=ExtResource("47_3gvs5")]
-transform = Transform3D(4.139079, 0, -2.842171e-14, 0, 4.139079, 0, 2.842171e-14, 0, 4.139079, -66.32825, 118.9722, 34.52804)
+[node name="SciFi Assets8" parent="World/Section3/Decor/Collidable2" instance=ExtResource("47_3gvs5")]
+transform = Transform3D(4.139079, 0, 0, 0, 4.139079, 0, 0, 0, 4.139079, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/Collidable2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0753479, 3.4697266, -0.7344971)
+shape = SubResource("BoxShape3D_ple6s")
+
+[node name="Collidable3" type="RigidBody3D" parent="World/Section3/Decor"]
+transform = Transform3D(1, 0, -6.8666746e-15, 0, 1, 0, 6.8666746e-15, 0, 1, -75.2169, 118.9722, 34.52804)
+mass = 0.3
+script = ExtResource("27_xfvwf")
+type = 1
+initial_velocity = false
+metadata/_custom_type_script = "uid://cx4y6ch6s866t"
+
+[node name="SciFi Assets8" parent="World/Section3/Decor/Collidable3" instance=ExtResource("47_3gvs5")]
+transform = Transform3D(4.139079, 0, 0, 0, 4.139079, 0, 0, 0, 4.139079, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/Collidable3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0753479, 3.4697266, -0.7344971)
+shape = SubResource("BoxShape3D_ple6s")
+
+[node name="Collidable4" type="RigidBody3D" parent="World/Section3/Decor"]
+transform = Transform3D(1, 0, -6.8666746e-15, 0, 1, 0, 6.8666746e-15, 0, 1, -66.223755, 118.9722, 34.52804)
+mass = 0.3
+script = ExtResource("27_xfvwf")
+type = 1
+initial_velocity = false
+metadata/_custom_type_script = "uid://cx4y6ch6s866t"
+
+[node name="SciFi Assets8" parent="World/Section3/Decor/Collidable4" instance=ExtResource("47_3gvs5")]
+transform = Transform3D(4.139079, 0, 0, 0, 4.139079, 0, 0, 0, 4.139079, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/Collidable4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0753479, 3.4697266, -0.7344971)
+shape = SubResource("BoxShape3D_ple6s")
+
+[node name="Collidable5" type="RigidBody3D" parent="World/Section3/Decor"]
+transform = Transform3D(-1, 0, 8.7422784e-08, 0, 1, 0, -8.7422784e-08, 0, -1, -65.161674, 118.9722, 96.72913)
+mass = 0.3
+script = ExtResource("27_xfvwf")
+type = 1
+initial_velocity = false
+metadata/_custom_type_script = "uid://cx4y6ch6s866t"
+
+[node name="SciFi Assets8" parent="World/Section3/Decor/Collidable5" instance=ExtResource("47_3gvs5")]
+transform = Transform3D(4.139079, 0, 0, 0, 4.139079, 0, 0, 0, 4.139079, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/Collidable5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0753479, 3.4697266, -0.7344971)
+shape = SubResource("BoxShape3D_ple6s")
+
+[node name="Collidable6" type="RigidBody3D" parent="World/Section3/Decor"]
+transform = Transform3D(-1, 0, 8.7422784e-08, 0, 1, 0, -8.7422784e-08, 0, -1, -74.058136, 118.9722, 96.72913)
+mass = 0.3
+script = ExtResource("27_xfvwf")
+type = 1
+initial_velocity = false
+metadata/_custom_type_script = "uid://cx4y6ch6s866t"
+
+[node name="SciFi Assets8" parent="World/Section3/Decor/Collidable6" instance=ExtResource("47_3gvs5")]
+transform = Transform3D(4.139079, 0, 0, 0, 4.139079, 0, 0, 0, 4.139079, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/Collidable6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0753479, 3.4697266, -0.7344971)
+shape = SubResource("BoxShape3D_ple6s")
+
+[node name="Collidable7" type="RigidBody3D" parent="World/Section3/Decor"]
+transform = Transform3D(-1, 0, 8.7422784e-08, 0, 1, 0, -8.7422784e-08, 0, -1, -83.051285, 118.9722, 96.72913)
+mass = 0.3
+script = ExtResource("27_xfvwf")
+type = 1
+initial_velocity = false
+metadata/_custom_type_script = "uid://cx4y6ch6s866t"
+
+[node name="SciFi Assets8" parent="World/Section3/Decor/Collidable7" instance=ExtResource("47_3gvs5")]
+transform = Transform3D(4.139079, 0, 0, 0, 4.139079, 0, 0, 0, 4.139079, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/Collidable7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0753479, 3.4697266, -0.7344971)
+shape = SubResource("BoxShape3D_ple6s")
 
 [node name="SciFi Assets11" parent="World/Section3/Decor" instance=ExtResource("48_mc3al")]
 transform = Transform3D(4.9176216, 0, 0, 0, -2.1495607e-07, -4.9176216, 0, 4.9176216, -2.1495607e-07, -75.25548, 139.33345, 91.38511)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets11/StaticBody3D"]
+transform = Transform3D(0.99999976, 2.9802315e-08, -2.2204455e-13, -2.9802315e-08, 0.99999976, 1.1404211e-12, 2.3536574e-13, -1.1795009e-12, 0.999999, 0.07307911, 0.11231613, -0.19732475)
+shape = SubResource("BoxShape3D_vyqle")
+
+[node name="SciFi Assets25" parent="World/Section3/Decor" instance=ExtResource("48_mc3al")]
+transform = Transform3D(-1.272774, 4.750057, -2.0763163e-07, -1.0413469e-21, -2.1495607e-07, -4.917621, -4.750057, -1.272774, 5.563472e-08, -63.148495, 138.8996, 50.03491)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets25"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets25/StaticBody3D"]
+transform = Transform3D(0.9999999, 2.9802322e-08, -2.220446e-13, -2.9802322e-08, 0.9999999, 1.1455281e-12, 2.3536728e-13, -1.1868284e-12, 0.9999991, -0.029993534, 0.11231327, -0.19732475)
+shape = SubResource("BoxShape3D_vyqle")
+
 [node name="SciFi Assets12" parent="World/Section3/Decor" instance=ExtResource("49_bqa6y")]
 transform = Transform3D(3.3932304, 0, -2.0245376, 0, 3.9512992, 0, 2.0245376, 0, 3.3932304, -93.96404, 118.91507, 85.40412)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets12/StaticBody3D"]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 0.0033016205, 0.21605873, -0.06681824)
+shape = SubResource("BoxShape3D_baljx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets12/StaticBody3D"]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 0.017914772, 0.21607208, -1.75737)
+shape = SubResource("BoxShape3D_t2ssd")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets12/StaticBody3D"]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 0.99999964, 0, 2.9802322e-08, 0, 1, -0.16187, 0.2160778, 1.6360397)
+shape = SubResource("BoxShape3D_t2ssd")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets12/StaticBody3D"]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, -0.074855804, 1.2483063, -0.09230614)
+shape = SubResource("BoxShape3D_7noa1")
+
 [node name="table-display-planet2" parent="World/Section3/Decor" instance=ExtResource("50_du4n2")]
-transform = Transform3D(15.552064, 0, -9.278986, 0, 18.109838, 0, 9.278986, 0, 15.552064, -87.901596, 122.484245, 84.70493)
+transform = Transform3D(20.02059, 0, -11.945088, 0, 23.313282, 0, 11.945088, 0, 20.02059, -86.2294, 122.484245, 83.21311)
 
 [node name="SciFi Assets13" parent="World/Section3/Decor" instance=ExtResource("51_ra4rb")]
 transform = Transform3D(2.7334156, 0, 0, 0, 2.7334156, 0, 0, 0, 2.7334156, -94.27311, 118.9019, 38.51965)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets13"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets13/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0062217712, 1.6479607, 0.071380615)
+shape = SubResource("BoxShape3D_ra4rb")
+
 [node name="SciFi Assets14" parent="World/Section3/Decor" instance=ExtResource("51_ra4rb")]
 transform = Transform3D(2.7334156, 0, 0, 0, 2.7334156, 0, 0, 0, 2.7334156, -104.78311, 118.9019, 53.58632)
 
-[node name="SciFi Assets16" parent="World/Section3/Decor" instance=ExtResource("52_ple6s")]
-transform = Transform3D(2.733, 0, 0, 0, 2.733, 0, 0, 0, 2.733, -101.68558, 118.91052, 45.570473)
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets14"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets14/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0062217712, 1.6479607, 0.071380615)
+shape = SubResource("BoxShape3D_ra4rb")
+
+[node name="Collidable" type="RigidBody3D" parent="World/Section3/Decor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.68558, 118.91052, 45.570473)
+mass = 0.2
+script = ExtResource("27_xfvwf")
+type = 1
+metadata/_custom_type_script = "uid://cx4y6ch6s866t"
+
+[node name="SciFi Assets16" parent="World/Section3/Decor/Collidable" instance=ExtResource("52_ple6s")]
+transform = Transform3D(2.733, 0, 0, 0, 2.733, 0, 0, 0, 2.733, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/Collidable"]
+transform = Transform3D(2.733, 0, 0, 0, 2.733, 0, 0, 0, 2.733, -0.029624939, 4.4355774, 0.071380615)
+shape = SubResource("BoxShape3D_ra4rb")
 
 [node name="SciFi Assets18" parent="World/Section3/Decor" instance=ExtResource("54_jo4nb")]
 transform = Transform3D(3.8713195, 0, 0, 0, 3.8713195, 0, 0, 0, 3.8713195, -81.141914, -2.3586798, 15.381146)
@@ -1695,16 +1896,52 @@ transform = Transform3D(-1.2636399e-07, 0, -2.890871, 0, 2.890871, 0, 2.890871, 
 transform = Transform3D(-1.2636399e-07, 0, -2.890871, 0, 2.890871, 0, 2.890871, 0, -1.2636399e-07, -104.30194, -2.854982, -27.305916)
 
 [node name="SciFi Assets24" parent="World/Section3/Decor" instance=ExtResource("57_vyqle")]
-transform = Transform3D(0, 0, -4.8820014, 4.882001, -2.133991e-07, -8.978098e-15, -2.1339909e-07, -4.8820014, 0, -36.660175, 137.19533, 75.70078)
+transform = Transform3D(1.2814967e-14, 2.9317226e-07, -6.707, 6.707, -2.9317226e-07, 2.3566991e-29, -2.9317226e-07, -6.707, -2.9317226e-07, -36.660175, 135.73228, 79.393936)
 
-[node name="desk_chairArms2" parent="World/Section3/Decor" instance=ExtResource("57_vuohh")]
-transform = Transform3D(-6.834276e-07, 0, 15.635, 0, 15.635, 0, -15.635, 0, -6.834276e-07, -68.389725, 119.02406, 97.151924)
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets24"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets24/StaticBody3D"]
+transform = Transform3D(0.99999994, 2.9802322e-08, -2.220446e-13, -2.980233e-08, 0.99999994, 1.1455282e-12, 2.3536728e-13, -1.1868284e-12, 0.99999917, -0.041101456, 1.9353104, -0.047208786)
+shape = SubResource("BoxShape3D_xoeau")
+
+[node name="Collidable8" type="RigidBody3D" parent="World/Section3/Decor"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -45.46832, 120.92801, 65.97902)
+mass = 0.25
+script = ExtResource("27_xfvwf")
+type = 1
+metadata/_custom_type_script = "uid://cx4y6ch6s866t"
+
+[node name="desk_chairArms2" parent="World/Section3/Decor/Collidable8" instance=ExtResource("57_vuohh")]
+transform = Transform3D(15.635, 0, 0, 0, 15.635, 0, 0, 0, 15.635, -31.172905, -1.9039459, -22.92141)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/Collidable8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07019043, 0.86187744, 0.44866943)
+shape = SubResource("BoxShape3D_6qn5j")
+
+[node name="gate_complex2" parent="World/Section3/Decor" instance=ExtResource("60_bqa6y")]
+transform = Transform3D(-6.556708e-07, 0, -15, 0, 15, 0, 15, 0, -6.556708e-07, -88.703384, 118.9019, 36.58382)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/gate_complex2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/gate_complex2/StaticBody3D"]
+transform = Transform3D(0.99999857, 0, -2.842171e-14, 0, 0.99999857, 0, 2.842171e-14, 0, 0.99999857, 2.00564, 0.25280666, 1.4952168)
+shape = SubResource("BoxShape3D_wj41c")
 
 [node name="Satellite" type="Node3D" parent="World/Section3/Decor"]
 transform = Transform3D(1.0537912, 0, -0.9887109, 0, 1.445, 0, 0.9887109, 0, 1.0537912, -74.45412, 174.51332, 36.577225)
 
 [node name="satelliteDish2" parent="World/Section3/Decor/Satellite" instance=ExtResource("59_bqa6y")]
 transform = Transform3D(19.517124, -4.337876, -0.51467514, 4.3378787, 18.96858, 4.62341, -0.5146599, -4.6234136, 19.451462, -27.869576, -24.692055, -36.3323)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/Satellite"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/Satellite/StaticBody3D"]
+transform = Transform3D(-0.051398695, 0.22957999, 0.97193515, 0.4116976, 0.8915448, -0.18882053, -0.90987074, 0.39043754, -0.1403403, 9.066116, -2.6961288, -10.761696)
+shape = SubResource("BoxShape3D_bqa6y")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Section3/Decor/Satellite/StaticBody3D"]
+transform = Transform3D(-0.08748159, 0.15762375, 0.98362195, 0.47429386, 0.8748936, -0.098016344, -0.8760157, 0.45794937, -0.15129733, 8.426643, -1.5225906, -12.429718)
+shape = SubResource("BoxShape3D_du4n2")
 
 [node name="Objects" type="Node3D" parent="World/Section3"]
 
@@ -1713,5 +1950,11 @@ unique_name_in_owner = true
 grappling_hook_range = 60.0
 player = NodePath("../Player")
 
-[node name="gate_complex2" parent="." instance=ExtResource("60_bqa6y")]
-transform = Transform3D(-6.556708e-07, 0, -15, 0, 15, 0, 15, 0, -6.556708e-07, -88.703384, 118.9019, 36.58382)
+[node name="SciFi Assets" parent="." instance=ExtResource("62_du4n2")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.940697e-08, 0, -8.940697e-08, -1, -93.91168, 10.201956, -5.8754807)
+
+[node name="SciFi Assets2" parent="." instance=ExtResource("62_du4n2")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.940697e-08, 0, -8.940697e-08, -1, -103.59892, 10.201956, -5.8754807)
+
+[node name="SciFi Assets3" parent="." instance=ExtResource("57_vyqle")]
+transform = Transform3D(1.9010668e-07, 3.6947649, 1.4119065e-14, 4.349134, -1.615033e-07, 3.230066e-07, 3.8021335e-07, 0, -3.6947649, -106.07215, 2.123932, -3.9466841)

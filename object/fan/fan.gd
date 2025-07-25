@@ -32,6 +32,7 @@ func _ready() -> void:
         
 func _physics_process(delta: float) -> void:
     if not enabled:
+        Global.game.player.affected_fans.erase(get_instance_id())
         return
     var overlapping := affects_area.get_overlapping_bodies()
     var hitting_player := false
