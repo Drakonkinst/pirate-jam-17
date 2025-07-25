@@ -1,8 +1,8 @@
 extends Node3D
 class_name Game
 
-@onready var player: Player = %Player
-@onready var grappling_hook_controller: GrapplingHookController = %GrapplingHookController
+@export var player: Player
+@export var grappling_hook_controller: GrapplingHookController
 
 
 func _ready() -> void:

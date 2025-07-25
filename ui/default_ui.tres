@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://dbrs5w857sbqb"]
+
+[ext_resource type="FontFile" uid="uid://bqoj8uwi68frv" path="res://ui/Oxanium-VariableFont_wght.ttf" id="1_ypu5q"]
+
+[resource]
+base_font = ExtResource("1_ypu5q")
+variation_opentype = {
+2003265652: 600
+}

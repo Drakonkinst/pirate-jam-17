@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c4875hllppr0h"]
+
+[ext_resource type="FontVariation" uid="uid://dbrs5w857sbqb" path="res://ui/default_ui.tres" id="1_rqugq"]
+
+[resource]
+default_base_scale = 1.0
+default_font = ExtResource("1_rqugq")
+default_font_size = 32
+RichTextLabel/colors/default_color = Color(0.8156863, 0.7529412, 0.5764706, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.1764706, 0.1764706, 0.1764706, 0.4)
+RichTextLabel/constants/shadow_offset_x = 2
+RichTextLabel/constants/shadow_offset_y = 2
+RichTextLabel/constants/shadow_outline_size = 10
+RichTextLabel/fonts/bold_font = ExtResource("1_rqugq")
+VBoxContainer/constants/separation = 20
