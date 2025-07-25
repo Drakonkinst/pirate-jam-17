@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://dmb6ik5ws8wrq" path="res://object/fan/wind.gdshader" id="3_o2y68"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i2p71"]
-size = Vector3(5.9, 14.782871, 5.9)
+size = Vector3(5.9, 14.367998, 5.9)
 
 [sub_resource type="Curve" id="Curve_xa8c5"]
 _data = [Vector2(0.0152091235, 0.05941534), 0.0, 0.0, 0, 0, Vector2(0.50190115, 0.96262574), 0.0, 0.0, 0, 0, Vector2(0.99239546, 0.07187343), 1.4, 0.0, 0, 0]
@@ -53,7 +53,7 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.99999976, 1.7136334e-07, 7.1054274e-15, -1.7136334e-07, 0.99999976, -6.009082e-14, -3.5527137e-15, -3.4833247e-14, 0.99999976, 1.3041857e-07, 7.3050647, -2.6510349e-14)
+transform = Transform3D(0.99999976, 1.7136334e-07, 7.1054274e-15, -1.7136334e-07, 0.99999976, -6.009082e-14, -3.5527137e-15, -3.4833247e-14, 0.99999976, 1.6596559e-07, 7.5125003, -3.3736038e-14)
 shape = SubResource("BoxShape3D_i2p71")
 
 [node name="TurnOffTimer" type="Timer" parent="."]
@@ -68,7 +68,7 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7213986, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0911875, 2.0399647, -1.1050415)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8767753, 2.0399647, -1.1050415)
 extra_cull_margin = 100.0
 instance_shader_parameters/extra_loop_radius = 0.0
 instance_shader_parameters/extra_offset_time = 0.0
@@ -78,7 +78,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Wind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4556408, 2.0399647, -0.8824463)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2412286, 2.0399647, -0.8824462)
 extra_cull_margin = 100.0
 instance_shader_parameters/extra_loop_radius = 0.0
 instance_shader_parameters/extra_offset_time = 3.0
@@ -88,7 +88,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Wind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74461555, 2.0399647, 0.5641556)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5302033, 2.0399647, 1.396161)
 extra_cull_margin = 100.0
 instance_shader_parameters/extra_loop_radius = 0.0
 instance_shader_parameters/extra_offset_time = 6.0
@@ -98,7 +98,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Wind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57066345, 2.0399642, 0.5709839)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.592498, 2.0399642, 1.5632696)
 extra_cull_margin = 100.0
 instance_shader_parameters/extra_loop_radius = 0.0
 instance_shader_parameters/extra_offset_time = 9.0
@@ -108,7 +108,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Wind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0399647, -1.0626869)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78558785, 2.0399647, -1.0626869)
 extra_cull_margin = 100.0
 instance_shader_parameters/extra_loop_radius = 0.0
 instance_shader_parameters/extra_offset_time = 12.0
@@ -118,10 +118,90 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Wind"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6285181, 2.0399647, -0.8987961)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15706974, 2.0399647, -0.8987961)
 extra_cull_margin = 100.0
 instance_shader_parameters/extra_loop_radius = 0.0
 instance_shader_parameters/extra_offset_time = 15.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15706962, 2.0399647, 1.8931707)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 15.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.807237, 2.0399647, -2.7687876)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 15.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6594903, 2.0399647, 1.1827323)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 20.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3605114, 2.0399647, 2.128815)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 23.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.006062, 2.0399647, 0.5641555)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 26.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.321341, 2.0399642, -2.404048)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 29.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7506776, 2.0399647, -1.062687)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 32.0
+instance_shader_parameters/extra_wave_length = 0.0
+mesh = SubResource("TubeTrailMesh_5b14r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bnpwn")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3791957, 2.0399647, -0.8987962)
+extra_cull_margin = 100.0
+instance_shader_parameters/extra_loop_radius = 0.0
+instance_shader_parameters/extra_offset_time = 35.0
 instance_shader_parameters/extra_wave_length = 0.0
 mesh = SubResource("TubeTrailMesh_5b14r")
 skeleton = NodePath("../..")

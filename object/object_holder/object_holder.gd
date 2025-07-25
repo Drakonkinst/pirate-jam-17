@@ -46,7 +46,6 @@ func _lerp_to_position(collidable: Collidable, delta: float) -> void:
     collidable.global_position = lerp(collidable.global_position, _target_pos, linear_speed)
     
 func _enable() -> void:
-    print(name, " enabled")
     for mesh in lights:
         mesh.set_surface_override_material(0, enabled_material)
     _enabled = true
@@ -54,7 +53,6 @@ func _enable() -> void:
         opens_door.open()
 
 func _disable() -> void:
-    print(name, " disabled")
     for mesh in lights:
         mesh.set_surface_override_material(0, disabled_materal)
     _enabled = false

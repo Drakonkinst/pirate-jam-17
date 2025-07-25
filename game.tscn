@@ -209,7 +209,7 @@ sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("3_fc0e3")]
 unique_name_in_owner = true
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -82.039635, 1.4235408, 20.032784)
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -78.68737, -2.5665941, 69.68924)
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 3.8636532, 7.410634, 5.18005)
@@ -865,6 +865,7 @@ surface_material_override/0 = ExtResource("15_80cx4")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -62.628536, 1.2218595, -56.773624)
 initial_open = false
 toggling_buttons = [NodePath("SmallButton"), NodePath("SmallButton3")]
+closes_after = 7.0
 
 [node name="SmallButton" parent="World/Section2/Decor/HatchDoor" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371, -0.9999546, -1.0000001, 5.861057e-08, -6.493727e-10, -3.2985725, 2.8865495, 1.4575081)
@@ -878,6 +879,7 @@ unpress_time = 1.0
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -72.41992, 1.2218595, -37.69418)
 initial_open = false
 toggling_buttons = [NodePath("SmallButton"), NodePath("SmallButton3")]
+closes_after = 7.0
 
 [node name="SmallButton" parent="World/Section2/Decor/HatchDoor2" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371, -0.9999546, -1.0000001, 5.861057e-08, -6.493727e-10, -3.2985725, 2.8865495, 1.4575081)
@@ -891,6 +893,7 @@ unpress_time = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.29933, 1.2218595, -0.24613047)
 initial_open = false
 toggling_buttons = [NodePath("SmallButton"), NodePath("SmallButton3")]
+closes_after = 7.0
 
 [node name="SmallButton" parent="World/Section2/Decor/HatchDoor4" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371, -0.9999546, -1.0000001, 5.861057e-08, -6.493727e-10, -3.2985725, 2.8865495, 1.4575081)
@@ -904,6 +907,7 @@ unpress_time = 1.0
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -81.763275, 1.2218595, -16.453056)
 initial_open = false
 toggling_buttons = [NodePath("SmallButton"), NodePath("SmallButton3")]
+closes_after = 7.0
 
 [node name="SmallButton" parent="World/Section2/Decor/HatchDoor5" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371, -0.9999546, -1.0000001, 5.861057e-08, -6.493727e-10, -3.2985725, 2.8865495, 1.4575081)
@@ -916,6 +920,7 @@ unpress_time = 1.0
 [node name="HatchDoor3" parent="World/Section2/Decor" instance=ExtResource("25_xa8c5")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -62.23989, 1.2218595, -23.60888)
 initial_open = false
+closes_after = 7.0
 
 [node name="SmallButton3" parent="World/Section2/Decor/HatchDoor3" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371, -0.9999546, -1.0000001, 5.861057e-08, -6.493727e-10, -3.2985764, 2.8865495, -1.5308456)
@@ -1166,7 +1171,7 @@ surface_material_override/0 = ExtResource("15_80cx4")
 
 [node name="BigFan" parent="World/Section3/Decor" instance=ExtResource("25_i2p71")]
 transform = Transform3D(6.798, -5.9430005e-07, -5.9430005e-07, -5.9430005e-07, -6.798, 0, -5.9430005e-07, 5.1955358e-14, -6.798, -73.84528, 97.59181, 66.8122)
-shut_off_after = 5.0
+shut_off_after = 6.0
 turn_on_after = 5.0
 
 [node name="Grate" type="Node3D" parent="World/Section3/Decor/BigFan"]
@@ -1365,16 +1370,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
 
 [node name="HatchDoor" parent="World/Section3/Decor" node_paths=PackedStringArray("toggling_buttons") instance=ExtResource("25_xa8c5")]
 transform = Transform3D(-8.881784e-16, -1.0000001, -3.8823512e-23, -4.371139e-08, 0, 1.0000001, -1, 0, -4.371139e-08, -69.633255, 118.18306, 66.50547)
-open_offset = Vector3(-10, 10, 0)
+open_offset = Vector3(-10, 0, 0)
 initial_open = false
-toggling_buttons = [NodePath("SmallButton"), NodePath("SmallButton3")]
-
-[node name="SmallButton" parent="World/Section3/Decor/HatchDoor" instance=ExtResource("11_7sc4i")]
-transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371, -0.9999546, -1.0000001, 5.861057e-08, -6.493727e-10, -3.2985725, 2.8865495, 1.4575081)
-unpress_time = 1.0
+toggling_buttons = [NodePath("SmallButton3")]
+closes_after = -1.0
 
 [node name="SmallButton3" parent="World/Section3/Decor/HatchDoor" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371, -0.9999546, -1.0000001, 5.861057e-08, -6.493727e-10, -3.2985725, 2.8865495, -1.881958)
+stay_pressed = true
 unpress_time = 1.0
 
 [node name="Objects" type="Node3D" parent="World/Section3"]

@@ -15,6 +15,7 @@ var _last_linear_velocity_sq := 0.0
 var lock_state: LockState = LockState.ANY
 
 const MIN_GLASS_BREAK_THRESHOLD := 5.0
+const DAMPING_THRESHOLD := 50.0
 
 func _ready() -> void:
     if initial_velocity:
@@ -25,6 +26,8 @@ func _ready() -> void:
         max_contacts_reported = 1
     if unlock_timer != null:
         unlock_timer.timeout.connect(_on_unlock_timer_timeout)
+    linear_damp_mode = RigidBody3D.DampMode.DAMP_MODE_REPLACE
+    linear_damp = 0.0
     
 func _rand_value() -> float:
     return randf_range(-0.25, 0.25)
@@ -39,6 +42,13 @@ func _physics_process(delta: float) -> void:
             var glass := collider as BreakableGlass
             if _last_linear_velocity_sq >= MIN_GLASS_BREAK_THRESHOLD * MIN_GLASS_BREAK_THRESHOLD:
                 glass.progress_stage() 
+    # Apply linear damp to objects that are far away from the player so they eventually come to a stop and sleep
+    var dist_sq_from_player := Global.game.player.global_position.distance_squared_to(global_position)
+    if dist_sq_from_player >= DAMPING_THRESHOLD * DAMPING_THRESHOLD:
+        linear_damp = 1.0
+    else:
+        linear_damp = 0.0
+    
     _last_linear_velocity_sq = linear_velocity.length_squared()
     
 func set_lock_state(state: LockState) -> void:
