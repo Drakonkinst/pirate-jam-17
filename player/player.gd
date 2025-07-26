@@ -11,6 +11,7 @@ enum MovementMode { THRUST, ROLL }
 @onready var input_state: InputState = %InputState
 @onready var head: Node3D = %Head
 @onready var nearby_surface_detection: NearbySurfaceDetection = %NearbySurfaceDetection
+@onready var mesh: MeshInstance3D = %MeshInstance3D
 
 var movement_mode: MovementMode = MovementMode.ROLL
 var affected_fans: Dictionary[int, bool]
@@ -20,6 +21,7 @@ var _head_x_rotation: float
 func _ready() -> void:
     angular_damp = 10.0
     angular_damp_mode = DAMP_MODE_COMBINE
+    mesh.hide()
 
 func _physics_process(delta: float) -> void:
     var input_vector: Vector3 = input_state.movement_input

@@ -1,10 +1,11 @@
-[gd_scene load_steps=95 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=100 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
 [ext_resource type="Script" uid="uid://btcpo8dfl1byv" path="res://level_manager.gd" id="2_082n1"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://crboolrfwew5k" path="res://ui/crosshair/0381.png" id="2_iotsf"]
+[ext_resource type="Script" uid="uid://jhbvnq1gij8a" path="res://mission/mission_tracker.gd" id="2_ra4rb"]
 [ext_resource type="PackedScene" uid="uid://do2ht3l1tvwuj" path="res://player/player.tscn" id="3_fc0e3"]
 [ext_resource type="Theme" uid="uid://c4875hllppr0h" path="res://ui/theme.tres" id="4_l1i01"]
 [ext_resource type="Texture2D" uid="uid://s68ydljo1fu0" path="res://world/placeholder_orange.png" id="5_eow3j"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dn57kpitlvnh2" path="res://ui/crosshair/0383.png" id="6_4v2jo"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="7_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://cw0kwd054nb1c" path="res://ui/crosshair/0384.png" id="7_l1i01"]
+[ext_resource type="Script" uid="uid://da5r2xnhwnn73" path="res://ui/fade_in_out.gd" id="7_ple6s"]
 [ext_resource type="Script" uid="uid://dhr3xv7miex53" path="res://ui/crosshair/crosshair.gd" id="8_4v2jo"]
 [ext_resource type="Material" uid="uid://bk26armjmhc7m" path="res://world/surface.tres" id="8_7knny"]
 [ext_resource type="Script" uid="uid://k0joa5bluso1" path="res://addons/starlight/StarGenerator.gd" id="8_vef74"]
@@ -62,8 +64,6 @@
 [ext_resource type="PackedScene" uid="uid://renj8w6243o1" path="res://libs/GLTF format/satelliteDish.glb" id="59_bqa6y"]
 [ext_resource type="PackedScene" uid="uid://lwtqhnnfdqom" path="res://libs/GLTF format/gate_complex.glb" id="60_bqa6y"]
 [ext_resource type="PackedScene" uid="uid://b67aig5n8rwmm" path="res://libs/gtlf/Ramp_Orange.glb" id="62_du4n2"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_l1i01"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_r62pu"]
 frames = 4
@@ -129,6 +129,18 @@ transparency = 1
 albedo_color = Color(0.70980394, 0.98039216, 1, 0.21960784)
 metallic = 0.63
 roughness = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_du4n2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ra4rb"]
+albedo_color = Color(0.1824218, 0.22077054, 0.24954009, 1)
+metallic = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xib3"]
+size = Vector3(1.413147, 1.2253418, 0.64105225)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5628o"]
+size = Vector3(3.045662, 1.9958496, 0.19029236)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f1jbl"]
 size = Vector3(1.2247314, 0.302948, 2.7287445)
@@ -211,15 +223,21 @@ size = Vector3(3.009369, 12.578491, 13.22023)
 [sub_resource type="BoxShape3D" id="BoxShape3D_du4n2"]
 size = Vector3(5.4088135, 1, 1)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller", "hud", "win_button")]
 script = ExtResource("1_80nbo")
 player = NodePath("Player")
 grappling_hook_controller = NodePath("GrapplingHookController")
+hud = NodePath("CanvasLayer/HUD")
+win_button = NodePath("World/Section3/Decor/WinButton")
 
-[node name="LevelManager" type="Node3D" parent="." node_paths=PackedStringArray("section_points", "lights", "player")]
+[node name="MissionTracker" type="Node3D" parent="."]
+script = ExtResource("2_ra4rb")
+
+[node name="LevelManager" type="Node3D" parent="." node_paths=PackedStringArray("section_points", "lights", "lazy_load_decor", "player")]
 script = ExtResource("2_082n1")
 section_points = [NodePath("Section1"), NodePath("Section2"), NodePath("Section3")]
 lights = [NodePath("../World/Section1/Lights"), NodePath("../World/Section2/Lights"), NodePath("../World/Section3/Lights")]
+lazy_load_decor = [NodePath("../World/Section1/Decor"), NodePath("../World/Section2/Decor"), NodePath("../World/Section3/Decor")]
 player = NodePath("../Player")
 
 [node name="Section1" type="Marker3D" parent="LevelManager"]
@@ -248,15 +266,16 @@ mouse_filter = 2
 theme = ExtResource("4_l1i01")
 script = ExtResource("5_r62pu")
 
-[node name="TEMP_BACKGROUND" type="TextureRect" parent="CanvasLayer/HUD"]
-visible = false
+[node name="FadeInOut" type="ColorRect" parent="CanvasLayer/HUD"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CanvasTexture_l1i01")
+color = Color(0, 0, 0, 1)
+script = ExtResource("7_ple6s")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HUD"]
 layout_mode = 1
@@ -317,6 +336,12 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 custom_effects = [null]
+
+[node name="PauseScreen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Stars" parent="." instance=ExtResource("7_j5wjh")]
 script = ExtResource("8_vef74")
@@ -481,10 +506,10 @@ mesh = SubResource("ArrayMesh_kq12w")
 [node name="Decor" type="Node3D" parent="World/Section1"]
 
 [node name="Stairs" parent="World/Section1/Decor" instance=ExtResource("9_lc2xo")]
-transform = Transform3D(12.95885, 0, 0, 0, 6.650981, 0, 0, 0, 6.303702, -31.1404, 2.8466187, -16.62439)
+transform = Transform3D(2.056, 0, 0, 0, 1.055, 0, 0, 0, 1, -31.1404, 2.8466187, -16.62439)
 
 [node name="Stairs3" parent="World/Section1/Decor" instance=ExtResource("9_lc2xo")]
-transform = Transform3D(12.95885, 0, 0, 0, 6.650981, 0, 0, 0, 6.303702, -50.08966, 2.8466187, -16.62439)
+transform = Transform3D(2.056, 0, 0, 0, 1.055, 0, 0, 0, 1, -50.08966, 2.8466187, -16.62439)
 
 [node name="CrewDoor" parent="World/Section1/Decor" instance=ExtResource("10_215e1")]
 transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, -12.157036, 6.0788913, -6.033324)
@@ -578,6 +603,56 @@ toggle_button = NodePath("../SmallButton7")
 [node name="Monitor2" parent="World/Section1/Decor" instance=ExtResource("17_i2p71")]
 transform = Transform3D(-1.7409725, 0, 1.5220066e-07, 0, 1.7409725, 0, -1.5220066e-07, 0, -1.7409725, -41.30199, 2.8753185, -16.300682)
 
+[node name="Label3D3" type="Label3D" parent="World/Section1/Decor/Monitor2"]
+transform = Transform3D(0.57439154, -1.0020688e-08, 3.0947e-08, 3.643475e-09, 0.5628385, 0.11462332, -3.2324234e-08, -0.11462332, 0.5628385, -0.005847931, 2.4965453, -0.353446)
+pixel_size = 0.011
+modulate = Color(0.9999998, 0.30662173, 0.15399927, 1)
+outline_modulate = Color(0.5224432, 1.2634322e-06, 3.3691526e-07, 1)
+text = "
+Gravity .......................... OFFLINE
+Power ........................... CRITICAL
+Life Support ................. OFFLINE
+Communications ......... OFFLINE
+Thermal Control .......... OFFLINE
+"
+font = ExtResource("30_eu6ph")
+font_size = 30
+outline_size = 1
+horizontal_alignment = 3
+vertical_alignment = 0
+line_spacing = 10.975
+autowrap_mode = 2
+width = 438.35
+
+[node name="Screen" type="MeshInstance3D" parent="World/Section1/Decor/Monitor2/Label3D3"]
+transform = Transform3D(2.559039, 2.818395e-08, -5.206179e-08, -8.134289e-08, -0.001284346, -1.6354879, -8.146081e-08, 0.8866639, -0.0023689866, 0, -1.3711205, -0.017345428)
+mesh = SubResource("PlaneMesh_du4n2")
+surface_material_override/0 = SubResource("StandardMaterial3D_ra4rb")
+
+[node name="Label3D4" type="Label3D" parent="World/Section1/Decor/Monitor2"]
+transform = Transform3D(0.57439154, -1.0020688e-08, 3.0947e-08, 3.643475e-09, 0.5628385, 0.11462332, -3.2324234e-08, -0.11462332, 0.5628385, -0.005847931, 2.4965453, -0.353446)
+pixel_size = 0.011
+modulate = Color(0.9999998, 0.30662173, 0.15399927, 1)
+text = "Station Diagnostic Report
+"
+font = ExtResource("30_eu6ph")
+font_size = 30
+outline_size = 1
+vertical_alignment = 0
+line_spacing = 10.975
+autowrap_mode = 2
+width = 438.35
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section1/Decor/Monitor2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section1/Decor/Monitor2/StaticBody3D"]
+transform = Transform3D(1, 0, 2.842171e-14, 0, 1, 0, -2.842171e-14, 0, 1, -0.048246384, 0.11267042, 0.028961182)
+shape = SubResource("BoxShape3D_3xib3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Section1/Decor/Monitor2/StaticBody3D"]
+transform = Transform3D(1, -1.8622222e-08, -2.006388e-09, 1.8622211e-08, 0.9770493, 0.21301334, -2.006459e-09, -0.21301334, 0.9770493, 0.00069999695, 1.7522442, -0.22229958)
+shape = SubResource("BoxShape3D_5628o")
+
 [node name="Railing" parent="World/Section1/Decor" instance=ExtResource("18_xa8c5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.337143, 6.205403, -14.59042)
 
@@ -630,9 +705,9 @@ transform = Transform3D(0.5529302, 0, -8.881784e-16, 0, 0.35166782, 0, 1.7763568
 transform = Transform3D(7.5497894e-08, 0, 0.99999994, 0, 0.99999994, 0, -0.99999994, 0, 7.5497894e-08, -52.601696, 11.87124, -8.273918)
 pixel_size = 0.011
 modulate = Color(0.784163, 0.9921667, 0.89413935, 1)
-text = "Reminder from the janitorial crew: Please insert plates into the correct bin after eating!
+text = "Note: The janitorial crew kindly reminds you to insert plates into the correct bin after eating.
 
-Note: Air conditioner is extremely powerful, please exercise caution when activating it!"
+Warning: Air conditioner is extremely powerful, please exercise caution when in use!"
 font = ExtResource("30_eu6ph")
 font_size = 30
 outline_size = 0
@@ -648,13 +723,27 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -2
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.0835495, 0.7165556, -0.023283958)
 pixel_size = 0.011
 modulate = Color(0.96183974, 0.90058327, 0.31735572, 1)
-text = "CAFETERIA →
-← CREW QUARTERS"
+text = "CAFETERIA ->
+<- CREW QUARTERS"
 font = ExtResource("29_klri6")
 outline_size = 0
 
 [node name="SciFi Assets" parent="World/Section1/Decor/Sign2" instance=ExtResource("14_qhcbd")]
 transform = Transform3D(0.5529302, 0, -8.881784e-16, 0, 0.35166782, 0, 1.7763568e-15, 0, 0.3012586, -0.09052467, 0, 0)
+
+[node name="Sign3" type="Node3D" parent="World/Section1/Decor"]
+transform = Transform3D(-3.1690757e-08, 0, -0.725, 0, 0.725, 0, 0.725, 0, -3.1690757e-08, -52.57499, 6.791236, -8.892869)
+
+[node name="Label3D" type="Label3D" parent="World/Section1/Decor/Sign3"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.0835495, 0.7165556, -0.023283958)
+pixel_size = 0.011
+modulate = Color(0.96183974, 0.90058327, 0.31735572, 1)
+text = "FAN CONTROL"
+font = ExtResource("29_klri6")
+outline_size = 0
+
+[node name="SciFi Assets" parent="World/Section1/Decor/Sign3" instance=ExtResource("14_qhcbd")]
+transform = Transform3D(0.4340945, 0, -1.7763568e-15, 0, 0.35166782, 0, 1.7763568e-15, 0, 0.3012586, -0.09052467, 0, 0)
 
 [node name="door-double-closed2" parent="World/Section1/Decor" instance=ExtResource("31_edr7y")]
 transform = Transform3D(0, 0, 1.0000001, -8.267889, -4.6272268e-07, 0, 3.6140088e-07, -10.585861, 0, -52.571796, 5.011853, -19.884233)
@@ -1624,7 +1713,7 @@ cast_shadow = 0
 mesh = SubResource("BoxMesh_e8heu")
 surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
 
-[node name="SmallButton4" parent="World/Section3/Decor" instance=ExtResource("11_7sc4i")]
+[node name="WinButton" parent="World/Section3/Decor" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(-6.59047e-08, -0.6037498, 3.5859482, 3.6987464e-07, 3.5859482, 0.6037498, -3.6364186, 2.1313254e-07, -2.3613904e-09, -35.31915, 121.76487, 65.87058)
 stay_pressed = true
 unpress_time = 1.0
@@ -1942,8 +2031,6 @@ shape = SubResource("BoxShape3D_bqa6y")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Section3/Decor/Satellite/StaticBody3D"]
 transform = Transform3D(-0.08748159, 0.15762375, 0.98362195, 0.47429386, 0.8748936, -0.098016344, -0.8760157, 0.45794937, -0.15129733, 8.426643, -1.5225906, -12.429718)
 shape = SubResource("BoxShape3D_du4n2")
-
-[node name="Objects" type="Node3D" parent="World/Section3"]
 
 [node name="GrapplingHookController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true

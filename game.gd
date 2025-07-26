@@ -1,16 +1,23 @@
 extends Node3D
+
 class_name Game
+
+signal game_over
+signal game_won
 
 @export var player: Player
 @export var grappling_hook_controller: GrapplingHookController
 @export var hud: HUD
+@export var win_button: SmallButton
 
 func _ready() -> void:
-	grappling_hook_controller.hook_state_changed.connect(_on_grappling_hook_controller_hook_state_changed)
+    win_button.pressed.connect(_on_win_button_pressed)
 
 func get_hook_target() -> Node3D:
-	return grappling_hook_controller.hook_target
+    return grappling_hook_controller.hook_target
+    
+func set_game_over() -> void:
+    game_over.emit()
 
-
-func _on_grappling_hook_controller_hook_state_changed(state: GrapplingHookController.HookState) -> void:
-	pass
+func _on_win_button_pressed() -> void:
+    game_won.emit()

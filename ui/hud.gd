@@ -4,7 +4,11 @@ class_name HUD
 
 @onready var crosshair_prompt_primary: RichTextLabel = %CrosshairPromptPrimary
 @onready var crosshair_prompt_secondary: RichTextLabel = %CrosshairPromptSecondary
+@onready var fade_in_out: FadeInOut = %FadeInOut
 
+func _ready() -> void:
+    fade_in_out.fade_in()
+    
 func _process(_delta: float) -> void:
     var player := Global.game.player
     var grapple_hook_controller := Global.game.grappling_hook_controller

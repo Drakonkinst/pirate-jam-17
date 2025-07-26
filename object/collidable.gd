@@ -33,7 +33,7 @@ func _ready() -> void:
 func _rand_value() -> float:
     return randf_range(-0.25, 0.25)
     
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     if type == Type.LIGHT:
         return
     var collisions := get_colliding_bodies()

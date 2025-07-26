@@ -3,16 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://baud6vp4pj76q" path="res://libs/GLTF format/stairs.glb" id="1_u3hcb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t7fko"]
-size = Vector3(0.30664063, 0.15148926, 0.9351196)
+size = Vector3(2.0264282, 0.76275635, 5.4006424)
 
 [node name="Stairs" type="Node3D"]
-transform = Transform3D(12.95885, 0, 0, 0, 6.650981, 0, 0, 0, 6.303702, 0, 0, 0)
+transform = Transform3D(2.056, 0, 0, 0, 1.055, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="stairs2" parent="." instance=ExtResource("1_u3hcb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.049241, 0, -1.730856)
+transform = Transform3D(6.304, 0, 0, 0, 6.304001, 0, 0, 0, 6.304, -12.644554, 0, -10.241981)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.8401692, 0.54232424, 0, -0.54232424, 0.84016913, -0.059570313, 0.18362314, -0.026865039)
+transform = Transform3D(1, 0, 0, 0, 0.8039508, 0.594697, 0, -0.5946965, 0.8039501, -0.016082799, 1.674305, 0.2817468)
 shape = SubResource("BoxShape3D_t7fko")
