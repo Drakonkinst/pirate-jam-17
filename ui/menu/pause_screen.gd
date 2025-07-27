@@ -12,6 +12,8 @@ func _on_pause_control_unpaused() -> void:
     hide()
 
 func _on_pause_control_paused() -> void:
+    if Global.game.triggered_end_screen:
+        return
     show()
     options_menu.hide()
     main_pause_menu.show()
@@ -26,3 +28,6 @@ func _on_options_screen_on_return_pressed() -> void:
 func _on_options_button_pressed() -> void:
     options_menu.show()
     main_pause_menu.hide()
+
+func _on_exit_to_menu_button_pressed() -> void:
+    Global.game.do_exit_game()

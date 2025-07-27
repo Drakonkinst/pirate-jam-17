@@ -8,6 +8,7 @@ class_name HUD
 @onready var fade_in_out: FadeInOut = %FadeInOut
 
 func _ready() -> void:
+    fade_in_out.show()
     fade_in_out.fade_in()
     
 func _process(_delta: float) -> void:

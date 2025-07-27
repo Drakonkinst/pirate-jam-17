@@ -18,6 +18,8 @@ func _on_start_timer_timeout() -> void:
     _set_current_mission(0)
     
 func _set_current_mission(index: int) -> void:
+    if index < current_mission_index:
+        return
     current_mission_index = index
     if current_mission_index >= 0 and current_mission_index < missions.size():
         current_mission = missions[current_mission_index]

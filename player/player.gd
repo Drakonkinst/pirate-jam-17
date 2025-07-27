@@ -16,6 +16,8 @@ var affected_fans: Dictionary[int, bool]
 
 var _head_x_rotation: float
 
+const DRIFTED_AWAY_THRESHOLD := 275.0
+
 func _ready() -> void:
     angular_damp = 10.0
     angular_damp_mode = DAMP_MODE_COMBINE
@@ -43,6 +45,9 @@ func _physics_process(delta: float) -> void:
     # Hardcoding this one because I can't be bothered to set up an area
     if global_position.x <= -30:
         Global.game.mission_tracker.finish_mission("leave_crew_quarters")
+    
+    if global_position.length_squared() >= DRIFTED_AWAY_THRESHOLD * DRIFTED_AWAY_THRESHOLD:
+        Global.game.display_end_screen("You Drifted Away into the Endless Void of Space", "Better luck next time?", false)
     
     input_state.reset()
 

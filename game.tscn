@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=127 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
@@ -53,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://c8xjginy5scfm" path="res://object/chair/hatch_door.tscn" id="25_xa8c5"]
 [ext_resource type="PackedScene" uid="uid://cj5q6ud8vce3x" path="res://object/object_holder/battery_holder.tscn" id="26_xfvwf"]
 [ext_resource type="PackedScene" uid="uid://dapmkwvp7pwmc" path="res://libs/GLB format/container-tall.glb" id="27_36jdj"]
+[ext_resource type="Script" uid="uid://c1hoinp50fuic" path="res://ui/menu/end_screen.gd" id="27_lh772"]
 [ext_resource type="Script" uid="uid://cx4y6ch6s866t" path="res://object/collidable.gd" id="27_xfvwf"]
 [ext_resource type="FontVariation" uid="uid://dbrs5w857sbqb" path="res://ui/default_ui.tres" id="29_klri6"]
 [ext_resource type="FontVariation" uid="uid://d1ri7mp2inco3" path="res://ui/screen.tres" id="30_eu6ph"]
@@ -294,15 +295,17 @@ size = Vector3(3.009369, 12.578491, 13.22023)
 [sub_resource type="BoxShape3D" id="BoxShape3D_du4n2"]
 size = Vector3(5.4088135, 1, 1)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller", "hud", "win_button", "mission_tracker", "pause_control", "audio")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller", "hud", "end_screen", "win_button", "mission_tracker", "pause_control", "audio", "end_screen_timer")]
 script = ExtResource("1_80nbo")
 player = NodePath("Player")
 grappling_hook_controller = NodePath("GrapplingHookController")
 hud = NodePath("CanvasLayer/HUD")
+end_screen = NodePath("CanvasLayer/EndScreen")
 win_button = NodePath("World/Section3/Decor/WinButton")
 mission_tracker = NodePath("MissionTracker")
 pause_control = NodePath("PauseControl")
 audio = NodePath("AudioManager")
+end_screen_timer = NodePath("EndScreenTimer")
 
 [node name="MissionTracker" type="Node3D" parent="." node_paths=PackedStringArray("markers", "start_timer")]
 script = ExtResource("2_ra4rb")
@@ -373,17 +376,6 @@ mouse_filter = 2
 theme = ExtResource("4_l1i01")
 script = ExtResource("5_r62pu")
 mission_tracker_hud = NodePath("MissionTrackerHud")
-
-[node name="FadeInOut" type="ColorRect" parent="CanvasLayer/HUD"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("7_ple6s")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/HUD"]
 layout_mode = 1
@@ -597,8 +589,22 @@ horizontal_alignment = 2
 vertical_alignment = 2
 custom_effects = [null]
 
+[node name="FadeInOut" type="ColorRect" parent="CanvasLayer/HUD"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+script = ExtResource("7_ple6s")
+
 [node name="PauseScreen" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("main_pause_menu", "options_menu")]
 process_mode = 2
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -911,6 +917,87 @@ custom_effects = [null]
 [node name="OptionsScreen" parent="CanvasLayer/PauseScreen" instance=ExtResource("21_7noa1")]
 visible = false
 layout_mode = 1
+
+[node name="EndScreen" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("title_text", "subtitle_text", "controls")]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_l1i01")
+script = ExtResource("27_lh772")
+title_text = NodePath("CenterContainer/VBoxContainer2/VBoxContainer/Title")
+subtitle_text = NodePath("CenterContainer/VBoxContainer2/VBoxContainer/Subtitle")
+controls = NodePath("CenterContainer/VBoxContainer2/VBoxContainer2")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.5
+offset_top = -32.0
+offset_right = 129.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/EndScreen/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/EndScreen/CenterContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/EndScreen/CenterContainer/VBoxContainer2/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "YOU DRIFTED AWAY INTO THE ENDLESS VOID OF SPACE"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+custom_effects = [null]
+script = ExtResource("16_vyqle")
+metadata/_custom_type_script = "uid://cnd05qu765nj0"
+
+[node name="Subtitle" type="RichTextLabel" parent="CanvasLayer/EndScreen/CenterContainer/VBoxContainer2/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.95, 0.88159996, 0.6935, 1)
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Better luck next time?"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+custom_effects = [null]
+script = ExtResource("16_vyqle")
+metadata/_custom_type_script = "uid://cnd05qu765nj0"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/EndScreen/CenterContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/EndScreen/CenterContainer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("4_l1i01")
+text = "Restart"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/EndScreen/CenterContainer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("4_l1i01")
+text = "Exit to Menu"
 
 [node name="Stars" parent="." instance=ExtResource("7_j5wjh")]
 script = ExtResource("8_vef74")
@@ -2676,6 +2763,12 @@ player = NodePath("../Player")
 process_mode = 3
 script = ExtResource("71_wj41c")
 
+[node name="EndScreenTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="pressed" from="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer/VBoxContainer/ResumeButton" to="CanvasLayer/PauseScreen" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer/VBoxContainer/OptionsButton" to="CanvasLayer/PauseScreen" method="_on_options_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer/VBoxContainer/ExitToMenuButton" to="CanvasLayer/PauseScreen" method="_on_exit_to_menu_button_pressed"]
 [connection signal="on_return_pressed" from="CanvasLayer/PauseScreen/OptionsScreen" to="CanvasLayer/PauseScreen" method="_on_options_screen_on_return_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndScreen/CenterContainer/VBoxContainer2/VBoxContainer2/RestartButton" to="CanvasLayer/EndScreen" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndScreen/CenterContainer/VBoxContainer2/VBoxContainer2/ExitButton" to="CanvasLayer/EndScreen" method="_on_exit_button_pressed"]
