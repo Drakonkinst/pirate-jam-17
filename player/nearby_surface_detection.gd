@@ -2,7 +2,6 @@ extends Node3D
 class_name NearbySurfaceDetection
 
 @export var surface_align_speed := 2.0
-@export var always_align_upwards := false
 
 @onready var _surface_detection_timer: Timer = %SurfaceDetectionTimer
 @onready var _surface_detector: ShapeCast3D = %SurfaceDetector
@@ -15,9 +14,12 @@ func _ready() -> void:
     _surface_detection_timer.timeout.connect(_on_surface_detection_timer_timeout)
 
 func update(player: Player, delta: float) -> void:
+    if Global.disable_surface_alignment:
+        _visual.hide()
+        return
     var up := player.global_transform.basis.y.normalized()
     var surface_vector := _nearby_surface_vector
-    if player.input_state.go_upright || always_align_upwards:
+    if player.input_state.go_upright || Global.always_go_upright:
         surface_vector = Vector3.UP
     
     # Find the nearest surface and slowly rotate towards it

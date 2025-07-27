@@ -3,10 +3,6 @@ extends Control
 @export var main_pause_menu: Control
 @export var options_menu: Control
 
-@onready var music_slider: HSlider = %MusicSlider
-@onready var environment_slider: HSlider = %EnvironmentSlider
-@onready var interface_slider: HSlider = %InterfaceSlider
-
 func _ready() -> void:
     hide()
     Global.game.pause_control.unpaused.connect(_on_pause_control_unpaused)
@@ -20,9 +16,13 @@ func _on_pause_control_paused() -> void:
     options_menu.hide()
     main_pause_menu.show()
 
+func _on_resume_button_pressed() -> void:
+    Global.game.pause_control.unpause()
+
 func _on_options_screen_on_return_pressed() -> void:
     options_menu.hide()
     main_pause_menu.show()
 
-func _on_resume_button_pressed() -> void:
-    Global.game.pause_control.unpause()
+func _on_options_button_pressed() -> void:
+    options_menu.show()
+    main_pause_menu.hide()

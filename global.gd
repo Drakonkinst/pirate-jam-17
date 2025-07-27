@@ -59,6 +59,15 @@ func set_environment_volume(value: float, save: bool = true) -> void:
         config.set_value("audio", "environment", value)
         config.save(CONFIG_PATH)
 
+func get_music_volume() -> float:
+    return db_to_linear(AudioServer.get_bus_volume_db(music))
+
+func get_environment_volume() -> float:
+    return db_to_linear(AudioServer.get_bus_volume_db(environment))
+
+func get_ui_volume() -> float:
+    return db_to_linear(AudioServer.get_bus_volume_db(ui))
+
 func set_look_sensitivity(value: float, save: bool = true) -> void:
     look_sensitivity = value
     if save:

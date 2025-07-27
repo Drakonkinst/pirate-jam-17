@@ -72,6 +72,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
+process_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 10
 
@@ -180,7 +181,7 @@ theme = ExtResource("2_50juk")
 theme_override_colors/default_color = Color(0.61, 0.54981333, 0.3843, 1)
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "*Can decrease motion sickness"
+text = "Can decrease motion sickness"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -199,6 +200,7 @@ theme_override_font_sizes/font_size = 26
 text = "Disable Surface Alignment"
 
 [node name="Subtext" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2"]
+visible = false
 clip_contents = false
 layout_mode = 2
 theme = ExtResource("2_50juk")
@@ -264,6 +266,8 @@ custom_effects = [null]
 [node name="MouseSensitivity" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+min_value = 10.0
+value = 10.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -287,6 +291,9 @@ custom_effects = [null]
 [node name="RollSpeed" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+min_value = 100.0
+max_value = 500.0
+value = 100.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
