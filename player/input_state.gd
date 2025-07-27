@@ -13,6 +13,9 @@ func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
         if not Global.game.pause_control.is_paused():
             mouse_motion += event.relative * 0.001
+    if event.is_action_pressed("action_primary") || event.is_action_pressed("action_secondary"):
+        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    
 
 func _process(_delta: float) -> void:
     var horizontal_movement := Input.get_axis("move_left", "move_right")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkmbqdv0u23hu"]
+
+[ext_resource type="Script" uid="uid://ccyoxqb1y85ly" path="res://ui/menu/main_menu.gd" id="1_37pjl"]
+[ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="2_or6mk"]
+[ext_resource type="Script" uid="uid://k0joa5bluso1" path="res://addons/starlight/StarGenerator.gd" id="3_4aijq"]
+[ext_resource type="PackedScene" uid="uid://c72vqvvhhr10b" path="res://ui/menu/start_menu.tscn" id="3_gvx18"]
+[ext_resource type="PackedScene" uid="uid://dywihjrvw7kcl" path="res://ui/menu/options_screen.tscn" id="4_4gkdq"]
+[ext_resource type="PackedScene" uid="uid://dnwgk6aqapw4p" path="res://ui/menu/credits_menu.tscn" id="5_yc8k7"]
+
+[sub_resource type="Environment" id="Environment_gvx18"]
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_37pjl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gvx18")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4000)
+current = true
+
+[node name="Stars" parent="." instance=ExtResource("2_or6mk")]
+script = ExtResource("3_4aijq")
+size = 5000.0
+star_count = 10000
+rng_seed = 1234
+generate_at_origin = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartMenu" parent="CanvasLayer" instance=ExtResource("3_gvx18")]
+unique_name_in_owner = true
+
+[node name="OptionsScreen" parent="CanvasLayer" instance=ExtResource("4_4gkdq")]
+unique_name_in_owner = true
+offset_top = -1.0
+offset_bottom = -1.0
+
+[node name="CreditsMenu" parent="CanvasLayer" instance=ExtResource("5_yc8k7")]
+unique_name_in_owner = true

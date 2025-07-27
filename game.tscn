@@ -418,7 +418,7 @@ unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
 bbcode_enabled = true
-text = "[b][img]res://ui//mouse_right_outline.png[/img]Lock Tether[/b]"
+text = "[b][img alt='MouseRight']res://ui//mouse_right_outline.png[/img]Lock Tether[/b]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -733,7 +733,7 @@ theme = ExtResource("4_l1i01")
 theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[img]res://ui//mouse_left_outline.png[/img] Pull Tether"
+text = "[img alt='MouseLeft']res://ui//mouse_left_outline.png[/img] Pull Tether"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -751,7 +751,7 @@ theme = ExtResource("4_l1i01")
 theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[img]res://ui//mouse_right_outline.png[/img] Lock Tether"
+text = "[img alt='MouseRight']res://ui//mouse_right_outline.png[/img] Lock Tether"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -770,7 +770,7 @@ theme = ExtResource("4_l1i01")
 theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[img]res://ui//mouse_move.png[/img] Look Around"
+text = "[img alt='MouseMove']res://ui//mouse_move.png[/img] Look Around"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -793,7 +793,7 @@ theme = ExtResource("4_l1i01")
 theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[img]res://ui//keyboard_q.png[/img] / [img]res://ui//keyboard_e.png[/img] Tilt"
+text = "[img alt='Q']res://ui//keyboard_q.png[/img] / [img alt='E']res://ui//keyboard_e.png[/img] Tilt"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -812,7 +812,7 @@ theme = ExtResource("4_l1i01")
 theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[img]res://ui//keyboard_r.png[/img] Go Upright"
+text = "[img alt='R']res://ui//keyboard_r.png[/img] Go Upright"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -2714,6 +2714,29 @@ transform = Transform3D(1.2814967e-14, 2.9317226e-07, -6.707, 6.707, -2.9317226e
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets24/StaticBody3D"]
 transform = Transform3D(0.99999994, 2.9802322e-08, -2.220446e-13, -2.980233e-08, 0.99999994, 1.1455282e-12, 2.3536728e-13, -1.1868284e-12, 0.99999917, -0.041101456, 1.9353104, -0.047208786)
 shape = SubResource("BoxShape3D_xoeau")
+
+[node name="Label3D3" type="Label3D" parent="World/Section3/Decor/SciFi Assets24"]
+transform = Transform3D(-1.9407851e-08, 0.44399998, -4.5690257e-08, -0.44399998, -1.940786e-08, -4.5690257e-08, -4.569025e-08, 4.5690257e-08, 0.44399998, 0.39858848, 2.977375, 0.033687115)
+pixel_size = 0.011
+modulate = Color(0.103199996, 0.86, 0.12842664, 1)
+outline_modulate = Color(0.5224432, 1.2634322e-06, 3.3691526e-07, 1)
+text = "Communications relay online.
+
+Transmit distress call?"
+font = ExtResource("30_eu6ph")
+font_size = 30
+outline_size = 1
+horizontal_alignment = 0
+vertical_alignment = 0
+line_spacing = 10.975
+autowrap_mode = 2
+width = 438.35
+
+[node name="Screen" type="MeshInstance3D" parent="World/Section3/Decor/SciFi Assets24"]
+transform = Transform3D(-5.0905385e-08, -3.0420104e-08, -0.587931, -1.1645794, -2.1350875e-08, 2.56993e-08, -1.1984211e-07, 0.20747945, -8.620091e-08, -0.010394663, 1.9407539, 0.029628396)
+mesh = SubResource("PlaneMesh_du4n2")
+skeleton = NodePath("../Label3D3")
+surface_material_override/0 = SubResource("StandardMaterial3D_ra4rb")
 
 [node name="Collidable8" type="RigidBody3D" parent="World/Section3/Decor"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -45.46832, 120.92801, 65.97902)
