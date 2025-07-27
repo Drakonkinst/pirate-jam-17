@@ -14,9 +14,6 @@ func _ready() -> void:
     _surface_detection_timer.timeout.connect(_on_surface_detection_timer_timeout)
 
 func update(player: Player, delta: float) -> void:
-    if Global.disable_surface_alignment:
-        _visual.hide()
-        return
     var up := player.global_transform.basis.y.normalized()
     var surface_vector := _nearby_surface_vector
     if player.input_state.go_upright || Global.always_go_upright:
@@ -52,6 +49,9 @@ func is_aligned() -> bool:
 
 func _on_surface_detection_timer_timeout() -> void:
     _nearby_surface_vector = Vector3.ZERO
+
+    if Global.disable_surface_alignment:
+        return
     
     var colliding_object: Node3D = null
     if _below_surface_detector.is_colliding():

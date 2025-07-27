@@ -8,6 +8,7 @@ signal open_credits
 
 @onready var lone_text: ScrollingText = %Lone
 @onready var transmission_text: ScrollingText = %Transmission
+@onready var loading_text: Control = %LoadingText
 
 @onready var play_button: Button = %PlayButton
 @onready var credits_button: Button = %CreditsButton
@@ -21,6 +22,7 @@ func _ready() -> void:
     settings_button.pressed.connect(_on_settings_button_pressed)
     
 func _on_play_button_pressed() -> void:
+    loading_text.show()
     start_game.emit()
 
 func _on_credits_button_pressed() -> void:

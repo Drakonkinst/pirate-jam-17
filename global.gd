@@ -16,8 +16,16 @@ var show_speedrun_timer := false
 var look_sensitivity := 50.0
 var roll_speed := 250.0
 
+const KEYBOARD_Q = preload("res://ui//keyboard_q.png")
+const KEYBOARD_R = preload("res://ui//keyboard_r.png")
+const KEYBOARD_E = preload("res://ui//keyboard_e.png")
+const MOUSE_MOVE = preload("res://ui//mouse_move.png")
+const MOUSE_LEFT = preload("res://ui//mouse_left_outline.png")
+const MOUSE_RIGHT = preload("res://ui//mouse_right_outline.png")
+
 func _ready() -> void:
     _load_config()
+    print(KEYBOARD_Q.resource_path)
     
 func _load_config() -> void:
     var err := config.load(CONFIG_PATH)

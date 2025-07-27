@@ -24,12 +24,6 @@ var triggered_end_screen := false
 func _ready() -> void:
     win_button.pressed.connect(_on_win_button_pressed)
     end_screen_timer.timeout.connect(_on_end_screen_timer_timeout)
-    Image.load_from_file("res://ui//keyboard_q.png")
-    Image.load_from_file("res://ui//keyboard_r.png")
-    Image.load_from_file("res://ui//keyboard_e.png")
-    Image.load_from_file("res://ui//mouse_move.png")
-    Image.load_from_file("res://ui//mouse_left_outline.png")
-    Image.load_from_file("res://ui//mouse_right_outline.png")
 
 func get_hook_target() -> Node3D:
     return grappling_hook_controller.hook_target
