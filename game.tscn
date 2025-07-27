@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=126 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
@@ -44,7 +44,11 @@
 [ext_resource type="Shader" uid="uid://bdb1idx2fxrr7" path="res://ui/menu/paused.gdshader" id="20_t2ssd"]
 [ext_resource type="PackedScene" uid="uid://dywihjrvw7kcl" path="res://ui/menu/options_screen.tscn" id="21_7noa1"]
 [ext_resource type="PackedScene" uid="uid://84vt8uitdhy4" path="res://libs/GLB format/wall-doorway-wide-round.glb" id="21_i2p71"]
+[ext_resource type="Texture2D" uid="uid://h2bg4n0imes0" path="res://ui/keyboard_w.png" id="22_5628o"]
 [ext_resource type="PackedScene" uid="uid://cexj3a71mbxab" path="res://object/cube.tscn" id="22_f1jbl"]
+[ext_resource type="Texture2D" uid="uid://c8255t8kwss1h" path="res://ui/keyboard_a.png" id="23_svdf4"]
+[ext_resource type="Texture2D" uid="uid://c4j0mijecahch" path="res://ui/keyboard_s.png" id="24_lh772"]
+[ext_resource type="Texture2D" uid="uid://dik8dpj6fy8es" path="res://ui/keyboard_d.png" id="25_66xay"]
 [ext_resource type="PackedScene" uid="uid://cbeowwo0akxat" path="res://object/fan/big_fan.tscn" id="25_i2p71"]
 [ext_resource type="PackedScene" uid="uid://c8xjginy5scfm" path="res://object/chair/hatch_door.tscn" id="25_xa8c5"]
 [ext_resource type="PackedScene" uid="uid://cj5q6ud8vce3x" path="res://object/object_holder/battery_holder.tscn" id="26_xfvwf"]
@@ -620,7 +624,6 @@ mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="MainPauseScreen" type="Control" parent="CanvasLayer/PauseScreen"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -629,7 +632,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -642,13 +645,9 @@ offset_right = 114.5
 offset_bottom = 159.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer"]
-layout_mode = 2
 theme_override_constants/separation = 60
 
-[node name="PauseText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer"]
+[node name="PauseText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer"]
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 4
@@ -663,26 +662,254 @@ scroll_active = false
 autowrap_mode = 0
 custom_effects = [null]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_l1i01")
 text = "Resume"
 
-[node name="OptionsButton" type="Button" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_l1i01")
 text = "Options"
 
-[node name="ExitToMenuButton" type="Button" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="ExitToMenuButton" type="Button" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_l1i01")
 text = "Exit to Menu"
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -134.0
+offset_right = 360.0
+offset_bottom = 184.0
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="TitleText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Controls"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="TitleText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer3/HBoxContainer"]
+clip_contents = false
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[img]res://ui//mouse_left_outline.png[/img] Pull Tether"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+custom_effects = [null]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="TitleText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[img]res://ui//mouse_right_outline.png[/img] Lock Tether"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+custom_effects = [null]
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer6"]
+clip_contents = false
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[img]res://ui//mouse_move.png[/img] Look Around"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+custom_effects = [null]
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+
+[node name="TitleText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer4/HBoxContainer"]
+clip_contents = false
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[img]res://ui//keyboard_q.png[/img] / [img]res://ui//keyboard_e.png[/img] Tilt"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+custom_effects = [null]
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer4/HBoxContainer5"]
+clip_contents = false
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[img]res://ui//keyboard_r.png[/img] Go Upright"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+custom_effects = [null]
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer7/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer7/VBoxContainer/HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+texture = ExtResource("22_5628o")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer7/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer7/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("23_svdf4")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer7/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("24_lh772")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer7/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("25_66xay")
+
+[node name="TitleText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer7"]
+clip_contents = false
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "Roll"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+custom_effects = [null]
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -374.0
+offset_top = -123.0
+offset_right = -74.0
+offset_bottom = 177.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 60
+
+[node name="TitleText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer3"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Goal"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="TitleText2" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer3"]
+clip_contents = false
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Use your tether to reach the top of the Communications Tower and send a distress signal!"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
+custom_effects = [null]
+
 [node name="OptionsScreen" parent="CanvasLayer/PauseScreen" instance=ExtResource("21_7noa1")]
+visible = false
 layout_mode = 1
 
 [node name="Stars" parent="." instance=ExtResource("7_j5wjh")]
@@ -2449,6 +2676,6 @@ player = NodePath("../Player")
 process_mode = 3
 script = ExtResource("71_wj41c")
 
-[connection signal="pressed" from="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer/VBoxContainer/ResumeButton" to="CanvasLayer/PauseScreen" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer/VBoxContainer/OptionsButton" to="CanvasLayer/PauseScreen" method="_on_options_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer/VBoxContainer/ResumeButton" to="CanvasLayer/PauseScreen" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer/VBoxContainer/OptionsButton" to="CanvasLayer/PauseScreen" method="_on_options_button_pressed"]
 [connection signal="on_return_pressed" from="CanvasLayer/PauseScreen/OptionsScreen" to="CanvasLayer/PauseScreen" method="_on_options_screen_on_return_pressed"]

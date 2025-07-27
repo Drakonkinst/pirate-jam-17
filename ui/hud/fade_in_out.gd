@@ -2,8 +2,8 @@ extends ColorRect
 
 class_name FadeInOut
 
-@export var fade_in_speed := 0.1
-@export var fade_out_speed := 0.1
+@export var fade_in_speed := 0.05
+@export var fade_out_speed := 0.05
 
 var _target_color: Color
 

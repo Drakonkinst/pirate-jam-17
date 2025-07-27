@@ -23,10 +23,10 @@ func _process(_delta: float) -> void:
     hook_target = player.hook_raycast.get_collider()
     
     if player.global_transform.basis.y.dot(Vector3.UP) < -0.6 and !player.nearby_surface_detection.is_aligned():
-        secondary_text = "[img]res://ui//keyboard_q.png[/img] / [img]res://ui//keyboard_e.png[/img] Roll"
+        secondary_text = "[img]res://ui//keyboard_q.png[/img] / [img]res://ui//keyboard_e.png[/img] Tilt"
     
     if player.affected_fans.size() > 0 and not using_locked_tether:
-        secondary_text = "Hold [img]res://ui//mouse_right_outline.png[/img] - Lock Tether"
+        secondary_text = "[img]res://ui//mouse_right_outline.png[/img] Lock Tether"
     if hook_target is SmallButton and not grapple_hook_controller.is_launched():
         var small_button := hook_target as SmallButton
         var button_state := small_button.get_state()

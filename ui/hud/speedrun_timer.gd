@@ -6,6 +6,7 @@ extends Control
 var time := 0.0
 
 func _process(delta: float) -> void:
+    set_visible(Global.show_speedrun_timer)
     time += delta
     var ms := int((time * 100)) % 100
     var total_secs := int(time)
