@@ -15,6 +15,8 @@ func _process(delta: float) -> void:
     if _typing:
         _character_progress += characters_per_second * delta
         visible_ratio = min(1.0, _character_progress / _num_chars_in_line)
+        if Global.game != null:
+            Global.game.audio.play_typing()
         if _character_progress >= _num_chars_in_line:
             _typing = false 
 

@@ -114,6 +114,7 @@ func _launch_hook() -> void:
         _rope_length = grappling_hook_range
         _set_attachment_type(AttachmentType.NONE)
     _set_hook_state(HookState.LAUNCHED)
+    Global.game.audio.fire_hook.play_random()
 
 func _retract_hook() -> void:
     _set_hook_state(HookState.ON_COOLDOWN)

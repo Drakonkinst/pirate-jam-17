@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=130 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
@@ -23,9 +23,12 @@
 [ext_resource type="Script" uid="uid://dhr3xv7miex53" path="res://ui/hud/crosshair/crosshair.gd" id="8_4v2jo"]
 [ext_resource type="Material" uid="uid://bk26armjmhc7m" path="res://world/surface.tres" id="8_7knny"]
 [ext_resource type="Script" uid="uid://k0joa5bluso1" path="res://addons/starlight/StarGenerator.gd" id="8_vef74"]
+[ext_resource type="Script" uid="uid://d36vkvhl014cj" path="res://audio/audio_randomizer.gd" id="9_0s2o4"]
+[ext_resource type="AudioStream" uid="uid://tmw0covrej6x" path="res://hook/fire_hook.ogg" id="9_66xay"]
 [ext_resource type="PackedScene" uid="uid://du1cn8wac3awi" path="res://object/chair/chair.tscn" id="9_iotsf"]
 [ext_resource type="PackedScene" uid="uid://db0uepma3ku82" path="res://object/stairs.tscn" id="9_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://d153vfgmc4r6i" path="res://object/door/crew_door.tscn" id="10_215e1"]
+[ext_resource type="AudioStream" uid="uid://bhibed6kg7106" path="res://world/space_ambient.mp3" id="11_4mai8"]
 [ext_resource type="PackedScene" uid="uid://7qu2ni5oun14" path="res://object/button/small_button.tscn" id="11_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://dcbw7u3qosfgt" path="res://object/table/table.tscn" id="11_iotsf"]
 [ext_resource type="PackedScene" uid="uid://c5h3d1ke4io52" path="res://object/glass/breakable_glass.tscn" id="12_80cx4"]
@@ -361,7 +364,24 @@ script = ExtResource("5_56gn1")
 [node name="MissionTyping" type="AudioStreamPlayer" parent="AudioManager"]
 unique_name_in_owner = true
 stream = ExtResource("6_avmo2")
+volume_db = -25.0
 bus = &"UI"
+
+[node name="FireHook" type="AudioStreamPlayer" parent="AudioManager"]
+unique_name_in_owner = true
+volume_db = -10.0
+bus = &"Environment"
+script = ExtResource("9_0s2o4")
+audio_tracks = Array[AudioStream]([ExtResource("9_66xay")])
+min_pitch = 0.8000000000029104
+max_pitch = 1.1999999999970896
+metadata/_custom_type_script = "uid://d36vkvhl014cj"
+
+[node name="AmbientSpace" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("11_4mai8")
+volume_db = -5.0
+autoplay = true
+bus = &"Environment"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

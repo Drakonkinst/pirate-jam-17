@@ -10,7 +10,7 @@ var ui := AudioServer.get_bus_index("UI")
 var environment := AudioServer.get_bus_index("Environment")
 
 var always_go_upright := false
-var disable_surface_alignment := false
+var disable_surface_alignment := true
 var show_speedrun_timer := false
 
 var look_sensitivity := 50.0
@@ -41,6 +41,8 @@ func _load_config() -> void:
         set_always_go_upright(config.get_value("gameplay", "always_go_upright"), false)
     if config.has_section_key("gameplay", "disable_surface_alignment"):
         set_disable_surface_alignment(config.get_value("gameplay", "disable_surface_alignment"), false)
+    else:
+        set_disable_surface_alignment(true, false)
     if config.has_section_key("gameplay", "show_speedrun_timer"):
         set_show_speedrun_timer(config.get_value("gameplay", "show_speedrun_timer"), false)
     if config.has_section_key("controls", "look_sensitivity"):
