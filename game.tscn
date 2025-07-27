@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=116 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
@@ -214,6 +214,9 @@ _surfaces = [{
 radius = 1.084
 height = 4.141
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fuuk6"]
+size = Vector3(4.061264, 6.1636047, 4.5964355)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_xex6t"]
 lightmap_size_hint = Vector2i(7070, 6890)
 _surfaces = [{
@@ -255,6 +258,13 @@ size = Vector3(2.8742867, 0.50653076, 2.7558289)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ra4rb"]
 size = Vector3(1.6596069, 3.215454, 1.7285767)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6qn5j"]
+height = 4.39209
+radius = 0.75
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwgap"]
+size = Vector3(1.3520508, 1.4731445, 6.7385254)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xoeau"]
 size = Vector3(1.3337402, 2.3598633, 0.1428833)
@@ -1539,8 +1549,20 @@ transform = Transform3D(0.5529302, 0, -8.881784e-16, 0, 0.35166782, 0, 1.7763568
 [node name="SciFi Assets" parent="World/Section2/Decor" instance=ExtResource("62_du4n2")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.940697e-08, 0, -8.940697e-08, -1, -93.91168, 10.201956, -5.8754807)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section2/Decor/SciFi Assets"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section2/Decor/SciFi Assets/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0.04007721, 0.42770195, -1.5402036)
+shape = SubResource("BoxShape3D_fuuk6")
+
 [node name="SciFi Assets2" parent="World/Section2/Decor" instance=ExtResource("62_du4n2")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.940697e-08, 0, -8.940697e-08, -1, -103.59892, 10.201956, -5.8754807)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section2/Decor/SciFi Assets2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section2/Decor/SciFi Assets2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0.04007721, 0.42770195, -1.5402036)
+shape = SubResource("BoxShape3D_fuuk6")
 
 [node name="SciFi Assets3" parent="World/Section2/Decor" instance=ExtResource("57_vyqle")]
 transform = Transform3D(1.9010668e-07, 3.6947649, 1.4119065e-14, 4.349134, -1.615033e-07, 3.230066e-07, 3.8021335e-07, 0, -3.6947649, -106.07215, 2.123932, -3.9466841)
@@ -2164,14 +2186,32 @@ shape = SubResource("BoxShape3D_ra4rb")
 [node name="SciFi Assets18" parent="World/Section3/Decor" instance=ExtResource("54_jo4nb")]
 transform = Transform3D(3.8713195, 0, 0, 0, 3.8713195, 0, 0, 0, 3.8713195, -81.141914, -2.3586798, 15.381146)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets18/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1960449, 0)
+shape = SubResource("CylinderShape3D_6qn5j")
+
 [node name="SciFi Assets19" parent="World/Section3/Decor" instance=ExtResource("54_jo4nb")]
 transform = Transform3D(3.8713195, 0, 0, 0, 3.8713195, 0, 0, 0, 3.8713195, -81.141914, -2.3586798, 33.125492)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets19"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets19/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1960449, 0)
+shape = SubResource("CylinderShape3D_6qn5j")
 
 [node name="SciFi Assets20" parent="World/Section3/Decor" instance=ExtResource("55_56gn1")]
 transform = Transform3D(2.6827826, 0, 0, 0, 1, 0, 0, 0, 1, -72.32482, -2.224083, 34.43326)
 
 [node name="SciFi Assets21" parent="World/Section3/Decor" instance=ExtResource("56_avmo2")]
 transform = Transform3D(-1.2636399e-07, 0, -2.890871, 0, 2.890871, 0, 2.890871, 0, -1.2636399e-07, -97.85926, -2.854982, -27.305916)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section3/Decor/SciFi Assets21"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section3/Decor/SciFi Assets21/StaticBody3D"]
+transform = Transform3D(1.000046, 0, -5.0803806e-13, 0, 1.000046, 0, 5.0803806e-13, 0, 1.000046, 0.17602348, 0.23657244, -0.041103363)
+shape = SubResource("BoxShape3D_cwgap")
 
 [node name="SciFi Assets22" parent="World/Section3/Decor" instance=ExtResource("56_avmo2")]
 transform = Transform3D(-1.2636399e-07, 0, -2.890871, 0, 2.890871, 0, 2.890871, 0, -1.2636399e-07, -91.54327, -2.854982, -27.305916)
