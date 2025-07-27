@@ -29,6 +29,7 @@ func press() -> void:
     if _state == State.ENABLED:
         Global.game.mission_tracker.finish_mission(finish_mission)
         pressed.emit()
+        _set_state(State.PRESSED)
 
 
 func _set_state(state: State) -> void:
