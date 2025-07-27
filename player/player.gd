@@ -42,6 +42,10 @@ func _physics_process(delta: float) -> void:
     
     nearby_surface_detection.update(self, delta)
     
+    # Hardcoding this one because I can't be bothered to set up an area
+    if global_position.x <= -30:
+        Global.game.mission_tracker.finish_mission("leave_crew_quarters")
+    
     input_state.reset()
 
 func _process_look_inputs(mouse_motion: Vector2) -> void:

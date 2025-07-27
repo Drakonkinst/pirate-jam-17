@@ -13,6 +13,7 @@ enum State { ENABLED, PRESSED, DISABLED }
 @export var enabled_material: Material
 @export var disabled_material: Material
 @export var pressed_material: Material
+@export var finish_mission: String
 
 var _state: State = State.ENABLED
 var _origin: Vector3 = Vector3.ZERO
@@ -26,8 +27,8 @@ func press() -> void:
     if _state == State.DISABLED:
         return
     if _state == State.ENABLED:
+        Global.game.mission_tracker.finish_mission(finish_mission)
         pressed.emit()
-        _set_state(State.PRESSED)
 
 
 func _set_state(state: State) -> void:

@@ -9,6 +9,8 @@ signal game_won
 @export var grappling_hook_controller: GrapplingHookController
 @export var hud: HUD
 @export var win_button: SmallButton
+@export var mission_tracker: MissionTracker
+@export var audio: AudioManager
 
 func _ready() -> void:
     win_button.pressed.connect(_on_win_button_pressed)

@@ -2,6 +2,7 @@ extends Control
 
 class_name HUD
 
+@export var mission_tracker_hud: MissionTrackerHud
 @onready var crosshair_prompt_primary: RichTextLabel = %CrosshairPromptPrimary
 @onready var crosshair_prompt_secondary: RichTextLabel = %CrosshairPromptSecondary
 @onready var fade_in_out: FadeInOut = %FadeInOut

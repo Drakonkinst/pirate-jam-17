@@ -7,6 +7,7 @@ class_name ObjectHolder
 @export var angular_speed := 0.1
 @export var linear_speed := 0.1
 @export var opens_door: Door
+@export var finish_mission: String
 
 @export_group("Lights")
 @export var lights: Array[MeshInstance3D]
@@ -35,6 +36,7 @@ func _physics_process(delta: float) -> void:
 
     if any_bodies and !_enabled:
         _enable()
+        Global.game.mission_tracker.finish_mission(finish_mission)
     elif !any_bodies and _enabled:
         _disable()
                 

@@ -4,6 +4,7 @@ class_name BreakableGlass
 
 @export var stages: Array[BrokenGlassStage]
 @export var stage := 0
+@export var finish_mission: String
 @onready var mesh: MeshInstance3D = %MeshInstance3D
 @onready var collider: CollisionShape3D = %CollisionShape3D
 @onready var break_timer: Timer = %BreakTimer
@@ -33,6 +34,8 @@ func _set_stage(value: int) -> void:
     else:
         material.set("shader_parameter/impact_points", PackedVector3Array())
     collider.disabled = info.show_broken
+    if stage >= stages.size() - 1:
+        Global.game.mission_tracker.finish_mission(finish_mission)
 
 func _on_break_timer_timeout() -> void:
     _can_take_damage = true

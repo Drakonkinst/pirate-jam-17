@@ -1,22 +1,26 @@
-[gd_scene load_steps=100 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=113 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
 [ext_resource type="Script" uid="uid://btcpo8dfl1byv" path="res://level_manager.gd" id="2_082n1"]
 [ext_resource type="Script" uid="uid://ebhkhibch51g" path="res://camera_control.gd" id="2_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://crboolrfwew5k" path="res://ui/crosshair/0381.png" id="2_iotsf"]
+[ext_resource type="Texture2D" uid="uid://crboolrfwew5k" path="res://ui/hud/crosshair/0381.png" id="2_iotsf"]
 [ext_resource type="Script" uid="uid://jhbvnq1gij8a" path="res://mission/mission_tracker.gd" id="2_ra4rb"]
 [ext_resource type="PackedScene" uid="uid://do2ht3l1tvwuj" path="res://player/player.tscn" id="3_fc0e3"]
+[ext_resource type="Script" uid="uid://cbxngcs7onm7q" path="res://mission/mission.gd" id="3_xoeau"]
 [ext_resource type="Theme" uid="uid://c4875hllppr0h" path="res://ui/theme.tres" id="4_l1i01"]
+[ext_resource type="PackedScene" uid="uid://dwd63bd1spwv7" path="res://mission/marker.tscn" id="4_wj41c"]
+[ext_resource type="Script" uid="uid://d1iimci1dyikk" path="res://audio/audio_manager.gd" id="5_56gn1"]
 [ext_resource type="Texture2D" uid="uid://s68ydljo1fu0" path="res://world/placeholder_orange.png" id="5_eow3j"]
-[ext_resource type="Texture2D" uid="uid://uwdutmf0t6p5" path="res://ui/crosshair/0382.png" id="5_iu0sx"]
-[ext_resource type="Script" uid="uid://chuuv2u71vd1a" path="res://ui/hud.gd" id="5_r62pu"]
+[ext_resource type="Texture2D" uid="uid://uwdutmf0t6p5" path="res://ui/hud/crosshair/0382.png" id="5_iu0sx"]
+[ext_resource type="Script" uid="uid://chuuv2u71vd1a" path="res://ui/hud/hud.gd" id="5_r62pu"]
 [ext_resource type="PackedScene" uid="uid://dr2ayqxiwwccw" path="res://hook/grappling_hook_controller.tscn" id="5_ryrav"]
-[ext_resource type="Texture2D" uid="uid://dn57kpitlvnh2" path="res://ui/crosshair/0383.png" id="6_4v2jo"]
+[ext_resource type="Texture2D" uid="uid://dn57kpitlvnh2" path="res://ui/hud/crosshair/0383.png" id="6_4v2jo"]
+[ext_resource type="AudioStream" uid="uid://d3iyxenjkexp7" path="res://ui/hud/type.ogg" id="6_avmo2"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="7_j5wjh"]
-[ext_resource type="Texture2D" uid="uid://cw0kwd054nb1c" path="res://ui/crosshair/0384.png" id="7_l1i01"]
-[ext_resource type="Script" uid="uid://da5r2xnhwnn73" path="res://ui/fade_in_out.gd" id="7_ple6s"]
-[ext_resource type="Script" uid="uid://dhr3xv7miex53" path="res://ui/crosshair/crosshair.gd" id="8_4v2jo"]
+[ext_resource type="Texture2D" uid="uid://cw0kwd054nb1c" path="res://ui/hud/crosshair/0384.png" id="7_l1i01"]
+[ext_resource type="Script" uid="uid://da5r2xnhwnn73" path="res://ui/hud/fade_in_out.gd" id="7_ple6s"]
+[ext_resource type="Script" uid="uid://dhr3xv7miex53" path="res://ui/hud/crosshair/crosshair.gd" id="8_4v2jo"]
 [ext_resource type="Material" uid="uid://bk26armjmhc7m" path="res://world/surface.tres" id="8_7knny"]
 [ext_resource type="Script" uid="uid://k0joa5bluso1" path="res://addons/starlight/StarGenerator.gd" id="8_vef74"]
 [ext_resource type="PackedScene" uid="uid://du1cn8wac3awi" path="res://object/chair/chair.tscn" id="9_iotsf"]
@@ -26,9 +30,11 @@
 [ext_resource type="PackedScene" uid="uid://dcbw7u3qosfgt" path="res://object/table/table.tscn" id="11_iotsf"]
 [ext_resource type="PackedScene" uid="uid://c5h3d1ke4io52" path="res://object/glass/breakable_glass.tscn" id="12_80cx4"]
 [ext_resource type="Script" uid="uid://bo0pncu0ffev7" path="res://object/glass/broken_glass_stage.gd" id="13_e8heu"]
+[ext_resource type="Script" uid="uid://cvpf6hnxcp2kd" path="res://ui/hud/mission/mission_tracker_hud.gd" id="13_jo4nb"]
 [ext_resource type="PackedScene" uid="uid://bp51os4x8x4m1" path="res://libs/gtlf/Command_Wall.glb" id="14_qhcbd"]
 [ext_resource type="Material" uid="uid://kk08pth2ah1v" path="res://object/light.tres" id="15_80cx4"]
 [ext_resource type="PackedScene" uid="uid://bco442hwrb4m8" path="res://object/fan/fan.tscn" id="15_vaj68"]
+[ext_resource type="Script" uid="uid://cnd05qu765nj0" path="res://ui/hud/scrolling_text.gd" id="16_vyqle"]
 [ext_resource type="PackedScene" uid="uid://dlfquurpbj731" path="res://libs/gtlf/Large_Monitor_Off.glb" id="17_i2p71"]
 [ext_resource type="PackedScene" uid="uid://bmyt35txkeslp" path="res://libs/gtlf/Railing_Flat.glb" id="18_xa8c5"]
 [ext_resource type="PackedScene" uid="uid://cllg5s0l8w215" path="res://libs/gtlf/Railing_Ramp.glb" id="19_5b14r"]
@@ -64,6 +70,48 @@
 [ext_resource type="PackedScene" uid="uid://renj8w6243o1" path="res://libs/GLTF format/satelliteDish.glb" id="59_bqa6y"]
 [ext_resource type="PackedScene" uid="uid://lwtqhnnfdqom" path="res://libs/GLTF format/gate_complex.glb" id="60_bqa6y"]
 [ext_resource type="PackedScene" uid="uid://b67aig5n8rwmm" path="res://libs/gtlf/Ramp_Orange.glb" id="62_du4n2"]
+
+[sub_resource type="Resource" id="Resource_6qn5j"]
+script = ExtResource("3_xoeau")
+mission_id = "open_door"
+text = "Open the door."
+metadata/_custom_type_script = "uid://cbxngcs7onm7q"
+
+[sub_resource type="Resource" id="Resource_xoeau"]
+script = ExtResource("3_xoeau")
+mission_id = "leave_crew_quarters"
+text = "Leave the crew quarters."
+metadata/_custom_type_script = "uid://cbxngcs7onm7q"
+
+[sub_resource type="Resource" id="Resource_wj41c"]
+script = ExtResource("3_xoeau")
+mission_id = "leave_cafeteria"
+text = "Find a way out of the cafeteria."
+metadata/_custom_type_script = "uid://cbxngcs7onm7q"
+
+[sub_resource type="Resource" id="Resource_baljx"]
+script = ExtResource("3_xoeau")
+mission_id = "reach_engineering"
+text = "Reach the Engineering Bay."
+metadata/_custom_type_script = "uid://cbxngcs7onm7q"
+
+[sub_resource type="Resource" id="Resource_t2ssd"]
+script = ExtResource("3_xoeau")
+mission_id = "power_comms"
+text = "Power the comms relay."
+metadata/_custom_type_script = "uid://cbxngcs7onm7q"
+
+[sub_resource type="Resource" id="Resource_7noa1"]
+script = ExtResource("3_xoeau")
+mission_id = "reach_comms"
+text = "Ascend the Communications Tower."
+metadata/_custom_type_script = "uid://cbxngcs7onm7q"
+
+[sub_resource type="Resource" id="Resource_3xib3"]
+script = ExtResource("3_xoeau")
+mission_id = "press_win_button"
+text = "Activate the distress beacon."
+metadata/_custom_type_script = "uid://cbxngcs7onm7q"
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_r62pu"]
 frames = 4
@@ -223,15 +271,42 @@ size = Vector3(3.009369, 12.578491, 13.22023)
 [sub_resource type="BoxShape3D" id="BoxShape3D_du4n2"]
 size = Vector3(5.4088135, 1, 1)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller", "hud", "win_button")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller", "hud", "win_button", "mission_tracker", "audio")]
 script = ExtResource("1_80nbo")
 player = NodePath("Player")
 grappling_hook_controller = NodePath("GrapplingHookController")
 hud = NodePath("CanvasLayer/HUD")
 win_button = NodePath("World/Section3/Decor/WinButton")
+mission_tracker = NodePath("MissionTracker")
+audio = NodePath("AudioManager")
 
-[node name="MissionTracker" type="Node3D" parent="."]
+[node name="MissionTracker" type="Node3D" parent="." node_paths=PackedStringArray("markers", "start_timer")]
 script = ExtResource("2_ra4rb")
+missions = Array[ExtResource("3_xoeau")]([SubResource("Resource_6qn5j"), SubResource("Resource_xoeau"), SubResource("Resource_wj41c"), SubResource("Resource_baljx"), SubResource("Resource_t2ssd"), SubResource("Resource_7noa1"), SubResource("Resource_3xib3")])
+markers = [NodePath("Marker0"), NodePath("Marker1"), null, NodePath("Marker3"), NodePath("Marker4"), NodePath("Marker5"), NodePath("Marker6")]
+start_timer = NodePath("Timer")
+
+[node name="Marker0" parent="MissionTracker" instance=ExtResource("4_wj41c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.653632, 8.401761, -5.9734354)
+
+[node name="Marker1" parent="MissionTracker" instance=ExtResource("4_wj41c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.650599, 8.401761, -8.82136)
+
+[node name="Marker3" parent="MissionTracker" instance=ExtResource("4_wj41c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.482037, 4.246504, -56.363983)
+
+[node name="Marker4" parent="MissionTracker" instance=ExtResource("4_wj41c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.795727, 0.10590625, 24.88417)
+
+[node name="Marker5" parent="MissionTracker" instance=ExtResource("4_wj41c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.32099, 118.19921, 66.52074)
+
+[node name="Marker6" parent="MissionTracker" instance=ExtResource("4_wj41c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.95944, 121.76247, 65.80627)
+
+[node name="Timer" type="Timer" parent="MissionTracker"]
+wait_time = 3.0
+one_shot = true
 
 [node name="LevelManager" type="Node3D" parent="." node_paths=PackedStringArray("section_points", "lights", "lazy_load_decor", "player")]
 script = ExtResource("2_082n1")
@@ -253,9 +328,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.097824, 0, 68.03074)
 quality = 2
 light_data = ExtResource("2_7knny")
 
+[node name="AudioManager" type="Node3D" parent="."]
+script = ExtResource("5_56gn1")
+
+[node name="MissionTyping" type="AudioStreamPlayer" parent="AudioManager"]
+unique_name_in_owner = true
+stream = ExtResource("6_avmo2")
+bus = &"UI"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" type="Control" parent="CanvasLayer"]
+[node name="HUD" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("mission_tracker_hud")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -265,6 +348,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("4_l1i01")
 script = ExtResource("5_r62pu")
+mission_tracker_hud = NodePath("MissionTrackerHud")
 
 [node name="FadeInOut" type="ColorRect" parent="CanvasLayer/HUD"]
 unique_name_in_owner = true
@@ -298,7 +382,7 @@ texture = SubResource("AnimatedTexture_r62pu")
 stretch_mode = 3
 script = ExtResource("8_4v2jo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HUD"]
+[node name="CrosshairPrompts" type="VBoxContainer" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -313,7 +397,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="CrosshairPromptPrimary" type="RichTextLabel" parent="CanvasLayer/HUD/VBoxContainer"]
+[node name="CrosshairPromptPrimary" type="RichTextLabel" parent="CanvasLayer/HUD/CrosshairPrompts"]
 unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
@@ -325,7 +409,7 @@ autowrap_mode = 0
 horizontal_alignment = 1
 custom_effects = [null]
 
-[node name="CrosshairPromptSecondary" type="RichTextLabel" parent="CanvasLayer/HUD/VBoxContainer"]
+[node name="CrosshairPromptSecondary" type="RichTextLabel" parent="CanvasLayer/HUD/CrosshairPrompts"]
 unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
@@ -336,6 +420,105 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 custom_effects = [null]
+
+[node name="MissionTrackerHud" type="Control" parent="CanvasLayer/HUD" node_paths=PackedStringArray("title_text", "mission_text", "splash", "next_stage_timer")]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 630.0
+offset_bottom = 105.0
+script = ExtResource("13_jo4nb")
+title_text = NodePath("Text/MissionTitle")
+mission_text = NodePath("Text/MissionSubtitle")
+splash = NodePath("UpdatedSplash")
+next_stage_timer = NodePath("Timer")
+
+[node name="Text" type="VBoxContainer" parent="CanvasLayer/HUD/MissionTrackerHud"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="MissionTitle" type="RichTextLabel" parent="CanvasLayer/HUD/MissionTrackerHud/Text"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.61, 0.54981333, 0.3843, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "OBJECTIVE"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+script = ExtResource("16_vyqle")
+metadata/_custom_type_script = "uid://cnd05qu765nj0"
+
+[node name="MissionSubtitle" type="RichTextLabel" parent="CanvasLayer/HUD/MissionTrackerHud/Text"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+bbcode_enabled = true
+text = "Escape the crew quarters"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+script = ExtResource("16_vyqle")
+metadata/_custom_type_script = "uid://cnd05qu765nj0"
+
+[node name="UpdatedSplash" type="Control" parent="CanvasLayer/HUD/MissionTrackerHud"]
+unique_name_in_owner = true
+clip_children = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/HUD/MissionTrackerHud/UpdatedSplash"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4597333, 0.8, 0.096, 1)
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/HUD/MissionTrackerHud/UpdatedSplash/Background"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 4.0
+offset_right = 30.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.96641165, 0.94959635, 0.907673, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Objective Updated!"
+scroll_active = false
+autowrap_mode = 0
+autowrap_trim_flags = 0
+shortcut_keys_enabled = false
+vertical_alignment = 1
+justification_flags = 0
+custom_effects = [null]
+
+[node name="Timer" type="Timer" parent="CanvasLayer/HUD/MissionTrackerHud"]
+one_shot = true
 
 [node name="PauseScreen" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -373,9 +556,6 @@ transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 3.863653
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 3.8636532, 7.410634, 5.18005)
-
-[node name="DebugSpawn_Battery" type="Marker3D" parent="."]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -95.81952, 1.4235408, -16.793362)
 
 [node name="World" type="Node3D" parent="."]
 
@@ -530,6 +710,7 @@ opening_button = NodePath("../SmallButton4")
 [node name="SmallButton" parent="World/Section1/Decor" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(1, 0, 0, 0, -0.009529371, -0.9999546, 0, 0.9999546, -0.009529371, 0.39249098, 9.32205, -5.7155857)
 stay_pressed = true
+finish_mission = "open_door"
 
 [node name="SmallButton6" parent="World/Section1/Decor" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(-4.371139e-08, 0.9999546, -0.009529371, 0, -0.009529371, -0.9999546, -1, -4.3709402e-08, 4.1654202e-10, -52.513718, 5.3426685, -19.109356)
@@ -562,6 +743,7 @@ initial_state = 2
 [node name="BreakableGlass" parent="World/Section1/Decor" instance=ExtResource("12_80cx4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.535, 9.517, -28.12)
 stages = Array[ExtResource("13_e8heu")]([SubResource("Resource_rvswv"), SubResource("Resource_boyg6"), SubResource("Resource_e36ub"), SubResource("Resource_hb5m1")])
+finish_mission = "leave_cafeteria"
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="World/Section1/Decor/BreakableGlass" groups=["Surface"]]
 collision_layer = 3
@@ -1127,6 +1309,7 @@ closes_after = 7.0
 [node name="SmallButton" parent="World/Section2/Decor/HatchDoor" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371, -0.9999546, -1.0000001, 5.861057e-08, -6.493727e-10, -3.2985725, 2.8865495, 1.4575081)
 unpress_time = 1.0
+finish_mission = "reach_engineering"
 
 [node name="SmallButton3" parent="World/Section2/Decor/HatchDoor" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371, -0.9999546, -1.0000001, 5.861057e-08, -6.493727e-10, -3.2985725, 2.8865495, -1.881958)
@@ -1214,6 +1397,7 @@ surface_material_override/0 = ExtResource("31_7knny")
 [node name="BatteryHolder2" parent="World/Section2/Decor" node_paths=PackedStringArray("opens_door", "lights") instance=ExtResource("26_xfvwf")]
 transform = Transform3D(-1.4, 0, 1.2239188e-07, 0, 1.4, 0, -1.2239188e-07, 0, -1.4, -58.86048, -2.8207395, 24.780504)
 opens_door = NodePath("../HatchDoor6")
+finish_mission = "power_comms"
 lights = [NodePath("../ActivationLights2/MeshInstance3D-2"), NodePath("../ActivationLights2/MeshInstance3D2-2"), NodePath("../ActivationLights2/MeshInstance3D3-2")]
 
 [node name="ActivationLights2" type="Node3D" parent="World/Section2/Decor"]
@@ -1351,6 +1535,15 @@ outline_size = 0
 
 [node name="SciFi Assets" parent="World/Section2/Decor/Sign7" instance=ExtResource("14_qhcbd")]
 transform = Transform3D(0.5529302, 0, -8.881784e-16, 0, 0.35166782, 0, 1.7763568e-15, 0, 0.3012586, -0.09052467, 0, 0)
+
+[node name="SciFi Assets" parent="World/Section2/Decor" instance=ExtResource("62_du4n2")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.940697e-08, 0, -8.940697e-08, -1, -93.91168, 10.201956, -5.8754807)
+
+[node name="SciFi Assets2" parent="World/Section2/Decor" instance=ExtResource("62_du4n2")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.940697e-08, 0, -8.940697e-08, -1, -103.59892, 10.201956, -5.8754807)
+
+[node name="SciFi Assets3" parent="World/Section2/Decor" instance=ExtResource("57_vyqle")]
+transform = Transform3D(1.9010668e-07, 3.6947649, 1.4119065e-14, 4.349134, -1.615033e-07, 3.230066e-07, 3.8021335e-07, 0, -3.6947649, -106.07215, 2.123932, -3.9466841)
 
 [node name="Section3" type="Node3D" parent="World"]
 
@@ -1717,6 +1910,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
 transform = Transform3D(-6.59047e-08, -0.6037498, 3.5859482, 3.6987464e-07, 3.5859482, 0.6037498, -3.6364186, 2.1313254e-07, -2.3613904e-09, -35.31915, 121.76487, 65.87058)
 stay_pressed = true
 unpress_time = 1.0
+finish_mission = "press_win_button"
 
 [node name="HatchDoor" parent="World/Section3/Decor" node_paths=PackedStringArray("toggling_buttons") instance=ExtResource("25_xa8c5")]
 transform = Transform3D(-8.881784e-16, -1.0000001, -3.8823512e-23, -4.371139e-08, 0, 1.0000001, -1, 0, -4.371139e-08, -69.633255, 118.18306, 66.50547)
@@ -1729,6 +1923,7 @@ closes_after = -1.0
 transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371, -0.9999546, -1.0000001, 5.8610567e-08, -6.4937267e-10, -3.298668, 2.8869934, -1.8824234)
 stay_pressed = true
 unpress_time = 1.0
+finish_mission = "reach_comms"
 
 [node name="SciFi Assets" parent="World/Section3/Decor" instance=ExtResource("43_t46w6")]
 transform = Transform3D(-1.431985e-07, 0, 3.276, 0, 2.332, 0, -3.276, 0, -1.431985e-07, -44.041283, 118.9151, 65.87223)
@@ -2036,12 +2231,3 @@ shape = SubResource("BoxShape3D_du4n2")
 unique_name_in_owner = true
 grappling_hook_range = 60.0
 player = NodePath("../Player")
-
-[node name="SciFi Assets" parent="." instance=ExtResource("62_du4n2")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.940697e-08, 0, -8.940697e-08, -1, -93.91168, 10.201956, -5.8754807)
-
-[node name="SciFi Assets2" parent="." instance=ExtResource("62_du4n2")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.940697e-08, 0, -8.940697e-08, -1, -103.59892, 10.201956, -5.8754807)
-
-[node name="SciFi Assets3" parent="." instance=ExtResource("57_vyqle")]
-transform = Transform3D(1.9010668e-07, 3.6947649, 1.4119065e-14, 4.349134, -1.615033e-07, 3.230066e-07, 3.8021335e-07, 0, -3.6947649, -106.07215, 2.123932, -3.9466841)

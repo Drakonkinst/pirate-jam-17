@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwd63bd1spwv7"]
+
+[ext_resource type="Texture2D" uid="uid://cbxe7x1hctxqf" path="res://ui/hud/mission/mission.png" id="1_8jkyp"]
+
+[node name="Marker0" type="Sprite3D"]
+cast_shadow = 0
+modulate = Color(0.9882353, 1, 0, 1)
+pixel_size = 0.0007
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = ExtResource("1_8jkyp")
