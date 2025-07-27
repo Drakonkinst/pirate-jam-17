@@ -5,11 +5,13 @@ class_name HookRopeModel
 @onready var rope: Node3D = %Rope
 @onready var rope_mesh: MeshInstance3D = %RopeMesh
 @onready var hook_end: Node3D = %HookEnd
+@onready var lock_model: Node3D = %LockModel
 
-func extend_from_to(source_position: Vector3, target_position: Vector3, target_normal: Vector3) -> void:
+func extend_from_to(source_position: Vector3, target_position: Vector3, target_normal: Vector3, show_lock: bool) -> void:
     global_position = source_position
     hook_end.global_position = target_position
     _align_hook_end_with_surface(target_normal)
+    lock_model.set_visible(show_lock)
     
     var distance_to_target := global_position.distance_to(target_position)
 

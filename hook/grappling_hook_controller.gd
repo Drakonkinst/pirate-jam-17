@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
         if  _attachment_type == AttachmentType.ATTACHED:
             _handle_hook_physics(source_pos, delta)
         assert(_hook_rope_model != null)
-        _hook_rope_model.extend_from_to(source_pos, _hook_target_node.global_position, _hook_target_normal)
+        _hook_rope_model.extend_from_to(source_pos, _hook_target_node.global_position, _hook_target_normal, player.input_state.is_pressing_secondary)
         if not _hook_rope_model.is_visible():
             _hook_rope_model.reset_physics_interpolation()
             _hook_rope_model.show()
