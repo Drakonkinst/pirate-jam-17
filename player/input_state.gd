@@ -7,25 +7,11 @@ var is_pressing_secondary: bool
 var movement_input: Vector3
 var roll_input: float
 var mouse_motion: Vector2
-var mouse_captured: bool
 var go_upright: bool
-
-func _ready() -> void:
-    capture_mouse()
-
-# Don't know if we need this part yet
-func _input(_event: InputEvent) -> void:
-    if Input.is_action_just_pressed("pause"): 
-        if mouse_captured:
-            release_mouse() 
-        else:
-            capture_mouse()
-    if Input.is_action_just_pressed("action_primary") or Input.is_action_just_pressed("action_secondary"):
-        capture_mouse()
 
 func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
-        if mouse_captured:
+        if not Global.game.pause_control.is_paused():
             mouse_motion += event.relative * 0.001
 
 func _process(_delta: float) -> void:
@@ -43,11 +29,3 @@ func _process(_delta: float) -> void:
     
 func reset() -> void:
     mouse_motion = Vector2.ZERO
-
-func capture_mouse() -> void:
-    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-    mouse_captured = true
-
-func release_mouse() -> void:
-    Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-    mouse_captured = false

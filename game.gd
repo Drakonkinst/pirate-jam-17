@@ -10,6 +10,7 @@ signal game_won
 @export var hud: HUD
 @export var win_button: SmallButton
 @export var mission_tracker: MissionTracker
+@export var pause_control: PauseControl
 @export var audio: AudioManager
 
 func _ready() -> void:

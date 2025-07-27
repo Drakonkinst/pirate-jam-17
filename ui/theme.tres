@@ -1,11 +1,23 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c4875hllppr0h"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c4875hllppr0h"]
 
+[ext_resource type="StyleBox" uid="uid://jk8utg6b5dgp" path="res://ui/menu/button_hover.tres" id="1_iqtc0"]
+[ext_resource type="StyleBox" uid="uid://wraidy544kgk" path="res://ui/menu/button_normal.tres" id="1_jf26r"]
 [ext_resource type="FontVariation" uid="uid://dbrs5w857sbqb" path="res://ui/default_ui.tres" id="1_rqugq"]
+[ext_resource type="StyleBox" uid="uid://bvkh50da5q5hk" path="res://ui/menu/button_pressed.tres" id="2_6lx7k"]
 
 [resource]
 default_base_scale = 1.0
 default_font = ExtResource("1_rqugq")
 default_font_size = 32
+Button/styles/focus = ExtResource("1_jf26r")
+Button/styles/hover = ExtResource("1_iqtc0")
+Button/styles/normal = ExtResource("1_jf26r")
+Button/styles/pressed = ExtResource("2_6lx7k")
+CheckBox/constants/h_separation = 15
+CheckBox/styles/focus = ExtResource("1_iqtc0")
+CheckBox/styles/hover = ExtResource("1_iqtc0")
+CheckBox/styles/normal = ExtResource("1_jf26r")
+CheckBox/styles/pressed = ExtResource("2_6lx7k")
 RichTextLabel/colors/default_color = Color(0.8156863, 0.7529412, 0.5764706, 1)
 RichTextLabel/colors/font_shadow_color = Color(0.1764706, 0.1764706, 0.1764706, 0.4)
 RichTextLabel/constants/shadow_offset_x = 2

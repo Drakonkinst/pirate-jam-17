@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=121 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
@@ -38,7 +38,10 @@
 [ext_resource type="PackedScene" uid="uid://dlfquurpbj731" path="res://libs/gtlf/Large_Monitor_Off.glb" id="17_i2p71"]
 [ext_resource type="PackedScene" uid="uid://bmyt35txkeslp" path="res://libs/gtlf/Railing_Flat.glb" id="18_xa8c5"]
 [ext_resource type="PackedScene" uid="uid://cllg5s0l8w215" path="res://libs/gtlf/Railing_Ramp.glb" id="19_5b14r"]
+[ext_resource type="Script" uid="uid://b0qlrpdpkgd1w" path="res://ui/menu/pause_screen.gd" id="19_baljx"]
 [ext_resource type="PackedScene" uid="uid://dmyr3mwaf4cj" path="res://libs/gtlf/Bunk_Double_Orange.glb" id="20_f1jbl"]
+[ext_resource type="Shader" uid="uid://bdb1idx2fxrr7" path="res://ui/menu/paused.gdshader" id="20_t2ssd"]
+[ext_resource type="Script" uid="uid://cgqwfemkpuvxw" path="res://ui/menu/options_screen.gd" id="21_7noa1"]
 [ext_resource type="PackedScene" uid="uid://84vt8uitdhy4" path="res://libs/GLB format/wall-doorway-wide-round.glb" id="21_i2p71"]
 [ext_resource type="PackedScene" uid="uid://cexj3a71mbxab" path="res://object/cube.tscn" id="22_f1jbl"]
 [ext_resource type="PackedScene" uid="uid://cbeowwo0akxat" path="res://object/fan/big_fan.tscn" id="25_i2p71"]
@@ -70,6 +73,7 @@
 [ext_resource type="PackedScene" uid="uid://renj8w6243o1" path="res://libs/GLTF format/satelliteDish.glb" id="59_bqa6y"]
 [ext_resource type="PackedScene" uid="uid://lwtqhnnfdqom" path="res://libs/GLTF format/gate_complex.glb" id="60_bqa6y"]
 [ext_resource type="PackedScene" uid="uid://b67aig5n8rwmm" path="res://libs/gtlf/Ramp_Orange.glb" id="62_du4n2"]
+[ext_resource type="Script" uid="uid://cxmc2lg1ufn68" path="res://pause_control.gd" id="71_wj41c"]
 
 [sub_resource type="Resource" id="Resource_6qn5j"]
 script = ExtResource("3_xoeau")
@@ -123,6 +127,10 @@ frame_2/texture = ExtResource("6_4v2jo")
 frame_2/duration = 1.0
 frame_3/texture = ExtResource("7_l1i01")
 frame_3/duration = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2ssd"]
+shader = ExtResource("20_t2ssd")
+shader_parameter/blur_amount = 1.0000000475000002
 
 [sub_resource type="Environment" id="Environment_80nbo"]
 reflected_light_source = 1
@@ -281,13 +289,14 @@ size = Vector3(3.009369, 12.578491, 13.22023)
 [sub_resource type="BoxShape3D" id="BoxShape3D_du4n2"]
 size = Vector3(5.4088135, 1, 1)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller", "hud", "win_button", "mission_tracker", "audio")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller", "hud", "win_button", "mission_tracker", "pause_control", "audio")]
 script = ExtResource("1_80nbo")
 player = NodePath("Player")
 grappling_hook_controller = NodePath("GrapplingHookController")
 hud = NodePath("CanvasLayer/HUD")
 win_button = NodePath("World/Section3/Decor/WinButton")
 mission_tracker = NodePath("MissionTracker")
+pause_control = NodePath("PauseControl")
 audio = NodePath("AudioManager")
 
 [node name="MissionTracker" type="Node3D" parent="." node_paths=PackedStringArray("markers", "start_timer")]
@@ -438,6 +447,7 @@ offset_left = 30.0
 offset_top = 30.0
 offset_right = 630.0
 offset_bottom = 105.0
+mouse_filter = 1
 script = ExtResource("13_jo4nb")
 title_text = NodePath("Text/MissionTitle")
 mission_text = NodePath("Text/MissionSubtitle")
@@ -491,6 +501,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="Background" type="ColorRect" parent="CanvasLayer/HUD/MissionTrackerHud/UpdatedSplash"]
 layout_direction = 2
@@ -530,11 +541,381 @@ custom_effects = [null]
 [node name="Timer" type="Timer" parent="CanvasLayer/HUD/MissionTrackerHud"]
 one_shot = true
 
-[node name="PauseScreen" type="Control" parent="CanvasLayer"]
+[node name="PauseScreen" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("main_pause_menu", "options_menu")]
+process_mode = 2
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("19_baljx")
+main_pause_menu = NodePath("MainPauseScreen")
+options_menu = NodePath("OptionsScreen")
+
+[node name="PauseBlur" type="ColorRect" parent="CanvasLayer/PauseScreen"]
+material = SubResource("ShaderMaterial_t2ssd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="MainPauseScreen" type="Control" parent="CanvasLayer/PauseScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -159.0
+offset_right = 114.5
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="PauseText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "PAUSED"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l1i01")
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l1i01")
+text = "Options"
+
+[node name="ExitToMenuButton" type="Button" parent="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l1i01")
+text = "Exit to Menu"
+
+[node name="OptionsScreen" type="Control" parent="CanvasLayer/PauseScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("21_7noa1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -159.0
+offset_right = 114.5
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="OptionsTitle" type="RichTextLabel" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "OPTIONS"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 94
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer3"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Volume"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Music
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Environment
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer3"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Interface
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Gameplay"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="GoUpright" type="CheckBox" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_l1i01")
+theme_override_font_sizes/font_size = 26
+text = "Always Go Upright"
+
+[node name="Subtext" type="RichTextLabel" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.61, 0.54981333, 0.3843, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "*Can decrease motion sickness"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="DisableAlignment" type="CheckBox" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+theme = ExtResource("4_l1i01")
+theme_override_font_sizes/font_size = 26
+text = "Disable Surface Alignment"
+
+[node name="Subtext" type="RichTextLabel" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.61, 0.54981333, 0.3843, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "*Can INCREASE motion sickness"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpeedrunTimer" type="CheckBox" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("4_l1i01")
+theme_override_font_sizes/font_size = 26
+text = "Show Speedrun Timer
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Controls"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Mouse Sensitivity
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Roll Speed"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ReturnButton" type="Button" parent="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("4_l1i01")
+text = "Return"
 
 [node name="Stars" parent="." instance=ExtResource("7_j5wjh")]
 script = ExtResource("8_vef74")
@@ -696,10 +1077,10 @@ mesh = SubResource("ArrayMesh_kq12w")
 [node name="Decor" type="Node3D" parent="World/Section1"]
 
 [node name="Stairs" parent="World/Section1/Decor" instance=ExtResource("9_lc2xo")]
-transform = Transform3D(2.056, 0, 0, 0, 1.055, 0, 0, 0, 1, -31.1404, 2.8466187, -16.62439)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.640423, 2.8214684, -16.62439)
 
 [node name="Stairs3" parent="World/Section1/Decor" instance=ExtResource("9_lc2xo")]
-transform = Transform3D(2.056, 0, 0, 0, 1.055, 0, 0, 0, 1, -50.08966, 2.8466187, -16.62439)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.08966, 2.8466187, -16.62439)
 
 [node name="CrewDoor" parent="World/Section1/Decor" instance=ExtResource("10_215e1")]
 transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, -12.157036, 6.0788913, -6.033324)
@@ -858,10 +1239,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.626904, 6.205403, -14.590
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.20664, 6.205403, -14.59042)
 
 [node name="RailingRamp" parent="World/Section1/Decor" instance=ExtResource("19_5b14r")]
-transform = Transform3D(-1, 0, -9.0646594e-08, 0, 1, 0, 8.742278e-08, 0, -1.0368762, -33.53804, 2.1944766, -17.224043)
+transform = Transform3D(-1, 0, -9.0646594e-08, 0, 1, 0, 8.742278e-08, 0, -1.0368762, -33.607445, 2.1944766, -17.224043)
 
 [node name="RailingRamp2" parent="World/Section1/Decor" instance=ExtResource("19_5b14r")]
-transform = Transform3D(-1, 0, -9.0646594e-08, 0, 1, 0, 8.742278e-08, 0, -1.0368762, -49.164032, 2.1944766, -17.224043)
+transform = Transform3D(-1, 0, -1.5656396e-07, 0, 1, 0, 1.509958e-07, 0, -1.0368762, -48.444107, 2.1944766, -17.224043)
 
 [node name="Bed" parent="World/Section1/Decor" instance=ExtResource("20_f1jbl")]
 transform = Transform3D(2.4668577, 0, 0, 0, 2.4668577, 0, 0, 0, 2.4668577, -2.9766865, 6.3124723, -2.4430525)
@@ -897,9 +1278,9 @@ transform = Transform3D(0.5529302, 0, -8.881784e-16, 0, 0.35166782, 0, 1.7763568
 transform = Transform3D(7.5497894e-08, 0, 0.99999994, 0, 0.99999994, 0, -0.99999994, 0, 7.5497894e-08, -52.601696, 11.87124, -8.273918)
 pixel_size = 0.011
 modulate = Color(0.784163, 0.9921667, 0.89413935, 1)
-text = "Note: The janitorial crew kindly reminds you to insert plates into the correct bin after eating.
+text = "The janitorial crew kindly reminds all passengers to insert plates into the correct bin after eating.
 
-Warning: Air conditioner is extremely powerful, please exercise caution when in use!"
+Warning: Cooling fan is extremely powerful. Please exercise caution when it is in use!"
 font = ExtResource("30_eu6ph")
 font_size = 30
 outline_size = 0
@@ -2271,3 +2652,12 @@ shape = SubResource("BoxShape3D_du4n2")
 unique_name_in_owner = true
 grappling_hook_range = 60.0
 player = NodePath("../Player")
+
+[node name="PauseControl" type="Node3D" parent="."]
+process_mode = 3
+script = ExtResource("71_wj41c")
+
+[connection signal="pressed" from="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer/VBoxContainer/ResumeButton" to="CanvasLayer/PauseScreen" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseScreen/MainPauseScreen/HBoxContainer/VBoxContainer/VBoxContainer/OptionsButton" to="CanvasLayer/PauseScreen" method="_on_options_button_pressed"]
+[connection signal="on_return_pressed" from="CanvasLayer/PauseScreen/OptionsScreen" to="CanvasLayer/PauseScreen" method="_on_options_screen_on_return_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseScreen/OptionsScreen/VBoxContainer/HBoxContainer2/ReturnButton" to="CanvasLayer/PauseScreen/OptionsScreen" method="_on_return_button_pressed"]

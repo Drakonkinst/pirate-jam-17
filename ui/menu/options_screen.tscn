@@ -1,0 +1,301 @@
+[gd_scene load_steps=3 format=3 uid="uid://dywihjrvw7kcl"]
+
+[ext_resource type="Script" uid="uid://cgqwfemkpuvxw" path="res://ui/menu/options_screen.gd" id="1_iu51i"]
+[ext_resource type="Theme" uid="uid://c4875hllppr0h" path="res://ui/theme.tres" id="2_50juk"]
+
+[node name="OptionsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_iu51i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -159.0
+offset_right = 114.5
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="OptionsTitle" type="RichTextLabel" parent="VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_50juk")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "OPTIONS"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 94
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_50juk")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Volume"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_50juk")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Music
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_50juk")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Environment
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="EnvironmentSlider" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer3"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_50juk")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Interface
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="InterfaceSlider" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_50juk")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Gameplay"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="GoUpright" type="CheckBox" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_50juk")
+theme_override_font_sizes/font_size = 26
+text = "Always Go Upright"
+
+[node name="Subtext" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("2_50juk")
+theme_override_colors/default_color = Color(0.61, 0.54981333, 0.3843, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "*Can decrease motion sickness"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="DisableAlignment" type="CheckBox" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+theme = ExtResource("2_50juk")
+theme_override_font_sizes/font_size = 26
+text = "Disable Surface Alignment"
+
+[node name="Subtext" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("2_50juk")
+theme_override_colors/default_color = Color(0.61, 0.54981333, 0.3843, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "*Can INCREASE motion sickness"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpeedrunTimer" type="CheckBox" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_50juk")
+theme_override_font_sizes/font_size = 26
+text = "Show Speedrun Timer
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_50juk")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Controls"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_50juk")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Mouse Sensitivity
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="MouseSensitivity" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_50juk")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Roll Speed"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="RollSpeed" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("2_50juk")
+text = "Return"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/ReturnButton" to="." method="_on_return_button_pressed"]
