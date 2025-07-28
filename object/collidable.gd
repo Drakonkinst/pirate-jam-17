@@ -29,6 +29,7 @@ func _ready() -> void:
     linear_damp_mode = RigidBody3D.DampMode.DAMP_MODE_REPLACE
     linear_damp = 0.0
     set_collision_layer_value(3, true)
+    set_freeze_mode(FREEZE_MODE_KINEMATIC)
     
 func _rand_value() -> float:
     return randf_range(-0.25, 0.25)

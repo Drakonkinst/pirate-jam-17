@@ -55,9 +55,15 @@ func _process_look_inputs(mouse_motion: Vector2) -> void:
     var delta_x: float = mouse_motion.y * Global.look_sensitivity
     var delta_y: float = -mouse_motion.x * Global.look_sensitivity
     
-    rotate_object_local(Vector3.UP, deg_to_rad(delta_y))
-    if _head_x_rotation + delta_x > -90.0 && _head_x_rotation + delta_x < 90.0:
-        head.rotate_x(deg_to_rad(-delta_x));
-        _head_x_rotation += delta_x
+    if Global.always_go_upright:
+        rotate_object_local(Vector3.UP, deg_to_rad(delta_y * 0.5))
+        if _head_x_rotation + delta_x > -90.0 && _head_x_rotation + delta_x < 90.0:
+            head.rotate_x(deg_to_rad(-delta_x * 0.5));
+            _head_x_rotation += delta_x
+    else:
+        var left := head.global_transform.basis.x
+        var up := head.global_transform.basis.y
+        apply_torque(up * delta_y)
+        apply_torque(left * -delta_x)
 
     

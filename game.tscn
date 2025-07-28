@@ -364,7 +364,7 @@ script = ExtResource("5_56gn1")
 [node name="MissionTyping" type="AudioStreamPlayer" parent="AudioManager"]
 unique_name_in_owner = true
 stream = ExtResource("6_avmo2")
-volume_db = -25.0
+volume_db = -12.0
 bus = &"UI"
 
 [node name="FireHook" type="AudioStreamPlayer" parent="AudioManager"]
@@ -379,7 +379,7 @@ metadata/_custom_type_script = "uid://d36vkvhl014cj"
 
 [node name="AmbientSpace" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("11_4mai8")
-volume_db = -5.0
+volume_db = -6.0
 autoplay = true
 bus = &"Environment"
 
@@ -438,7 +438,7 @@ unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
 bbcode_enabled = true
-text = "[b][img alt='MouseRight']res://ui//mouse_right_outline.png[/img]Lock Tether[/b]"
+text = "[b][img alt='MouseRight']res://ui//mouse_right_outline.png[/img]Lock Tether Length[/b]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -624,7 +624,6 @@ script = ExtResource("7_ple6s")
 
 [node name="PauseScreen" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("main_pause_menu", "options_menu")]
 process_mode = 2
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -771,7 +770,7 @@ theme = ExtResource("4_l1i01")
 theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[img alt='MouseRight']res://ui//mouse_right_outline.png[/img] Lock Tether"
+text = "[img alt='MouseRight']res://ui//mouse_right_outline.png[/img] Lock Tether Length"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -814,25 +813,6 @@ theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[img alt='Q']res://ui//keyboard_q.png[/img] / [img alt='E']res://ui//keyboard_e.png[/img] Tilt"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-vertical_alignment = 1
-custom_effects = [null]
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer4"]
-layout_mode = 2
-alignment = 1
-
-[node name="TitleText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer4/HBoxContainer5"]
-clip_contents = false
-layout_mode = 2
-mouse_filter = 1
-theme = ExtResource("4_l1i01")
-theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
-theme_override_font_sizes/normal_font_size = 28
-bbcode_enabled = true
-text = "[img alt='R']res://ui//keyboard_r.png[/img] Go Upright"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -1270,7 +1250,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_80cx4")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -52.6458, 8.6607485, -11.229013)
 
 [node name="Fan" parent="World/Section1/Decor" node_paths=PackedStringArray("toggle_button") instance=ExtResource("15_vaj68")]
-transform = Transform3D(2.268819e-15, -5.190453e-08, 1.1874372, -1.1874372, -5.190453e-08, 0, 5.190453e-08, -1.1874372, -5.190453e-08, -41.119366, 13.449124, -5.9755645)
+transform = Transform3D(2.268819e-15, -5.190453e-08, 1.1874372, -1.1874372, -5.190453e-08, 0, 5.190453e-08, -1.1874372, -5.190453e-08, -41.119366, 12.092114, -5.9755645)
 max_distance = 17.0
 stays_enabled = true
 toggle_button = NodePath("../SmallButton7")
@@ -1288,7 +1268,7 @@ Gravity .......................... OFFLINE
 Power ........................... CRITICAL
 Life Support ................. OFFLINE
 Communications ......... OFFLINE
-Thermal Control .......... OFFLINE
+Cabin Pressurizer ........ OFFLINE
 "
 font = ExtResource("30_eu6ph")
 font_size = 30
@@ -1380,9 +1360,9 @@ transform = Transform3D(0.5529302, 0, -8.881784e-16, 0, 0.35166782, 0, 1.7763568
 transform = Transform3D(7.5497894e-08, 0, 0.99999994, 0, 0.99999994, 0, -0.99999994, 0, 7.5497894e-08, -52.601696, 11.87124, -8.273918)
 pixel_size = 0.011
 modulate = Color(0.784163, 0.9921667, 0.89413935, 1)
-text = "The janitorial crew kindly reminds all passengers to insert plates into the correct bin after eating.
+text = "Warning: Cooling fan is extremely powerful. Please exercise caution!
 
-Warning: Cooling fan is extremely powerful. Please exercise caution when it is in use!"
+The janitorial crew kindly reminds all passengers to definitely NOT toss objects into the path of the fan when in use."
 font = ExtResource("30_eu6ph")
 font_size = 30
 outline_size = 0
@@ -1806,6 +1786,7 @@ finish_mission = "reach_engineering"
 
 [node name="SmallButton3" parent="World/Section2/Decor/HatchDoor" instance=ExtResource("11_7sc4i")]
 transform = Transform3D(1.0331604e-07, 0.9999547, -0.009529372, 0, -0.009529371, -0.9999546, -1.0000001, 5.861057e-08, -6.493727e-10, -3.2985725, 2.8865495, -1.881958)
+initial_state = 2
 unpress_time = 1.0
 
 [node name="HatchDoor2" parent="World/Section2/Decor" node_paths=PackedStringArray("toggling_buttons") instance=ExtResource("25_xa8c5")]
@@ -1887,7 +1868,7 @@ mesh = SubResource("BoxMesh_215e1")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("31_7knny")
 
-[node name="BatteryHolder2" parent="World/Section2/Decor" node_paths=PackedStringArray("opens_door", "lights") instance=ExtResource("26_xfvwf")]
+[node name="BatteryHolder2" parent="World/Section2/Decor" node_paths=PackedStringArray("opens_door", "lights") groups=["GoalBatteryHolder"] instance=ExtResource("26_xfvwf")]
 transform = Transform3D(-1.4, 0, 1.2239188e-07, 0, 1.4, 0, -1.2239188e-07, 0, -1.4, -58.86048, -2.8207395, 24.780504)
 opens_door = NodePath("../HatchDoor6")
 finish_mission = "power_comms"
@@ -1917,7 +1898,7 @@ mesh = SubResource("BoxMesh_215e1")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("31_7knny")
 
-[node name="Battery" type="RigidBody3D" parent="World/Section2/Decor" node_paths=PackedStringArray("unlock_timer")]
+[node name="Battery" type="RigidBody3D" parent="World/Section2/Decor" node_paths=PackedStringArray("unlock_timer") groups=["Battery"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.15148, 3.6143155, -16.793362)
 collision_layer = 9
 mass = 0.421
@@ -1992,8 +1973,7 @@ transform = Transform3D(1.3113416e-07, 0, -0.99999994, 0, 0.99999994, 0, 0.99999
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.0835495, 0.7165556, -0.023283958)
 pixel_size = 0.011
 modulate = Color(0.96183974, 0.90058327, 0.31735572, 1)
-text = "ARTIFICIAL GRAVITY
-"
+text = "GRAVITY MODULE"
 font = ExtResource("29_klri6")
 outline_size = 0
 
@@ -2058,7 +2038,7 @@ modulate = Color(0.9999998, 0.30662173, 0.15399927, 1)
 outline_modulate = Color(0.5224432, 1.2634322e-06, 3.3691526e-07, 1)
 text = "ERROR: Gravity module is damaged and cannot function.
 
-Power source still operational."
+Power cell still operational."
 font = ExtResource("30_eu6ph")
 font_size = 30
 outline_size = 1
@@ -2238,8 +2218,7 @@ surface_material_override/0 = ExtResource("15_80cx4")
 
 [node name="BigFan" parent="World/Section3/Decor" instance=ExtResource("25_i2p71")]
 transform = Transform3D(6.798, -5.9430005e-07, -5.9430005e-07, -5.9430005e-07, -6.798, 0, -5.9430005e-07, 5.1955358e-14, -6.798, -73.84528, 97.59181, 66.8122)
-shut_off_after = 6.0
-turn_on_after = 5.0
+turn_on_after = 6.0
 
 [node name="Grate" type="Node3D" parent="World/Section3/Decor/BigFan"]
 transform = Transform3D(0.77, 1.4210854e-14, 1.4210855e-14, -1.4210855e-14, 0.77, 0, -1.4210855e-14, 4.2351647e-22, 0.77, 0.18501282, 0, 0.3147831)
@@ -2710,6 +2689,9 @@ shape = SubResource("CylinderShape3D_6qn5j")
 
 [node name="SciFi Assets20" parent="World/Section3/Decor" instance=ExtResource("55_56gn1")]
 transform = Transform3D(2.6827826, 0, 0, 0, 1, 0, 0, 0, 1, -72.32482, -2.224083, 34.43326)
+
+[node name="SciFi Assets26" parent="World/Section3/Decor" instance=ExtResource("55_56gn1")]
+transform = Transform3D(2.6827826, 0, 0, 0, 1, 0, 0, 0, 1, -72.32482, -2.224083, -4.288169)
 
 [node name="SciFi Assets21" parent="World/Section3/Decor" instance=ExtResource("56_avmo2")]
 transform = Transform3D(-1.2636399e-07, 0, -2.890871, 0, 2.890871, 0, 2.890871, 0, -1.2636399e-07, -97.85926, -2.854982, -27.305916)

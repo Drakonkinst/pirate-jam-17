@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://do2ht3l1tvwuj"]
+[gd_scene load_steps=11 format=3 uid="uid://do2ht3l1tvwuj"]
 
 [ext_resource type="Script" uid="uid://c25siti2cle0n" path="res://player/player.gd" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://b2uoxmebnay0i" path="res://player/input_state.gd" id="2_hqtel"]
@@ -22,6 +22,8 @@ rings = 32
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yw30f"]
 transparency = 1
 albedo_color = Color(0, 0.49793702, 0.71948117, 0.23529412)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1dw6"]
 
 [node name="Player" type="RigidBody3D"]
 collision_layer = 5
@@ -83,3 +85,10 @@ unique_name_in_owner = true
 target_position = Vector3(0, 0, -10)
 debug_shape_custom_color = Color(1, 1, 1, 1)
 debug_shape_thickness = 5
+
+[node name="AnchorPoint" type="StaticBody3D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnchorPoint"]
+shape = SubResource("BoxShape3D_g1dw6")
+disabled = true

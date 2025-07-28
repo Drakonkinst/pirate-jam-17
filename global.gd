@@ -13,7 +13,7 @@ var always_go_upright := false
 var disable_surface_alignment := true
 var show_speedrun_timer := false
 
-var look_sensitivity := 50.0
+var look_sensitivity := 75.0
 var roll_speed := 250.0
 
 const KEYBOARD_Q = preload("res://ui//keyboard_q.png")

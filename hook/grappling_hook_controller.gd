@@ -22,6 +22,9 @@ var _hook_target_normal: Vector3 = Vector3.ZERO
 var _attachment_type: AttachmentType = AttachmentType.NONE
 var _rope_length: float = 0
 
+const ROPE_THRESHOLD := 2.0
+const ROPE_MULTIPLIER := 0.05
+
 func _ready() -> void:
     _hook_launch_cooldown.timeout.connect(_on_hook_launch_cooldown_timeout)
     _hook_failed_cooldown.timeout.connect(_on_hook_failed_cooldown_timeout)
@@ -54,14 +57,26 @@ func _handle_hook_physics(source_pos: Vector3, delta: float):
     var to_vector := _hook_target_node.global_position - source_pos
     var to_direction := to_vector.normalized()
     if player.input_state.is_pressing_secondary:
+        var dist := to_vector.length()
+        # The rope can get shorter, but not longer
+        _rope_length = min(dist, _rope_length)
+        
         # Lock hook and player together
         _hook_joint.node_a = player.get_path()
         _hook_joint.node_b = _hook_target_node.get_path()
-        # The rope can get shorter, but not longer
-        var dist := to_vector.length()
-        _rope_length = min(dist, _rope_length)
         var half_length := _rope_length / 2
         _hook_joint.global_position = player.global_position + to_direction * half_length
+        
+        if hook_target is Collidable:
+            var collidable := hook_target as Collidable
+            var dist_sq := collidable.global_position.distance_squared_to(player.global_position)
+            if dist_sq > (_rope_length + ROPE_THRESHOLD) * (_rope_length + ROPE_THRESHOLD):
+                print("BB")
+                collidable.apply_central_force(-to_vector * delta * max_pull_speed * ROPE_MULTIPLIER)
+            elif dist_sq < (_rope_length - ROPE_THRESHOLD) * (_rope_length - ROPE_THRESHOLD):
+                print("AA")
+                collidable.apply_central_force(to_vector * delta * max_pull_speed * ROPE_MULTIPLIER)
+        
         # Make rigid because setting it to anything else doesn't work lol
         _hook_joint.set_param_x(Generic6DOFJoint3D.PARAM_LINEAR_UPPER_LIMIT, 0.0)
         _hook_joint.set_param_y(Generic6DOFJoint3D.PARAM_LINEAR_UPPER_LIMIT, 0.0)

@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dtoyi8yc47pj2" path="res://libs/GLTF format/machine_barrelLarge.glb" id="4_0hoxf"]
 [ext_resource type="Material" uid="uid://cyug0kdg7ptbq" path="res://object/object_holder/cool_energy.tres" id="5_togna"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xfvwf"]
-size = Vector3(3.5472717, 3.314209, 3.3534546)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_dhpj7"]
 radius = 2.0
 
@@ -16,12 +13,15 @@ radius = 2.0
 radius = 1.95
 height = 4.0
 
-[node name="BatteryHolder" type="Node3D" node_paths=PackedStringArray("attract_area", "anchor_point", "lights")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xfvwf"]
+size = Vector3(3.5472717, 3.314209, 3.3534546)
+
+[node name="BatteryHolder" type="StaticBody3D" node_paths=PackedStringArray("attract_area", "anchor_point", "lights")]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
 script = ExtResource("1_dghb3")
 attract_area = NodePath("Area3D")
 anchor_point = NodePath("Marker3D")
-lights = [NodePath(""), NodePath(""), NodePath("")]
+lights = [null, null, null]
 enabled_material = ExtResource("2_e5onj")
 disabled_materal = ExtResource("3_qwlst")
 
@@ -30,16 +30,6 @@ transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, -11.007805, 0, -8.27798
 
 [node name="machine_barrelLarge3" parent="." instance=ExtResource("4_0hoxf")]
 transform = Transform3D(5.5, 0, 0, 0, -5.5, 8.304769e-07, 0, -8.304769e-07, -5.5, -11.007805, 9.773501, 8.255836)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.584, 0)
-shape = SubResource("BoxShape3D_xfvwf")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.116, 0)
-shape = SubResource("BoxShape3D_xfvwf")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.671257, 0)
@@ -57,3 +47,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.869064, 0)
 mesh = SubResource("SphereMesh_xfvwf")
 surface_material_override/0 = ExtResource("5_togna")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.584, 0)
+shape = SubResource("BoxShape3D_xfvwf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.116, 0)
+shape = SubResource("BoxShape3D_xfvwf")

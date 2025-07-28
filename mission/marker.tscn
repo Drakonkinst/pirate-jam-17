@@ -1,12 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwd63bd1spwv7"]
+[gd_scene load_steps=4 format=3 uid="uid://dwd63bd1spwv7"]
 
 [ext_resource type="Texture2D" uid="uid://cbxe7x1hctxqf" path="res://ui/hud/mission/mission.png" id="1_8jkyp"]
+[ext_resource type="Script" uid="uid://4pxv6cg8g16k" path="res://mission/marker.gd" id="2_ktl61"]
+[ext_resource type="FontVariation" uid="uid://dbrs5w857sbqb" path="res://ui/default_ui.tres" id="3_0wmwy"]
 
-[node name="Marker0" type="Sprite3D"]
+[node name="Marker" type="Sprite3D"]
 cast_shadow = 0
-modulate = Color(0.9882353, 1, 0, 1)
+modulate = Color(0.98333335, 1, 0, 1)
 pixel_size = 0.0007
 billboard = 1
 no_depth_test = true
 fixed_size = true
 texture = ExtResource("1_8jkyp")
+script = ExtResource("2_ktl61")
+
+[node name="Label3D" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24977669, 0)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+text = "20m"
+font = ExtResource("3_0wmwy")
+outline_size = 0

@@ -33,6 +33,7 @@ enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
 [global_group]
 
 Surface=""
+Battery=""
 
 [input]
 

@@ -16,7 +16,7 @@ func _ready() -> void:
 func update(player: Player, delta: float) -> void:
     var up := player.global_transform.basis.y.normalized()
     var surface_vector := _nearby_surface_vector
-    if player.input_state.go_upright || Global.always_go_upright:
+    if false || Global.always_go_upright:
         surface_vector = Vector3.UP
     
     # Find the nearest surface and slowly rotate towards it
@@ -50,7 +50,7 @@ func is_aligned() -> bool:
 func _on_surface_detection_timer_timeout() -> void:
     _nearby_surface_vector = Vector3.ZERO
 
-    if Global.disable_surface_alignment:
+    if Global.disable_surface_alignment or true:
         return
     
     var colliding_object: Node3D = null
