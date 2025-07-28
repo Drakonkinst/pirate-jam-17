@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=127 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
@@ -60,6 +60,7 @@
 [ext_resource type="PackedScene" uid="uid://dys0leoiudre6" path="res://object/fan/grate.glb" id="31_dhpj7"]
 [ext_resource type="PackedScene" uid="uid://b62b52d3x4b2c" path="res://libs/GLB format/door-double-closed.glb" id="31_edr7y"]
 [ext_resource type="PackedScene" uid="uid://b0w5m3ma8bikc" path="res://libs/gtlf/Command_Console.glb" id="43_t46w6"]
+[ext_resource type="PackedScene" uid="uid://bt8ejtg2svrye" path="res://libs/gtlf/Bunk_Double_Blue.glb" id="44_lh772"]
 [ext_resource type="PackedScene" uid="uid://dqm26bods6uh" path="res://libs/gtlf/Floor_Command_Large.glb" id="44_m28ev"]
 [ext_resource type="PackedScene" uid="uid://bxsyattsdxr5j" path="res://libs/gtlf/Floor_Mid_Path.glb" id="45_ib7ph"]
 [ext_resource type="PackedScene" uid="uid://dswj2sn66qrtw" path="res://libs/gtlf/Briefing_Screen_Blue.glb" id="46_vuohh"]
@@ -1302,6 +1303,19 @@ transform = Transform3D(-1, 0, -9.0646594e-08, 0, 1, 0, 8.742278e-08, 0, -1.0368
 [node name="RailingRamp2" parent="World/Section1/Decor" instance=ExtResource("19_5b14r")]
 transform = Transform3D(-1, 0, -1.5656396e-07, 0, 1, 0, 1.509958e-07, 0, -1.0368762, -48.444107, 2.1944766, -17.224043)
 
+[node name="SciFi Assets" parent="World/Section1/Decor" instance=ExtResource("44_lh772")]
+transform = Transform3D(2.647, 0, 0, 0, 2.647, 0, 0, 0, 2.647, 0.35694456, 6.409912, -17.160614)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Section1/Decor/SciFi Assets"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Section1/Decor/SciFi Assets/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11236572, 1.3213656, -0.05100262)
+shape = SubResource("BoxShape3D_f1jbl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Section1/Decor/SciFi Assets/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11236572, 0.4520538, -0.05100262)
+shape = SubResource("BoxShape3D_f1jbl")
+
 [node name="Bed" parent="World/Section1/Decor" instance=ExtResource("20_f1jbl")]
 transform = Transform3D(2.4668577, 0, 0, 0, 2.4668577, 0, 0, 0, 2.4668577, -2.9766865, 6.3124723, -2.4430525)
 
@@ -1426,7 +1440,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44.
 initial_velocity = true
 
 [node name="Cube" parent="World/Section1/Objects" instance=ExtResource("22_f1jbl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14141881, 10.115524, -15.348499)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0278654, 10.115524, -19.746288)
 
 [node name="Lights" type="Node3D" parent="World/Section1"]
 

@@ -130,3 +130,4 @@ stream = ExtResource("4_pl1lt")
 volume_db = 10.0
 autoplay = true
 max_distance = 50.0
+bus = &"Environment"
