@@ -1,6 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnwgk6aqapw4p"]
 
-[ext_resource type="Script" uid="uid://g8pd34a0aiuw" path="res://ui/menu/credits_menu.gd" id="1_0lbho"]
+[sub_resource type="GDScript" id="GDScript_p7d8d"]
+script/source = "extends Control
+
+class_name CreditsMenu
+"
 
 [node name="CreditsMenu" type="Control"]
 layout_mode = 3
@@ -10,4 +14,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("1_0lbho")
+script = SubResource("GDScript_p7d8d")

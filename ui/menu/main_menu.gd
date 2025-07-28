@@ -8,7 +8,7 @@ signal start_game
 
 @onready var start_menu: StartMenu = %StartMenu
 @onready var settings_menu: OptionsScreen = %OptionsScreen
-@onready var credits_menu: CreditsMenu = %CreditsMenu
+@onready var credits_menu: CreditsMenu = %CreditsScreen
 @onready var camera: Camera3D = %Camera3D
 
 func _ready() -> void:
@@ -20,6 +20,7 @@ func _ready() -> void:
     start_menu.open_credits.connect(_on_start_menu_open_credits)
     start_menu.start_game.connect(_on_start_menu_start_game)
     settings_menu.on_return_pressed.connect(_on_settings_menu_pressed_back)
+    credits_menu.on_return_pressed.connect(_on_credits_menu_pressed_back)
     
 func _process(delta: float) -> void:
     if camera.global_position.z >= -4000:

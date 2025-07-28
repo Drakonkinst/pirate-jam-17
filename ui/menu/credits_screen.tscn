@@ -1,0 +1,231 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx8jsug7kuhs1"]
+
+[ext_resource type="Script" uid="uid://lyb6ksqok8pk" path="res://ui/menu/credits_screen.gd" id="1_0his5"]
+[ext_resource type="Theme" uid="uid://c4875hllppr0h" path="res://ui/theme.tres" id="2_vx8ei"]
+[ext_resource type="FontFile" uid="uid://bqoj8uwi68frv" path="res://ui/Oxanium-VariableFont_wght.ttf" id="3_3jp3m"]
+[ext_resource type="FontVariation" uid="uid://d1ri7mp2inco3" path="res://ui/screen.tres" id="4_jssc2"]
+
+[node name="CreditsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_0his5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -159.0
+offset_right = 114.5
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="CreditsTitle" type="RichTextLabel" parent="VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_vx8ei")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "CREDITS"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 94
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 90
+alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_vx8ei")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = " Developer "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 55
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_vx8ei")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Drakonkinst"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="Subtext2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("2_vx8ei")
+theme_override_colors/default_color = Color(0.61, 0.54981333, 0.3843, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Yep, just me! I guess you could say I'm the ONLY ONE developing this game :)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+custom_effects = [null]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_vx8ei")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Attributions"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="Subtext2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("2_vx8ei")
+theme_override_colors/default_color = Color(0.61, 0.54981333, 0.3843, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Links attached to itch.io project"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+custom_effects = [null]
+
+[node name="Text2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_vx8ei")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Sounds"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_vx8ei")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_fonts/normal_font = ExtResource("3_3jp3m")
+theme_override_fonts/bold_font = ExtResource("4_jssc2")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "Interface Bleeps by Bleeoop
+Freesound
+Zapsplat
+Cosmic Horror by Atelier Magicae
+Sci-Fi Weapon Shots by lentikula
+[b]Menu Track[/b]: \"To The Space\" by alkakrab
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+custom_effects = [null]
+
+[node name="Text3" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_vx8ei")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Everything Else"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [null]
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer3"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme = ExtResource("2_vx8ei")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_fonts/normal_font = ExtResource("3_3jp3m")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "Kenney Assets
+Molten Maps by Moltenbolt
+Starlight by Tiffany Bennett
+Animated Crosshair by Chris Yang
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+custom_effects = [null]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("2_vx8ei")
+text = "Return"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/ReturnButton" to="." method="_on_return_button_pressed"]
