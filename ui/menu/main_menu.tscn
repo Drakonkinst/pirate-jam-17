@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkmbqdv0u23hu"]
+[gd_scene load_steps=9 format=3 uid="uid://bkmbqdv0u23hu"]
 
 [ext_resource type="Script" uid="uid://ccyoxqb1y85ly" path="res://ui/menu/main_menu.gd" id="1_37pjl"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="2_or6mk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c72vqvvhhr10b" path="res://ui/menu/start_menu.tscn" id="3_gvx18"]
 [ext_resource type="PackedScene" uid="uid://dywihjrvw7kcl" path="res://ui/menu/options_screen.tscn" id="4_4gkdq"]
 [ext_resource type="PackedScene" uid="uid://dnwgk6aqapw4p" path="res://ui/menu/credits_menu.tscn" id="5_yc8k7"]
+[ext_resource type="AudioStream" uid="uid://bgpivkj062knf" path="res://ui/menu/menu_music.ogg" id="7_8gmgf"]
 
 [sub_resource type="Environment" id="Environment_gvx18"]
 
@@ -39,3 +40,8 @@ offset_bottom = -1.0
 
 [node name="CreditsMenu" parent="CanvasLayer" instance=ExtResource("5_yc8k7")]
 unique_name_in_owner = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8gmgf")
+volume_db = -5.0
+autoplay = true

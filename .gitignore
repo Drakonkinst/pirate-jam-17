@@ -16,5 +16,4 @@ data_*/
 mono_crash.*.json
 
 .idea
-libs/
 *.tmp

@@ -22,7 +22,8 @@ func _ready() -> void:
     settings_menu.on_return_pressed.connect(_on_settings_menu_pressed_back)
     
 func _process(delta: float) -> void:
-    camera.global_position.z -= camera_pan_speed * delta
+    if camera.global_position.z >= -4000:
+        camera.global_position.z -= camera_pan_speed * delta
 
 func _on_start_menu_open_settings() -> void:
     Global.audio.click.play_random("MM1")
