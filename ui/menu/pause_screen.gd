@@ -19,15 +19,19 @@ func _on_pause_control_paused() -> void:
     main_pause_menu.show()
 
 func _on_resume_button_pressed() -> void:
+    Global.audio.click.play_random("PS1")
     Global.game.pause_control.unpause()
 
 func _on_options_screen_on_return_pressed() -> void:
+    Global.audio.click.play_random("PS2")
     options_menu.hide()
     main_pause_menu.show()
 
 func _on_options_button_pressed() -> void:
+    Global.audio.click.play_random("PS3")
     options_menu.show()
     main_pause_menu.hide()
 
 func _on_exit_to_menu_button_pressed() -> void:
+    Global.audio.click.play_random("PS4")
     Global.game.do_exit_game()

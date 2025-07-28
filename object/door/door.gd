@@ -12,6 +12,9 @@ class_name Door
 @export var closes_after := 5.0
 @export var closing_timer: Timer
 
+@onready var open_sound: AudioRandomizer3D = %OpenSound
+@onready var close_sound: AudioRandomizer3D = %CloseSound
+
 var _is_open := false
 var _origin: Vector3 = Vector3.ZERO
 
@@ -30,12 +33,16 @@ func _ready():
         closing_timer.timeout.connect(_on_close_button_pressed)
 
 func open():
+    if not _is_open:
+        open_sound.play_random()
     _is_open = true
     collider.disabled = true
     if closing_timer != null and closes_after > 0:
         closing_timer.start(closes_after)
     
 func close():
+    if _is_open:
+        close_sound.play_random()
     _is_open = false
     collider.disabled = false
 

@@ -12,7 +12,6 @@ signal restart_game
 @export var win_button: SmallButton
 @export var mission_tracker: MissionTracker
 @export var pause_control: PauseControl
-@export var audio: AudioManager
 
 @export var end_screen_timer: Timer
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=4 uid="uid://bybush3bov5mf"]
+[gd_scene load_steps=126 format=4 uid="uid://bybush3bov5mf"]
 
 [ext_resource type="Script" uid="uid://day3fen83ytpk" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="LightmapGIData" uid="uid://761hf6d00kjt" path="res://game.lmbake" id="2_7knny"]
@@ -10,21 +10,17 @@
 [ext_resource type="Script" uid="uid://cbxngcs7onm7q" path="res://mission/mission.gd" id="3_xoeau"]
 [ext_resource type="Theme" uid="uid://c4875hllppr0h" path="res://ui/theme.tres" id="4_l1i01"]
 [ext_resource type="PackedScene" uid="uid://dwd63bd1spwv7" path="res://mission/marker.tscn" id="4_wj41c"]
-[ext_resource type="Script" uid="uid://d1iimci1dyikk" path="res://audio/audio_manager.gd" id="5_56gn1"]
 [ext_resource type="Texture2D" uid="uid://s68ydljo1fu0" path="res://world/placeholder_orange.png" id="5_eow3j"]
 [ext_resource type="Texture2D" uid="uid://uwdutmf0t6p5" path="res://ui/hud/crosshair/0382.png" id="5_iu0sx"]
 [ext_resource type="Script" uid="uid://chuuv2u71vd1a" path="res://ui/hud/hud.gd" id="5_r62pu"]
 [ext_resource type="PackedScene" uid="uid://dr2ayqxiwwccw" path="res://hook/grappling_hook_controller.tscn" id="5_ryrav"]
 [ext_resource type="Texture2D" uid="uid://dn57kpitlvnh2" path="res://ui/hud/crosshair/0383.png" id="6_4v2jo"]
-[ext_resource type="AudioStream" uid="uid://d3iyxenjkexp7" path="res://ui/hud/type.ogg" id="6_avmo2"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="7_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://cw0kwd054nb1c" path="res://ui/hud/crosshair/0384.png" id="7_l1i01"]
 [ext_resource type="Script" uid="uid://da5r2xnhwnn73" path="res://ui/hud/fade_in_out.gd" id="7_ple6s"]
 [ext_resource type="Script" uid="uid://dhr3xv7miex53" path="res://ui/hud/crosshair/crosshair.gd" id="8_4v2jo"]
 [ext_resource type="Material" uid="uid://bk26armjmhc7m" path="res://world/surface.tres" id="8_7knny"]
 [ext_resource type="Script" uid="uid://k0joa5bluso1" path="res://addons/starlight/StarGenerator.gd" id="8_vef74"]
-[ext_resource type="Script" uid="uid://d36vkvhl014cj" path="res://audio/audio_randomizer.gd" id="9_0s2o4"]
-[ext_resource type="AudioStream" uid="uid://tmw0covrej6x" path="res://hook/fire_hook.ogg" id="9_66xay"]
 [ext_resource type="PackedScene" uid="uid://du1cn8wac3awi" path="res://object/chair/chair.tscn" id="9_iotsf"]
 [ext_resource type="PackedScene" uid="uid://db0uepma3ku82" path="res://object/stairs.tscn" id="9_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://d153vfgmc4r6i" path="res://object/door/crew_door.tscn" id="10_215e1"]
@@ -53,7 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://c4j0mijecahch" path="res://ui/keyboard_s.png" id="24_lh772"]
 [ext_resource type="Texture2D" uid="uid://dik8dpj6fy8es" path="res://ui/keyboard_d.png" id="25_66xay"]
 [ext_resource type="PackedScene" uid="uid://cbeowwo0akxat" path="res://object/fan/big_fan.tscn" id="25_i2p71"]
-[ext_resource type="PackedScene" uid="uid://c8xjginy5scfm" path="res://object/chair/hatch_door.tscn" id="25_xa8c5"]
+[ext_resource type="PackedScene" uid="uid://c8xjginy5scfm" path="res://object/door/hatch_door.tscn" id="25_xa8c5"]
 [ext_resource type="PackedScene" uid="uid://cj5q6ud8vce3x" path="res://object/object_holder/battery_holder.tscn" id="26_xfvwf"]
 [ext_resource type="PackedScene" uid="uid://dapmkwvp7pwmc" path="res://libs/GLB format/container-tall.glb" id="27_36jdj"]
 [ext_resource type="Script" uid="uid://c1hoinp50fuic" path="res://ui/menu/end_screen.gd" id="27_lh772"]
@@ -298,7 +294,7 @@ size = Vector3(3.009369, 12.578491, 13.22023)
 [sub_resource type="BoxShape3D" id="BoxShape3D_du4n2"]
 size = Vector3(5.4088135, 1, 1)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller", "hud", "end_screen", "win_button", "mission_tracker", "pause_control", "audio", "end_screen_timer")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller", "hud", "end_screen", "win_button", "mission_tracker", "pause_control", "end_screen_timer")]
 script = ExtResource("1_80nbo")
 player = NodePath("Player")
 grappling_hook_controller = NodePath("GrapplingHookController")
@@ -307,7 +303,6 @@ end_screen = NodePath("CanvasLayer/EndScreen")
 win_button = NodePath("World/Section3/Decor/WinButton")
 mission_tracker = NodePath("MissionTracker")
 pause_control = NodePath("PauseControl")
-audio = NodePath("AudioManager")
 end_screen_timer = NodePath("EndScreenTimer")
 
 [node name="MissionTracker" type="Node3D" parent="." node_paths=PackedStringArray("markers", "start_timer")]
@@ -358,28 +353,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.097824, 0, 68.03074)
 quality = 2
 light_data = ExtResource("2_7knny")
 
-[node name="AudioManager" type="Node3D" parent="."]
-script = ExtResource("5_56gn1")
-
-[node name="MissionTyping" type="AudioStreamPlayer" parent="AudioManager"]
-unique_name_in_owner = true
-stream = ExtResource("6_avmo2")
-volume_db = -12.0
-bus = &"UI"
-
-[node name="FireHook" type="AudioStreamPlayer" parent="AudioManager"]
-unique_name_in_owner = true
-volume_db = -10.0
-bus = &"Environment"
-script = ExtResource("9_0s2o4")
-audio_tracks = Array[AudioStream]([ExtResource("9_66xay")])
-min_pitch = 0.8000000000029104
-max_pitch = 1.1999999999970896
-metadata/_custom_type_script = "uid://d36vkvhl014cj"
-
-[node name="AmbientSpace" type="AudioStreamPlayer" parent="AudioManager"]
+[node name="AmbientSpace" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_4mai8")
-volume_db = -6.0
+volume_db = -7.0
 autoplay = true
 bus = &"Environment"
 
@@ -2218,7 +2194,9 @@ surface_material_override/0 = ExtResource("15_80cx4")
 
 [node name="BigFan" parent="World/Section3/Decor" instance=ExtResource("25_i2p71")]
 transform = Transform3D(6.798, -5.9430005e-07, -5.9430005e-07, -5.9430005e-07, -6.798, 0, -5.9430005e-07, 5.1955358e-14, -6.798, -73.84528, 97.59181, 66.8122)
-turn_on_after = 6.0
+shut_off_after = 4.0
+turn_on_after = 8.0
+fan_wind_speed = 0.8000000000029104
 
 [node name="Grate" type="Node3D" parent="World/Section3/Decor/BigFan"]
 transform = Transform3D(0.77, 1.4210854e-14, 1.4210855e-14, -1.4210855e-14, 0.77, 0, -1.4210855e-14, 4.2351647e-22, 0.77, 0.18501282, 0, 0.3147831)

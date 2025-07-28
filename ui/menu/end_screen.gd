@@ -28,7 +28,9 @@ func _process(_delta: float) -> void:
         controls.show()
         
 func _on_restart_button_pressed() -> void:
+    Global.audio.click.play_random("ES1")
     Global.game.do_restart_game()
 
 func _on_exit_button_pressed() -> void:
+    Global.audio.click.play_random("ES2")
     Global.game.do_exit_game()

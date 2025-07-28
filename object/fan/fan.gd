@@ -11,11 +11,16 @@ extends Node3D
 @export var shut_off_after: float = 5.0
 @export var turn_on_timer: Timer
 @export var turn_on_after: float = 5.0
+@export var fan_wind_speed := 0.5
 
 @export_group("Internal")
 @export var wind_visual: Node3D
 @export var affects_area: Area3D
 @export var collider: CollisionShape3D
+@export var fan_wind_audio: AudioStreamPlayer3D
+
+var _max_volume: float
+const VOLUME_OFF := -24.0
 
 func _ready() -> void:
     if max_distance > 0:
@@ -29,6 +34,12 @@ func _ready() -> void:
         enable()
     else:
         disable()
+    _max_volume = fan_wind_audio.volume_db
+    fan_wind_audio.volume_db = VOLUME_OFF
+    
+func _process(delta: float) -> void:
+    var target_audio := _max_volume if enabled else VOLUME_OFF
+    fan_wind_audio.volume_db = lerp(fan_wind_audio.volume_db, target_audio, 0.05)
         
 func _physics_process(delta: float) -> void:
     if not enabled:
@@ -46,10 +57,13 @@ func _physics_process(delta: float) -> void:
             rb.apply_central_force(global_transform.basis.y * force * delta)
             if node is Player:
                 hitting_player = true
+    var current_fan_count := Global.game.player.affected_fans.size()
     if hitting_player:
         Global.game.player.affected_fans[get_instance_id()] = true
+        Global.game.player.on_fan_count_change(current_fan_count, Global.game.player.affected_fans.size())
     else:
         Global.game.player.affected_fans.erase(get_instance_id())
+        Global.game.player.on_fan_count_change(current_fan_count, Global.game.player.affected_fans.size())
         
             
 func enable() -> void:

@@ -3,11 +3,13 @@ extends Node
 const CONFIG_PATH := "user://settings.cfg"
 
 var game: Game = null
+var main: Main = null
 
 var config := ConfigFile.new()
 var music := AudioServer.get_bus_index("Music")
 var ui := AudioServer.get_bus_index("UI")
 var environment := AudioServer.get_bus_index("Environment")
+var audio: AudioManager
 
 var always_go_upright := false
 var disable_surface_alignment := true
@@ -25,7 +27,6 @@ const MOUSE_RIGHT = preload("res://ui//mouse_right_outline.png")
 
 func _ready() -> void:
     _load_config()
-    print(KEYBOARD_Q.resource_path)
     
 func _load_config() -> void:
     var err := config.load(CONFIG_PATH)

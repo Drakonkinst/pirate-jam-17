@@ -1,12 +1,16 @@
 extends Node
 
+class_name Main
+
 @export var game_scene: PackedScene
 @export var main_menu_scene: PackedScene
+@export var audio: AudioManager
 
 var game: Game
 var menu: MainMenu
 
 func _ready() -> void:
+    Global.audio = audio
     Engine.max_fps = 60
     init_main_menu()
 

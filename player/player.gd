@@ -66,4 +66,9 @@ func _process_look_inputs(mouse_motion: Vector2) -> void:
         apply_torque(up * delta_y)
         apply_torque(left * -delta_x)
 
+func on_fan_count_change(prev: int, next: int) -> void:
+    if prev == next:
+        return
+    if prev == 0 and next > 0 and not Global.audio.fan_whoosh.playing:
+        Global.audio.fan_whoosh.play_random()
     

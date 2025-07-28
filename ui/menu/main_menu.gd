@@ -25,20 +25,25 @@ func _process(delta: float) -> void:
     camera.global_position.z -= camera_pan_speed * delta
 
 func _on_start_menu_open_settings() -> void:
+    Global.audio.click.play_random("MM1")
     start_menu.hide()
     settings_menu.show()
 
 func _on_start_menu_open_credits() -> void:
+    Global.audio.click.play_random("MM2")
     start_menu.hide()
     credits_menu.show()
 
 func _on_start_menu_start_game() -> void:
+    Global.audio.click_play.play()
     start_game.emit()
 
 func _on_settings_menu_pressed_back() -> void:
+    Global.audio.click.play_random("MM4")
     start_menu.show()
     settings_menu.hide()
 
 func _on_credits_menu_pressed_back() -> void:
+    Global.audio.click.play_random("MM5")
     start_menu.show()
     credits_menu.hide()

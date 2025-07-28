@@ -49,6 +49,7 @@ func _process(delta: float) -> void:
             next_stage_timer.start(0.1)
 
 func start_mission(mission: Mission) -> void:
+    Global.audio.finish_task.play()
     _current_mission = mission
     _stage = Stage.SHOW_SPLASH
     _progress = 0.0

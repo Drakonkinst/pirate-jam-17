@@ -71,10 +71,8 @@ func _handle_hook_physics(source_pos: Vector3, delta: float):
             var collidable := hook_target as Collidable
             var dist_sq := collidable.global_position.distance_squared_to(player.global_position)
             if dist_sq > (_rope_length + ROPE_THRESHOLD) * (_rope_length + ROPE_THRESHOLD):
-                print("BB")
                 collidable.apply_central_force(-to_vector * delta * max_pull_speed * ROPE_MULTIPLIER)
             elif dist_sq < (_rope_length - ROPE_THRESHOLD) * (_rope_length - ROPE_THRESHOLD):
-                print("AA")
                 collidable.apply_central_force(to_vector * delta * max_pull_speed * ROPE_MULTIPLIER)
         
         # Make rigid because setting it to anything else doesn't work lol
@@ -129,7 +127,7 @@ func _launch_hook() -> void:
         _rope_length = grappling_hook_range
         _set_attachment_type(AttachmentType.NONE)
     _set_hook_state(HookState.LAUNCHED)
-    Global.game.audio.fire_hook.play_random()
+    Global.audio.fire_hook.play_random()
 
 func _retract_hook() -> void:
     _set_hook_state(HookState.ON_COOLDOWN)

@@ -13,6 +13,8 @@ signal on_return_pressed
 @onready var mouse_sensitivity: HSlider = %MouseSensitivity
 @onready var roll_speed: HSlider = %RollSpeed
 
+var _all_ready := false
+
 func _ready() -> void:
     music_slider.value_changed.connect(_on_music_slider_value_changed)
     environment_slider.value_changed.connect(_on_environment_slider_value_changed)
@@ -38,6 +40,8 @@ func _ready() -> void:
     go_upright.button_pressed = Global.always_go_upright
     disable_alignment.button_pressed = Global.disable_surface_alignment
     speedrun_timer.button_pressed = Global.show_speedrun_timer
+
+    _all_ready = true
     
 func _on_return_button_pressed() -> void:
     on_return_pressed.emit()
@@ -58,10 +62,16 @@ func _on_roll_speed_slider_value_changed(value: float) -> void:
     Global.set_roll_speed(value)
 
 func _on_go_upright_pressed() -> void:
+    if _all_ready:
+        Global.audio.click.play_random("OS1")
     Global.set_always_go_upright(go_upright.button_pressed)
 
 func _on_disable_alignment_pressed() -> void:
+    if _all_ready:
+        Global.audio.click.play_random("OS2")
     Global.set_disable_surface_alignment(disable_alignment.button_pressed)
 
 func _on_speedrun_timer_pressed() -> void:
+    if _all_ready:
+        Global.audio.click.play_random("OS3")
     Global.set_show_speedrun_timer(speedrun_timer.button_pressed)
