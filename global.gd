@@ -6,9 +6,9 @@ var game: Game = null
 var main: Main = null
 
 var config := ConfigFile.new()
-var music := AudioServer.get_bus_index("Music")
-var ui := AudioServer.get_bus_index("UI")
-var environment := AudioServer.get_bus_index("Environment")
+var music := 2 #AudioServer.get_bus_index("Music")
+var ui := 3 #AudioServer.get_bus_index("UI")
+var environment := 1 #AudioServer.get_bus_index("Environment")
 var audio: AudioManager
 
 var always_go_upright := false
@@ -27,6 +27,7 @@ const MOUSE_RIGHT = preload("res://ui//mouse_right_outline.png")
 
 func _ready() -> void:
     _load_config()
+    print("music=", music, ", ui=", ui, ", environment=", environment)
     
 func _load_config() -> void:
     var err := config.load(CONFIG_PATH)

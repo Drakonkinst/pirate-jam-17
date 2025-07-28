@@ -601,6 +601,7 @@ script = ExtResource("7_ple6s")
 
 [node name="PauseScreen" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("main_pause_menu", "options_menu")]
 process_mode = 2
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -897,6 +898,7 @@ layout_mode = 1
 
 [node name="EndScreen" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("title_text", "subtitle_text", "controls")]
 process_mode = 2
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
