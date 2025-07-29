@@ -1863,6 +1863,7 @@ surface_material_override/0 = ExtResource("31_7knny")
 [node name="BatteryHolder2" parent="World/Section2/Decor" node_paths=PackedStringArray("opens_door", "lights") groups=["GoalBatteryHolder"] instance=ExtResource("26_xfvwf")]
 transform = Transform3D(-1.4, 0, 1.2239188e-07, 0, 1.4, 0, -1.2239188e-07, 0, -1.4, -58.86048, -2.8207395, 24.780504)
 opens_door = NodePath("../HatchDoor6")
+stay_locked = true
 finish_mission = "power_comms"
 lights = [NodePath("../ActivationLights2/MeshInstance3D-2"), NodePath("../ActivationLights2/MeshInstance3D2-2"), NodePath("../ActivationLights2/MeshInstance3D3-2")]
 

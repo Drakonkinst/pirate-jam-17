@@ -106,7 +106,7 @@ func _launch_hook() -> void:
 
         # Initialize target node
         _hook_target_node = hook_anchor_scene.instantiate() as HookAnchorPoint
-        hook_target.add_child(_hook_target_node) # TODO: Save the target object as well?
+        hook_target.add_child(_hook_target_node)
         _hook_target_node.global_position = player.hook_raycast.get_collision_point()
         _hook_target_normal = player.hook_raycast.get_collision_normal()
         _rope_length = (_hook_target_node.global_position - player.head.global_position).length()

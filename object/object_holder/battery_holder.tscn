@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj5q6ud8vce3x"]
+[gd_scene load_steps=12 format=3 uid="uid://cj5q6ud8vce3x"]
 
 [ext_resource type="Script" uid="uid://bjjyuxneweyus" path="res://object/object_holder/object_holder.gd" id="1_dghb3"]
 [ext_resource type="Material" uid="uid://d377bgduo1x8s" path="res://object/object_holder/backlight.tres" id="2_e5onj"]
 [ext_resource type="Material" uid="uid://c6crfeqjmwmu7" path="res://object/object_holder/backlight_disabled.tres" id="3_qwlst"]
 [ext_resource type="PackedScene" uid="uid://dtoyi8yc47pj2" path="res://libs/GLTF format/machine_barrelLarge.glb" id="4_0hoxf"]
 [ext_resource type="Material" uid="uid://cyug0kdg7ptbq" path="res://object/object_holder/cool_energy.tres" id="5_togna"]
+[ext_resource type="Script" uid="uid://djmjw6isnvwmv" path="res://audio/audio_randomizer_3d.gd" id="6_0hoxf"]
+[ext_resource type="AudioStream" uid="uid://tookxhc0raob" path="res://object/object_holder/power_on.ogg" id="7_togna"]
+[ext_resource type="AudioStream" uid="uid://wmhg3a5vqmgh" path="res://object/object_holder/power_down.ogg" id="8_5pq4k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dhpj7"]
 radius = 2.0
@@ -55,3 +58,19 @@ shape = SubResource("BoxShape3D_xfvwf")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.116, 0)
 shape = SubResource("BoxShape3D_xfvwf")
+
+[node name="PowerOn" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+max_distance = 50.0
+bus = &"Environment"
+script = ExtResource("6_0hoxf")
+audio_tracks = Array[AudioStream]([ExtResource("7_togna")])
+metadata/_custom_type_script = "uid://djmjw6isnvwmv"
+
+[node name="PowerOff" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+max_distance = 50.0
+bus = &"Environment"
+script = ExtResource("6_0hoxf")
+audio_tracks = Array[AudioStream]([ExtResource("8_5pq4k")])
+metadata/_custom_type_script = "uid://djmjw6isnvwmv"

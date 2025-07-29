@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5h3d1ke4io52"]
+[gd_scene load_steps=9 format=3 uid="uid://c5h3d1ke4io52"]
 
 [ext_resource type="Script" uid="uid://ds5vshsx4lnv4" path="res://object/glass/breakable_glass.gd" id="1_vh6nu"]
 [ext_resource type="Shader" uid="uid://dqqaqvegnvgca" path="res://object/glass/broken_glass.gdshader" id="2_y23w7"]
+[ext_resource type="AudioStream" uid="uid://b2qyh7t3n4a61" path="res://object/glass/glass_crack.ogg" id="3_pnk3q"]
+[ext_resource type="Script" uid="uid://djmjw6isnvwmv" path="res://audio/audio_randomizer_3d.gd" id="4_swh6h"]
+[ext_resource type="AudioStream" uid="uid://wovtpowjmvjc" path="res://object/glass/glass_break.ogg" id="5_swh6h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_e8heu"]
 size = Vector3(20, 13, 0.5)
@@ -42,3 +45,24 @@ shape = SubResource("BoxShape3D_7sc4i")
 [node name="BreakTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="GlassCrack" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_pnk3q")
+volume_db = 5.0
+bus = &"Environment"
+script = ExtResource("4_swh6h")
+audio_tracks = Array[AudioStream]([ExtResource("3_pnk3q")])
+min_pitch = 0.9499999999970896
+max_pitch = 1.0500000000029104
+metadata/_custom_type_script = "uid://djmjw6isnvwmv"
+
+[node name="GlassBreak" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_swh6h")
+bus = &"Environment"
+script = ExtResource("4_swh6h")
+audio_tracks = Array[AudioStream]([ExtResource("5_swh6h")])
+min_pitch = 1.0
+max_pitch = 1.0
+metadata/_custom_type_script = "uid://djmjw6isnvwmv"

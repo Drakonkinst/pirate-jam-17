@@ -8,6 +8,8 @@ class_name BreakableGlass
 @onready var mesh: MeshInstance3D = %MeshInstance3D
 @onready var collider: CollisionShape3D = %CollisionShape3D
 @onready var break_timer: Timer = %BreakTimer
+@onready var glass_crack: AudioRandomizer3D = %GlassCrack
+@onready var glass_break: AudioRandomizer3D = %GlassBreak
 
 var _can_take_damage := true
 
@@ -18,6 +20,10 @@ func _ready() -> void:
 func progress_stage() -> void:
     if stage < stages.size() - 1 and _can_take_damage:
         _set_stage(stage + 1)
+        if stage >= stages.size() - 1:
+            glass_break.play_random()
+        else:
+            glass_crack.play_random()
         _can_take_damage = false
         break_timer.start()
 

@@ -45,3 +45,4 @@ unique_name_in_owner = true
 stream = ExtResource("7_8gmgf")
 volume_db = -5.0
 autoplay = true
+bus = &"Music"

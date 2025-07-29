@@ -24,6 +24,7 @@ func display(title: String, subtitle: String) -> void:
 func _process(_delta: float) -> void:
     if _awaiting_finish and not title_text.is_typing():
         _awaiting_finish = false
+        # TODO: Play sounds based on win or loss?
         subtitle_text.display_text(_subtitle)
         controls.show()
         

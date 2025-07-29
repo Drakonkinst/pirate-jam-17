@@ -13,6 +13,7 @@ enum LockState { LOCKED, UNLOCKED, ANY }
 
 var _last_linear_velocity_sq := 0.0
 var lock_state: LockState = LockState.ANY
+var stay_locked: bool = false
 
 const MIN_GLASS_BREAK_THRESHOLD := 5.0
 const DAMPING_THRESHOLD := 50.0
@@ -59,7 +60,7 @@ func set_lock_state(state: LockState) -> void:
 
 func on_attach() -> void:
     if can_lock_in:
-        if lock_state == LockState.LOCKED:
+        if lock_state == LockState.LOCKED and not stay_locked:
             set_lock_state(LockState.UNLOCKED)
     
 func on_detach() -> void:
