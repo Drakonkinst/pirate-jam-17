@@ -295,7 +295,7 @@ size = Vector3(3.009369, 12.578491, 13.22023)
 [sub_resource type="BoxShape3D" id="BoxShape3D_du4n2"]
 size = Vector3(5.4088135, 1, 1)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller", "hud", "end_screen", "win_button", "mission_tracker", "pause_control", "end_screen_timer")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "grappling_hook_controller", "hud", "end_screen", "win_button", "mission_tracker", "pause_control", "speedrun_timer", "end_screen_timer")]
 script = ExtResource("1_80nbo")
 player = NodePath("Player")
 grappling_hook_controller = NodePath("GrapplingHookController")
@@ -304,6 +304,7 @@ end_screen = NodePath("CanvasLayer/EndScreen")
 win_button = NodePath("World/Section3/Decor/WinButton")
 mission_tracker = NodePath("MissionTracker")
 pause_control = NodePath("PauseControl")
+speedrun_timer = NodePath("CanvasLayer/HUD/SpeedrunTimer")
 end_screen_timer = NodePath("EndScreenTimer")
 
 [node name="MissionTracker" type="Node3D" parent="." node_paths=PackedStringArray("markers", "start_timer")]

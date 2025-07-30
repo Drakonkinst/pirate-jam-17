@@ -12,6 +12,7 @@ signal restart_game
 @export var win_button: SmallButton
 @export var mission_tracker: MissionTracker
 @export var pause_control: PauseControl
+@export var speedrun_timer: SpeedrunTimer
 
 @export var end_screen_timer: Timer
 
@@ -39,7 +40,9 @@ func display_end_screen(title: String, subtitle: String, win: bool) -> void:
     end_screen_timer.start(3)
 
 func _on_win_button_pressed() -> void:
-    display_end_screen("Distress Call Transmitted successfully", "You win!", true)
+    Global.audio.win_button.play()
+    var text := "You win! Your time: " + speedrun_timer.get_time_str()
+    display_end_screen("Distress Call Transmitted successfully", text, true)
     
 func _on_end_screen_timer_timeout() -> void:
     pause_control.pause()

@@ -15,7 +15,6 @@ var movement_mode: MovementMode = MovementMode.ROLL
 var affected_fans: Dictionary[int, bool]
 
 var _head_x_rotation: float
-var _last_linear_velocity_sq := 0.0
 
 const DRIFTED_AWAY_THRESHOLD := 275.0
 
@@ -46,10 +45,16 @@ func _physics_process(delta: float) -> void:
     var collisions := get_colliding_bodies()
     if collisions.size() > 0:
         var collider: Node3D = collisions[0]
-        if collider is BreakableGlass:
-            # TODO: Do stuff
-            pass
-
+        var state := PhysicsServer3D.body_get_direct_state(get_rid())
+        var vel := state.get_contact_impulse(0).length()
+        if Global.audio.fast_enough(vel * vel):
+            var success := false
+            if collider is BreakableGlass:
+                success = Global.audio.play_glass_thud(vel)
+            else:
+                success = Global.audio.play_normal_thud(vel)
+            if success:
+                pass
     # Hardcoding this one because I can't be bothered to set up an area
     if global_position.x <= -30:
         Global.game.mission_tracker.finish_mission("leave_crew_quarters")
@@ -57,7 +62,6 @@ func _physics_process(delta: float) -> void:
     if global_position.length_squared() >= DRIFTED_AWAY_THRESHOLD * DRIFTED_AWAY_THRESHOLD:
         Global.game.display_end_screen("You Drifted Away into the Endless Void of Space", "Better luck next time?", false)
 
-    _last_linear_velocity_sq = linear_velocity.length_squared()
     input_state.reset()
 
 func _process_look_inputs(mouse_motion: Vector2) -> void:

@@ -11,11 +11,10 @@ enum LockState { LOCKED, UNLOCKED, ANY }
 @export var can_lock_in := false
 @export var unlock_timer: Timer
 
-var _last_linear_velocity_sq := 0.0
 var lock_state: LockState = LockState.ANY
 var stay_locked: bool = false
 
-const MIN_GLASS_BREAK_THRESHOLD := 5.0
+const MIN_GLASS_BREAK_THRESHOLD := 1.25
 const DAMPING_THRESHOLD := 50.0
 
 func _ready() -> void:
@@ -41,9 +40,11 @@ func _physics_process(_delta: float) -> void:
     var collisions := get_colliding_bodies()
     if collisions.size() > 0:
         var collider: Node3D = collisions[0]
+        var state := PhysicsServer3D.body_get_direct_state(get_rid())
+        var vel := state.get_contact_impulse(0).length()
         if collider is BreakableGlass:
             var glass := collider as BreakableGlass
-            if _last_linear_velocity_sq >= MIN_GLASS_BREAK_THRESHOLD * MIN_GLASS_BREAK_THRESHOLD:
+            if vel >= MIN_GLASS_BREAK_THRESHOLD:
                 glass.progress_stage() 
     # Apply linear damp to objects that are far away from the player so they eventually come to a stop and sleep
     var dist_sq_from_player := Global.game.player.global_position.distance_squared_to(global_position)
@@ -51,8 +52,6 @@ func _physics_process(_delta: float) -> void:
         linear_damp = 1.0
     else:
         linear_damp = 0.0
-    
-    _last_linear_velocity_sq = linear_velocity.length_squared()
     
 func set_lock_state(state: LockState) -> void:
     lock_state = state
