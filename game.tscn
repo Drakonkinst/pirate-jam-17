@@ -315,21 +315,27 @@ start_timer = NodePath("Timer")
 
 [node name="Marker0" parent="MissionTracker" instance=ExtResource("4_wj41c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.653632, 8.401761, -5.9734354)
+visible = false
 
 [node name="Marker1" parent="MissionTracker" instance=ExtResource("4_wj41c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.650599, 8.401761, -8.82136)
+visible = false
 
 [node name="Marker3" parent="MissionTracker" instance=ExtResource("4_wj41c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.482037, 4.246504, -56.363983)
+visible = false
 
 [node name="Marker4" parent="MissionTracker" instance=ExtResource("4_wj41c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.795727, 0.10590625, 24.88417)
+visible = false
 
 [node name="Marker5" parent="MissionTracker" instance=ExtResource("4_wj41c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.32099, 118.19921, 66.52074)
+visible = false
 
 [node name="Marker6" parent="MissionTracker" instance=ExtResource("4_wj41c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.95944, 121.76247, 65.80627)
+visible = false
 
 [node name="Timer" type="Timer" parent="MissionTracker"]
 wait_time = 3.0
@@ -602,7 +608,6 @@ script = ExtResource("7_ple6s")
 
 [node name="PauseScreen" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("main_pause_menu", "options_menu")]
 process_mode = 2
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -842,6 +847,25 @@ theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "Roll"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+custom_effects = [null]
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleText" type="RichTextLabel" parent="CanvasLayer/PauseScreen/MainPauseScreen/VBoxContainer2/VBoxContainer/HBoxContainer8"]
+clip_contents = false
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("4_l1i01")
+theme_override_colors/default_color = Color(0.91, 0.8429634, 0.67340004, 1)
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[img]res://ui//keyboard_p.png[/img] / [img]res://ui//keyboard_space.png[/img] Pause"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
